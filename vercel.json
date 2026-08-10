@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["public/**", "VTechOTP.apk"]
+      }
+    },
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/css/(.*)",
+      "dest": "/public/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/public/js/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/public/assets/$1"
+    },
+    {
+      "src": "/VTechOTP.apk",
+      "dest": "/VTechOTP.apk"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/playstore",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/blog(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/syarat-ketentuan",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/pusat-bantuan",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/kebijakan-privasi",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ]
+}
