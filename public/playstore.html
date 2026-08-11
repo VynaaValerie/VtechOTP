@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VTechOTP - Download APK</title>
+  <link rel="icon" href="/assets/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 CDN (NO EMOJIS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #0b57d0;
+      --blue-dark: #0842a0;
+      --text: #1f1f1f;
+      --text-secondary: #5f6368;
+      --border: #e0e0e0;
+      --bg-chip: #f2f2f2;
+      --radius-pill: 999px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f8f9fa;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .screen {
+      width: 100%;
+      max-width: 432px;
+      min-height: 100vh;
+      background: #fff;
+      position: relative;
+      padding-bottom: 100px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.06);
+    }
+
+    /* ─── Topbar ─────────────────────────── */
+    .topbar {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .topbar-left { display: flex; align-items: center; gap: 4px; }
+    .topbar-right { display: flex; align-items: center; gap: 4px; }
+    .icon-btn {
+      background: none; border: none; cursor: pointer;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .icon-btn:hover { background: #f1f3f4; }
+    .icon-btn:active { background: #e8eaed; }
+    .topbar-title {
+      font-size: 15px; font-weight: 500; color: var(--text);
+      max-width: 180px; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+      opacity: 0; transition: opacity .2s;
+    }
+    .topbar-title.visible { opacity: 1; }
+    .points-pill {
+      border: 1px solid var(--border); border-radius: var(--radius-pill);
+      padding: 5px 12px; display: flex; align-items: center; gap: 6px;
+      font-size: 12.5px; font-weight: 500; cursor: pointer;
+      transition: background .15s;
+    }
+    .points-pill:hover { background: #f1f3f4; }
+    .points-gem {
+      width: 14px; height: 14px; background: var(--blue);
+      border-radius: 3px; transform: rotate(45deg); flex-shrink: 0;
+    }
+
+    /* ─── App header ─────────────────────── */
+    .app-header { display: flex; align-items: flex-start; padding: 18px 20px 12px; gap: 18px; }
+    .app-icon {
+      width: 84px; height: 84px; border-radius: 20px;
+      border: 1px solid #e8e8e8; overflow: hidden; flex-shrink: 0;
+      background: #0b1630; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .app-title { flex: 1; padding-top: 4px; }
+    .app-title h1 { font-size: 21px; font-weight: 500; line-height: 1.25; margin-bottom: 5px; }
+    .app-title .dev {
+      color: var(--blue); font-size: 13px; font-weight: 500;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 3px;
+    }
+    .app-title .dev:hover { text-decoration: underline; }
+    .verified-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #e8f0fe; color: #1a56db;
+      border-radius: 4px; padding: 2px 7px;
+      font-size: 11px; font-weight: 500; margin-top: 7px;
+    }
+
+    /* ─── Stats row ─────────────────────── */
+    .stats-row {
+      display: flex; align-items: stretch;
+      padding: 4px 20px 14px;
+    }
+    .stat-item {
+      display: flex; flex-direction: column; align-items: center;
+      flex: 1; gap: 3px; cursor: pointer; padding: 8px 4px; border-radius: 12px;
+      transition: background .15s;
+    }
+    .stat-item:hover { background: #f8f9fa; }
+    .stat-val {
+      font-size: 13px; font-weight: 500; color: var(--text);
+      display: flex; align-items: center; gap: 2px;
+    }
+    .stat-label {
+      font-size: 11px; color: var(--text-secondary);
+      display: flex; align-items: center; gap: 2px; text-align: center;
+    }
+    .stat-label svg { flex-shrink: 0; }
+    .stat-divider { width: 1px; background: var(--border); margin: 10px 0; align-self: stretch; }
+    .star-fill { fill: var(--text); width: 11px; height: 11px; }
+
+    /* ─── Action buttons ─────────────────── */
+    .actions-wrap { padding: 2px 20px 14px; display: flex; gap: 10px; }
+    .btn-install {
+      flex: 1; background: var(--blue); color: #fff;
+      border: none; border-radius: var(--radius-pill);
+      padding: 11px 0; font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: background .18s, transform .1s, box-shadow .18s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; position: relative; overflow: hidden;
+      box-shadow: 0 2px 6px rgba(11,87,208,.3);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-install:hover { background: var(--blue-dark); box-shadow: 0 4px 12px rgba(11,87,208,.4); }
+    .btn-install:active { transform: scale(.98); }
+    .btn-install .dl-spinner { display: none; }
+    .btn-install.loading .dl-spinner { display: flex; align-items: center; gap: 6px; }
+    .btn-install.loading .btn-text { display: none; }
+    .btn-install.done { background: #188038; box-shadow: 0 2px 6px rgba(24,128,56,.3); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .dl-spinner svg { animation: spin .9s linear infinite; }
+
+    .btn-icon-action {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid var(--border); background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+      transition: background .15s, border-color .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-icon-action:hover { background: #f1f3f4; border-color: #c5c5c5; }
+    .btn-icon-action:active { background: #e8eaed; }
+
+    /* ─── Chips / tags ───────────────────── */
+    .chip-row {
+      padding: 2px 20px 14px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--bg-chip); border-radius: var(--radius-pill);
+      padding: 6px 13px; font-size: 12.5px; font-weight: 400;
+      color: var(--text); cursor: pointer; transition: background .15s;
+      border: none;
+    }
+    .chip:hover { background: #e4e4e4; }
+    .chip svg { opacity: .7; }
+
+    /* ─── Screenshots ────────────────────── */
+    .ss-section { padding: 4px 0 4px 20px; }
+    .ss-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; padding-right: 20px; }
+    .screenshots {
+      display: flex; gap: 8px; overflow-x: auto;
+      padding-bottom: 6px;
+      scroll-snap-type: x mandatory;
+    }
+    .screenshots::-webkit-scrollbar { display: none; }
+    .ss-item {
+      width: 108px; height: 216px; border-radius: 14px;
+      background: #0b1630; flex-shrink: 0;
+      border: 1px solid #e8e8e8; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; scroll-snap-align: start;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .ss-item:hover { transform: scale(1.02); box-shadow: 0 4px 16px rgba(0,0,0,.18); }
+    .ss-item img { width: 100%; height: 100%; object-fit: cover; }
+    .screenshots .pad { width: 14px; flex-shrink: 0; }
+
+    /* ─── Lightbox ───────────────────────── */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.93); align-items: center; justify-content: center;
+      cursor: zoom-out; animation: fadeIn .18s ease;
+    }
+    #lightbox.open { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    #lightboxImg {
+      max-width: 92vw; max-height: 90vh;
+      border-radius: 18px; object-fit: contain;
+      box-shadow: 0 12px 48px rgba(0,0,0,.6);
+      animation: scaleIn .2s ease;
+    }
+    @keyframes scaleIn { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .lb-close {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,.15); border: none; border-radius: 50%;
+      width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; backdrop-filter: blur(4px);
+      transition: background .15s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.25); }
+
+    /* ─── All comments modal ──────────────── */
+    #reviewsModal {
+      display: none; position: fixed; inset: 0; z-index: 1800;
+      background: rgba(15, 23, 42, .55); padding: 18px;
+      align-items: center; justify-content: center;
+    }
+    #reviewsModal.open { display: flex; }
+    .reviews-dialog {
+      width: min(100%, 620px); max-height: min(88vh, 760px);
+      background: #fff; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      display: flex; flex-direction: column;
+    }
+    .reviews-dialog-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 14px; padding: 18px 20px 14px; border-bottom: 1px solid #f0f0f0;
+    }
+    .reviews-dialog-title { font-size: 18px; font-weight: 500; }
+    .reviews-dialog-subtitle {
+      margin-top: 5px; color: var(--text-secondary); font-size: 12px; line-height: 1.45;
+    }
+    .modal-close {
+      width: 36px; height: 36px; border: 0; border-radius: 50%;
+      background: #f1f3f4; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .modal-close:hover { background: #e5e7eb; }
+    .comments-notice {
+      margin: 14px 20px 4px; padding: 10px 12px; border-radius: 10px;
+      background: #fff8e1; color: #7a5200; font-size: 12px; line-height: 1.45;
+    }
+    .modal-review-list { overflow-y: auto; padding: 4px 0 16px; }
+    .modal-review {
+      display: flex; gap: 10px; padding: 13px 20px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .modal-review:last-child { border-bottom: 0; }
+    .modal-review .av { width: 32px; height: 32px; font-size: 13px; }
+    .modal-review-body { min-width: 0; flex: 1; }
+    .modal-review-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; margin-bottom: 3px;
+    }
+    .modal-review-name { font-size: 13px; font-weight: 500; }
+    .modal-review-date { color: var(--text-secondary); font-size: 11px; white-space: nowrap; }
+    .modal-review-stars { color: var(--blue); font-size: 12px; letter-spacing: 1px; }
+    .modal-review-text { font-size: 13px; line-height: 1.5; color: var(--text); }
+
+    /* ─── Divider / section ──────────────── */
+    .divider { height: 1px; background: #f0f0f0; margin: 4px 0; }
+    .section { padding: 16px 20px; }
+    .section-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .section-title { font-size: 16px; font-weight: 500; }
+    .section-arrow {
+      width: 36px; height: 36px; border-radius: 50%; border: none;
+      background: none; cursor: pointer; display: flex; align-items: center;
+      justify-content: center; margin: -6px -6px -6px 0;
+      transition: background .15s;
+    }
+    .section-arrow:hover { background: #f1f3f4; }
+
+    /* ─── About ──────────────────────────── */
+    .about-text {
+      font-size: 13.5px; line-height: 1.6; color: var(--text);
+      max-height: 80px; overflow: hidden; transition: max-height .35s ease;
+      position: relative;
+    }
+    .about-text.expanded { max-height: 600px; }
+    .about-text::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 32px; background: linear-gradient(transparent, #fff);
+      transition: opacity .25s;
+    }
+    .about-text.expanded::after { opacity: 0; pointer-events: none; }
+    .about-toggle {
+      margin-top: 10px; font-size: 13px; font-weight: 500; color: var(--blue);
+      background: none; border: none; cursor: pointer; padding: 0;
+      display: inline-flex; align-items: center; gap: 3px;
+    }
+    .about-toggle:hover { text-decoration: underline; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .about-tag {
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 6px 12px; font-size: 12.5px; color: var(--text-secondary);
+    }
+
+    /* ─── What's new ─────────────────────── */
+    .whats-new-ver {
+      font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;
+    }
+    .whats-new-text {
+      font-size: 13.5px; line-height: 1.6; color: var(--text);
+    }
+    .whats-new-text ul { padding-left: 18px; }
+    .whats-new-text li { margin-bottom: 4px; }
+
+    /* ─── Rating overview ────────────────── */
+    .rating-overview {
+      display: flex; gap: 20px; align-items: flex-start; margin-bottom: 16px;
+    }
+    .rating-big {
+      display: flex; flex-direction: column; align-items: center;
+      flex-shrink: 0; gap: 4px;
+    }
+    .rating-num { font-size: 52px; font-weight: 300; line-height: 1; color: var(--text); }
+    .rating-stars { display: flex; gap: 2px; }
+    .rating-stars svg { width: 13px; height: 13px; fill: var(--text); }
+    .rating-count { font-size: 11.5px; color: var(--text-secondary); }
+    .rating-bars { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+    .bar-row { display: flex; align-items: center; gap: 7px; }
+    .bar-label { font-size: 11.5px; color: var(--text-secondary); flex-shrink: 0; width: 10px; text-align: right; }
+    .bar-track {
+      flex: 1; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%; background: #1f1f1f; border-radius: 4px;
+      width: 0%; transition: width 1s cubic-bezier(.22,.61,.36,1);
+    }
+
+    /* ─── Review filter chips ────────────── */
+    .filter-chips {
+      display: flex; gap: 8px; overflow-x: auto; padding: 0 20px 14px;
+    }
+    .filter-chips::-webkit-scrollbar { display: none; }
+    .fchip {
+      border-radius: var(--radius-pill); padding: 7px 16px;
+      font-size: 13px; font-weight: 400; cursor: pointer;
+      border: 1.5px solid var(--border); background: #fff; color: var(--text);
+      white-space: nowrap; flex-shrink: 0;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .fchip:hover { background: #f1f3f4; }
+    .fchip.active {
+      background: #041e49; border-color: #041e49; color: #fff;
+    }
+
+    /* ─── Reviews ────────────────────────── */
+    .review-item { padding: 14px 20px; }
+    .review-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .av {
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600; font-size: 14px; flex-shrink: 0;
+      letter-spacing: -.3px;
+    }
+    .reviewer-info { display: flex; flex-direction: column; gap: 1px; }
+    .reviewer-name { font-size: 13.5px; font-weight: 500; }
+    .reviewer-device { font-size: 11.5px; color: var(--text-secondary); }
+    .review-menu {
+      background: none; border: none; cursor: pointer; padding: 4px;
+      border-radius: 50%; transition: background .15s;
+    }
+    .review-menu:hover { background: #f1f3f4; }
+    .review-stars-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .review-stars { display: flex; gap: 1px; }
+    .review-stars svg { width: 11.5px; height: 11.5px; fill: var(--blue); }
+    .review-stars .empty { fill: #dadce0; }
+    .review-date { font-size: 11.5px; color: var(--text-secondary); }
+    .review-text {
+      font-size: 13.5px; line-height: 1.6; color: var(--text);
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+      overflow: hidden; transition: all .2s;
+    }
+    .review-text.expanded {
+      display: block; -webkit-line-clamp: unset;
+    }
+    .review-expand {
+      background: none; border: none; cursor: pointer; padding: 4px 0 0;
+      font-size: 13px; font-weight: 500; color: var(--blue);
+      display: none;
+    }
+    .review-expand.visible { display: inline; }
+    .review-expand:hover { text-decoration: underline; }
+    .review-helpful {
+      display: flex; align-items: center; gap: 6px;
+      margin-top: 12px; font-size: 12.5px; color: var(--text-secondary);
+    }
+    .helpful-btn {
+      background: none; border: 1.5px solid var(--border); border-radius: var(--radius-pill);
+      padding: 5px 14px; font-size: 12.5px; cursor: pointer; color: var(--text-secondary);
+      display: flex; align-items: center; gap: 5px; transition: background .15s, color .15s, border-color .15s;
+    }
+    .helpful-btn:hover { background: #f1f3f4; }
+    .helpful-btn.voted { background: #e8f0fe; border-color: #c5d8fb; color: var(--blue); }
+    .helpful-count { font-size: 12.5px; margin-left: 2px; }
+    .dev-reply {
+      margin-top: 10px; padding: 12px 14px;
+      background: #f8f9fa; border-radius: 12px;
+      border-left: 3px solid var(--blue);
+    }
+    .dev-reply-head { font-size: 12.5px; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+    .dev-reply-text { font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); }
+
+    /* ─── See all reviews ────────────────── */
+    .see-all-btn {
+      display: flex; align-items: center; justify-content: center;
+      margin: 4px 20px 4px;
+      padding: 11px; border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border); background: #fff;
+      font-size: 14px; font-weight: 500; color: var(--text);
+      cursor: pointer; transition: background .15s;
+      text-decoration: none;
+    }
+    .see-all-btn:hover { background: #f8f9fa; }
+
+    /* ─── Data safety ────────────────────── */
+    .safety-box {
+      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+      margin-top: 4px;
+    }
+    .safety-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 16px; border-bottom: 1px solid #f5f5f5;
+    }
+    .safety-item:last-child { border-bottom: none; }
+    .safety-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: #e8f0fe; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .safety-text { flex: 1; }
+    .safety-label { font-size: 13.5px; font-weight: 500; margin-bottom: 2px; }
+    .safety-desc { font-size: 12.5px; color: var(--text-secondary); line-height: 1.45; }
+    .safety-see-more {
+      display: flex; align-items: center; justify-content: center;
+      padding: 12px 16px; border-top: 1px solid #f0f0f0;
+      font-size: 13px; font-weight: 500; color: var(--blue);
+      cursor: pointer; gap: 4px;
+    }
+    .safety-see-more:hover { background: #f8f9fa; }
+
+    /* ─── App info ───────────────────────── */
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr td { padding: 10px 0; font-size: 13.5px; border-bottom: 1px solid #f5f5f5; }
+    .info-table tr:last-child td { border-bottom: none; }
+    .info-table .info-key { color: var(--text-secondary); width: 50%; }
+    .info-table .info-val { font-weight: 500; text-align: right; }
+
+    /* ─── Developer info ─────────────────── */
+    .dev-info-item {
+      display: flex; align-items: center; gap: 14px; padding: 11px 0;
+      border-bottom: 1px solid #f5f5f5; cursor: pointer;
+      transition: opacity .15s;
+    }
+    .dev-info-item:last-child { border-bottom: none; }
+    .dev-info-item:hover { opacity: .7; }
+    .dev-info-icon {
+      width: 36px; height: 36px; border-radius: 10px; background: #f1f3f4;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dev-info-text { flex: 1; }
+    .dev-info-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 1px; }
+    .dev-info-val { font-size: 13.5px; font-weight: 400; color: var(--text); }
+
+    /* ─── Progress download ──────────────── */
+    .dl-progress-wrap {
+      height: 3px; background: rgba(255,255,255,.3);
+      border-radius: 2px; overflow: hidden;
+      width: 80%; display: none; margin-top: 6px;
+    }
+    .btn-install.loading .dl-progress-wrap { display: block; }
+    .dl-progress-bar {
+      height: 100%; background: #fff; border-radius: 2px;
+      width: 0%; animation: progressing 3s ease-in-out forwards;
+    }
+    @keyframes progressing {
+      0% { width: 0%; }
+      40% { width: 55%; }
+      80% { width: 82%; }
+      100% { width: 100%; }
+    }
+
+    /* ─── Toast ──────────────────────────── */
+    .dl-toast {
+      position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(0);
+      background: #323232; color: #fff; border-radius: 10px;
+      padding: 13px 22px; font-size: 13.5px;
+      display: none; align-items: center; gap: 11px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.35); z-index: 3000;
+      white-space: nowrap; animation: toastIn .25s cubic-bezier(.34,1.56,.64,1);
+    }
+    .dl-toast.show { display: flex; }
+    @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(12px); } }
+
+    /* ─── Sticky bottom bar (mobile) ─────── */
+    .sticky-bottom {
+      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 100%; max-width: 432px;
+      background: rgba(255,255,255,.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(0,0,0,.08);
+      padding: 10px 20px 18px;
+      display: none; align-items: center; gap: 12px;
+      z-index: 50;
+    }
+    .sticky-bottom.visible { display: flex; }
+    .sticky-icon { width: 36px; height: 36px; border-radius: 9px; overflow: hidden; flex-shrink: 0; }
+    .sticky-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .sticky-name { flex: 1; font-size: 14px; font-weight: 500; }
+    .sticky-install {
+      background: var(--blue); color: #fff;
+      border: none; border-radius: var(--radius-pill);
+      padding: 9px 22px; font-size: 14px; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      transition: background .15s;
+      display: inline-flex; align-items: center;
+    }
+    .sticky-install:hover { background: var(--blue-dark); }
+  </style>
+</head>
+<body>
+<div class="screen" id="mainScreen">
+
+  <!-- Topbar -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-left">
+      <button class="icon-btn" onclick="history.back()" aria-label="Kembali">
+        <svg width="22" height="22" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      </button>
+      <span class="topbar-title" id="topbarTitle">VTechOTP</span>
+    </div>
+    <div class="topbar-right">
+      <div class="points-pill" title="Poin VTO">
+        <div class="points-gem"></div>
+        <span>VTO</span>
+      </div>
+      <button class="icon-btn" aria-label="Cari">
+        <svg width="20" height="20" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- App header -->
+  <div class="app-header" id="appHeader">
+    <div class="app-icon">
+      <img src="/assets/logo.png" alt="VTechOTP" loading="eager">
+    </div>
+    <div class="app-title">
+      <h1>VTechOTP</h1>
+      <div class="dev">
+        VTech Digital
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <div class="verified-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#1a56db" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="#1a56db" opacity=".15"/></svg>
+        Terverifikasi
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-val">
+        4,9
+        <svg class="star-fill" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <div class="stat-label">
+        8,4 rb ulasan
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-val">
+        <span style="border:1.5px solid #1f1f1f;border-radius:3px;padding:0 3px;font-size:11px;font-weight:600;line-height:1.6;">3+</span>
+      </div>
+      <div class="stat-label">
+        Semua umur
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-val">
+        <svg width="16" height="16" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      </div>
+      <div class="stat-label">5.5 MB</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-val">5 rb+</div>
+      <div class="stat-label">Unduhan</div>
+    </div>
+  </div>
+
+  <!-- Install + actions -->
+  <div class="actions-wrap">
+    <a class="btn-install" id="installBtn" href="/VTechOTP.apk" download="VTechOTP.apk" onclick="startDownload(event)">
+      <span class="btn-text">
+        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Instal
+      </span>
+      <span class="dl-spinner">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        Mengunduh...
+      </span>
+    </a>
+    <button class="btn-icon-action" aria-label="Bagikan" onclick="shareApp()">
+      <svg width="18" height="18" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    </button>
+    <button class="btn-icon-action" aria-label="Simpan" id="wishlistBtn" onclick="toggleWishlist()">
+      <svg id="wishlistIcon" width="18" height="18" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    </button>
+  </div>
+
+  <!-- Category chips -->
+  <div class="chip-row">
+    <button class="chip">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      Bisnis
+    </button>
+    <button class="chip">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Utilitas
+    </button>
+    <button class="chip">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      Komunikasi
+    </button>
+  </div>
+
+  <!-- Screenshots -->
+  <div class="ss-section">
+    <div class="screenshots">
+      <div class="ss-item" onclick="openPreview('/assets/app-home.png')">
+        <img src="/assets/app-home.png" alt="Beranda Utama" loading="lazy">
+      </div>
+      <div class="ss-item" onclick="openPreview('/assets/app-leaderboard-v26.jpg')">
+        <img src="/assets/app-leaderboard-v26.jpg" alt="Leaderboard Top 100" loading="lazy">
+      </div>
+      <div class="ss-item" onclick="openPreview('/assets/app-update-v26.jpg')">
+        <img src="/assets/app-update-v26.jpg" alt="Notifikasi pembaruan v2.6" loading="lazy">
+      </div>
+      <div class="ss-item" onclick="openPreview('/assets/app-notifications-v26.jpg')">
+        <img src="/assets/app-notifications-v26.jpg" alt="Notifikasi aktif" loading="lazy">
+      </div>
+      <div class="ss-item" onclick="openPreview('/assets/app-otp.png')">
+        <img src="/assets/app-otp.png" alt="Status OTP" loading="lazy">
+      </div>
+      <div class="ss-item" onclick="openPreview('/assets/app-buy.png')">
+        <img src="/assets/app-buy.png" alt="Beli Nomor" loading="lazy">
+      </div>
+      <div class="ss-item" onclick="openPreview('/assets/app-deposit.png')">
+        <img src="/assets/app-deposit.png" alt="Deposit Saldo" loading="lazy">
+      </div>
+      <div class="ss-item" onclick="openPreview('/assets/app-countries.png')">
+        <img src="/assets/app-countries.png" alt="Pilihan 200+ Negara" loading="lazy">
+      </div>
+      <div class="pad"></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- About -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Tentang aplikasi ini</span>
+      <button class="section-arrow" aria-label="Lihat detail">
+        <svg width="20" height="20" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="about-text" id="aboutText">
+      VTechOTP adalah platform layanan nomor virtual OTP terpercaya yang memungkinkan kamu menerima kode verifikasi dari WhatsApp, Telegram, Google, TikTok, Instagram, Facebook, dan ratusan platform lainnya secara otomatis dan real-time.<br><br>
+      Tersedia nomor dari lebih dari 200 negara dengan harga mulai Rp500 per nomor. Tanpa langganan, bayar sesuai pemakaian. OTP masuk dalam hitungan detik, layanan aktif 24 jam nonstop.<br><br>
+      Cocok untuk developer, marketer, reseller, dan siapa saja yang butuh verifikasi tanpa menggunakan nomor pribadi.
+    </div>
+    <button class="about-toggle" id="aboutToggle" onclick="toggleAbout()">Selengkapnya
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" id="aboutArrow"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="about-tags">
+      <span class="about-tag">#1 Layanan OTP Virtual</span>
+      <span class="about-tag">200+ Negara</span>
+      <span class="about-tag">500+ Platform</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- What's new -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Yang baru</span>
+      <button class="section-arrow" aria-label="Lihat semua">
+        <svg width="20" height="20" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="whats-new-ver">Versi 2.6 · 10 Agustus 2026</div>
+    <div class="whats-new-text">
+      <ul>
+        <li>🏆 <strong>Leaderboard Top 100:</strong> Papan peringkat top member &amp; pembeli OTP terbanyak dengan reward menarik</li>
+        <li>🔔 <strong>Notifikasi aktif:</strong> Dapatkan update penting dan status transaksi langsung di perangkat</li>
+        <li>⚡ <strong>Order OTP Real-Time:</strong> Peningkatan sinkronisasi server agar kode SMS OTP masuk 2x lebih cepat</li>
+        <li>🛠️ <strong>Fix Bug Refresh:</strong> Perbaikan masalah auto-refresh status nomor &amp; histori transaksi</li>
+        <li>🔒 Peningkatan enkripsi keamanan data akun &amp; otentikasi TLS 1.3</li>
+        <li>🎨 Pembaruan visual antarmuka aplikasi &amp; mode hemat kuota</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Rating & Reviews -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Rating &amp; ulasan</span>
+      <button class="section-arrow" aria-label="Lihat semua ulasan" onclick="openReviewsModal()">
+        <svg width="20" height="20" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div style="font-size:11.5px;color:var(--text-secondary);margin-bottom:14px;">Pengalaman pengguna VTechOTP</div>
+
+    <!-- Rating overview -->
+    <div class="rating-overview">
+      <div class="rating-big">
+        <div class="rating-num">4,9</div>
+        <div class="rating-stars">
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <div class="rating-count">8.412 ulasan</div>
+      </div>
+      <div class="rating-bars">
+        <div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill" data-width="87"></div></div></div>
+        <div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill" data-width="8"></div></div></div>
+        <div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill" data-width="3"></div></div></div>
+        <div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill" data-width="1"></div></div></div>
+        <div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill" data-width="1"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter chips -->
+  <div class="filter-chips" id="filterChips">
+    <button class="fchip active" onclick="setFilter(this)">Semua</button>
+    <button class="fchip" onclick="setFilter(this)">Terbaru</button>
+    <button class="fchip" onclick="setFilter(this)">Relevan</button>
+    <button class="fchip" onclick="setFilter(this)">Berperingkat tinggi</button>
+    <button class="fchip" onclick="setFilter(this)">Berperingkat rendah</button>
+  </div>
+
+  <!-- Review 1 -->
+  <div class="review-item">
+    <div class="review-top">
+      <div class="reviewer">
+        <div class="av" style="background:#bbf7d0;color:#15803d;">R</div>
+        <div class="reviewer-info">
+          <span class="reviewer-name">Rizky Fadhillah</span>
+          <span class="reviewer-device">Samsung Galaxy A54</span>
+        </div>
+      </div>
+      <button class="review-menu" aria-label="Opsi">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+    </div>
+    <div class="review-stars-row">
+      <div class="review-stars">
+        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <span class="review-date">2 Juni 2026</span>
+    </div>
+    <div class="review-text" id="r1">OTP langsung masuk dalam hitungan detik! Gak perlu nunggu lama. Udah coba buat verif WhatsApp, Telegram sama Google — semua berhasil. Harganya juga murah banget, worth it! Buat yang butuh nomor virtual dengan harga terjangkau, ini jawabannya.</div>
+    <button class="review-expand visible" onclick="expandReview('r1',this)">Selengkapnya</button>
+    <div class="review-helpful">
+      <span>Apakah ulasan ini membantu?</span>
+      <button class="helpful-btn" onclick="voteHelpful(this,142)">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+        <span class="helpful-count">142</span>
+      </button>
+      <button class="helpful-btn" onclick="voteHelpful(this,0)" style="padding:5px 10px;">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Review 2 -->
+  <div class="review-item">
+    <div class="review-top">
+      <div class="reviewer">
+        <div class="av" style="background:#bfdbfe;color:#1e40af;">D</div>
+        <div class="reviewer-info">
+          <span class="reviewer-name">Dewi Rahmawati</span>
+          <span class="reviewer-device">Xiaomi Redmi Note 12</span>
+        </div>
+      </div>
+      <button class="review-menu" aria-label="Opsi">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+    </div>
+    <div class="review-stars-row">
+      <div class="review-stars">
+        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <span class="review-date">28 Mei 2026</span>
+    </div>
+    <div class="review-text" id="r2">Sangat membantu! Saya pakai buat verifikasi akun Instagram dan TikTok. Nomor langsung aktif, OTP masuk super cepat. Aplikasi juga ringan dan tampilannya bersih. Recommended banget buat yang butuh!
+    </div>
+    <button class="review-expand visible" onclick="expandReview('r2',this)">Selengkapnya</button>
+    <div class="dev-reply">
+      <div class="dev-reply-head">VTech Digital</div>
+      <div class="dev-reply-text">Terima kasih sudah mempercayai VTechOTP, Dewi! Senang dengar semuanya berjalan lancar. Terus dukung kami ya, dan jangan ragu hubungi CS jika butuh bantuan.</div>
+    </div>
+    <div class="review-helpful">
+      <span>Apakah ulasan ini membantu?</span>
+      <button class="helpful-btn" onclick="voteHelpful(this,89)">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+        <span class="helpful-count">89</span>
+      </button>
+      <button class="helpful-btn" onclick="voteHelpful(this,0)" style="padding:5px 10px;">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Review 3 -->
+  <div class="review-item">
+    <div class="review-top">
+      <div class="reviewer">
+        <div class="av" style="background:#fed7aa;color:#9a3412;">A</div>
+        <div class="reviewer-info">
+          <span class="reviewer-name">Ahmad Syauqi</span>
+          <span class="reviewer-device">OPPO Reno 8</span>
+        </div>
+      </div>
+      <button class="review-menu" aria-label="Opsi">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+    </div>
+    <div class="review-stars-row">
+      <div class="review-stars">
+        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <span class="review-date">20 Mei 2026</span>
+    </div>
+    <div class="review-text" id="r3">Mantap banget, layanannya 24 jam nonstop. Deposit saldo gampang, beli nomor tinggal pilih negara dan platform. OTP masuk otomatis tanpa perlu refresh. Aplikasi wajib punya buat yang sering butuh verifikasi!</div>
+    <button class="review-expand visible" onclick="expandReview('r3',this)">Selengkapnya</button>
+    <div class="review-helpful">
+      <span>Apakah ulasan ini membantu?</span>
+      <button class="helpful-btn" onclick="voteHelpful(this,67)">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+        <span class="helpful-count">67</span>
+      </button>
+      <button class="helpful-btn" onclick="voteHelpful(this,0)" style="padding:5px 10px;">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Review 4 -->
+  <div class="review-item">
+    <div class="review-top">
+      <div class="reviewer">
+        <div class="av" style="background:#e9d5ff;color:#6b21a8;">F</div>
+        <div class="reviewer-info">
+          <span class="reviewer-name">Farhan Nugraha</span>
+          <span class="reviewer-device">Vivo V25 Pro</span>
+        </div>
+      </div>
+      <button class="review-menu" aria-label="Opsi">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+    </div>
+    <div class="review-stars-row">
+      <div class="review-stars">
+        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg viewBox="0 0 20 20" style="fill:#dadce0;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <span class="review-date">15 Mei 2026</span>
+    </div>
+    <div class="review-text" id="r4">Bagus sih, tapi kadang OTP agak telat sekitar 1-2 menit. Selain itu semuanya oke. Harga masih wajar, pilihan negara banyak. CS juga responsif waktu saya ada masalah deposit. Akan terus dipake.</div>
+    <button class="review-expand visible" onclick="expandReview('r4',this)">Selengkapnya</button>
+    <div class="dev-reply">
+      <div class="dev-reply-head">VTech Digital</div>
+      <div class="dev-reply-text">Halo Farhan, terima kasih masukannya. Keterlambatan OTP biasanya terjadi karena lonjakan trafik, kami terus optimalkan kecepatan di pembaruan berikutnya. Stay tune!</div>
+    </div>
+    <div class="review-helpful">
+      <span>Apakah ulasan ini membantu?</span>
+      <button class="helpful-btn" onclick="voteHelpful(this,34)">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+        <span class="helpful-count">34</span>
+      </button>
+      <button class="helpful-btn" onclick="voteHelpful(this,0)" style="padding:5px 10px;">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Review 5 -->
+  <div class="review-item">
+    <div class="review-top">
+      <div class="reviewer">
+        <div class="av" style="background:#fde68a;color:#92400e;">S</div>
+        <div class="reviewer-info">
+          <span class="reviewer-name">Siti Nurbaya</span>
+          <span class="reviewer-device">iPhone 13</span>
+        </div>
+      </div>
+      <button class="review-menu" aria-label="Opsi">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+    </div>
+    <div class="review-stars-row">
+      <div class="review-stars">
+        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <span class="review-date">8 Mei 2026</span>
+    </div>
+    <div class="review-text" id="r5">Pertama kali coba langsung suka! Interface-nya simpel banget, gak bikin bingung. Top up saldo gampang pakai QRIS, lalu tinggal pilih platform dan negara. Dalam 5 detik OTP udah masuk. Luar biasa efisien.</div>
+    <button class="review-expand visible" onclick="expandReview('r5',this)">Selengkapnya</button>
+    <div class="review-helpful">
+      <span>Apakah ulasan ini membantu?</span>
+      <button class="helpful-btn" onclick="voteHelpful(this,51)">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+        <span class="helpful-count">51</span>
+      </button>
+      <button class="helpful-btn" onclick="voteHelpful(this,0)" style="padding:5px 10px;">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- See all -->
+  <button class="see-all-btn" onclick="openReviewsModal()">Lihat semua pengalaman pengguna (100)</button>
+
+  <div class="divider" style="margin-top:8px;"></div>
+
+  <!-- Data Safety -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Keamanan data</span>
+      <button class="section-arrow">
+        <svg width="20" height="20" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div style="font-size:12.5px;color:var(--text-secondary);margin-bottom:14px;line-height:1.5;">
+      Keamanan dimulai dari pemahaman bagaimana developer mengumpulkan dan membagikan data Anda. Praktik privasi data dapat bervariasi berdasarkan penggunaan, wilayah, dan usia Anda.
+    </div>
+    <div class="safety-box">
+      <div class="safety-item">
+        <div class="safety-icon">
+          <svg width="18" height="18" fill="none" stroke="#0b57d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="safety-text">
+          <div class="safety-label">Tidak ada data yang dibagikan ke pihak ketiga</div>
+          <div class="safety-desc">Pelajari selengkapnya tentang cara developer mendeklarasikan pembagian</div>
+        </div>
+      </div>
+      <div class="safety-item">
+        <div class="safety-icon">
+          <svg width="18" height="18" fill="none" stroke="#0b57d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div class="safety-text">
+          <div class="safety-label">Data ini dienkripsi saat pengiriman</div>
+          <div class="safety-desc">Koneksi aman menggunakan protokol TLS 1.3</div>
+        </div>
+      </div>
+      <div class="safety-item">
+        <div class="safety-icon">
+          <svg width="18" height="18" fill="none" stroke="#0b57d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+        </div>
+        <div class="safety-text">
+          <div class="safety-label">Anda dapat meminta penghapusan data</div>
+          <div class="safety-desc">Developer memungkinkan Anda meminta penghapusan data kapan saja</div>
+        </div>
+      </div>
+      <div class="safety-see-more">
+        Lihat detail
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- App Info -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Informasi aplikasi</span>
+    </div>
+    <table class="info-table">
+      <tr><td class="info-key">Versi</td><td class="info-val">2.6</td></tr>
+      <tr><td class="info-key">Diperbarui</td><td class="info-val">10 Agustus 2026</td></tr>
+      <tr><td class="info-key">Ukuran</td><td class="info-val">5.5 MB</td></tr>
+      <tr><td class="info-key">Unduhan</td><td class="info-val">5.000+</td></tr>
+      <tr><td class="info-key">Kategori</td><td class="info-val">Bisnis &amp; Utilitas</td></tr>
+      <tr><td class="info-key">Android minimum</td><td class="info-val">5.0 (Lollipop)</td></tr>
+      <tr><td class="info-key">Konten</td><td class="info-val">Semua umur</td></tr>
+      <tr><td class="info-key">Pembelian dalam app</td><td class="info-val">Tidak ada</td></tr>
+      <tr><td class="info-key">Iklan</td><td class="info-val">Tidak ada iklan</td></tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Developer Info -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Tentang developer</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #f5f5f5;">
+      <div style="width:46px;height:46px;border-radius:12px;overflow:hidden;flex-shrink:0;border:1px solid #e8e8e8;">
+        <img src="/assets/logo.png" style="width:100%;height:100%;object-fit:cover;" alt="VTech Digital">
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:500;">VTech Digital</div>
+        <div style="font-size:12.5px;color:var(--text-secondary);">Developer terverifikasi</div>
+      </div>
+    </div>
+    <div class="dev-info-item" onclick="window.open('https://app.otp.vtech.biz.id','_blank')">
+      <div class="dev-info-icon">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      </div>
+      <div class="dev-info-text">
+        <div class="dev-info-label">Website</div>
+        <div class="dev-info-val">app.otp.vtech.biz.id</div>
+      </div>
+      <svg width="16" height="16" fill="none" stroke="#c5c5c5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="dev-info-item" onclick="window.open('mailto:vynaachan@gmail.com','_blank')">
+      <div class="dev-info-icon">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="dev-info-text">
+        <div class="dev-info-label">Email</div>
+        <div class="dev-info-val">vynaachan@gmail.com</div>
+      </div>
+      <svg width="16" height="16" fill="none" stroke="#c5c5c5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="dev-info-item">
+      <div class="dev-info-icon">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </div>
+      <div class="dev-info-text">
+        <div class="dev-info-label">GitHub</div>
+        <div class="dev-info-val">github.com/VynaaValerie</div>
+      </div>
+      <svg width="16" height="16" fill="none" stroke="#c5c5c5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="dev-info-item">
+      <div class="dev-info-icon">
+        <svg width="18" height="18" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="dev-info-text">
+        <div class="dev-info-label">Kebijakan privasi</div>
+        <div class="dev-info-val">Lihat kebijakan privasi</div>
+      </div>
+      <svg width="16" height="16" fill="none" stroke="#c5c5c5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+  </div>
+
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closePreview()">
+  <button class="lb-close" onclick="event.stopPropagation();closePreview()" aria-label="Tutup">
+    <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
+<!-- All comments -->
+<div id="reviewsModal" role="dialog" aria-modal="true" aria-labelledby="reviewsModalTitle" onclick="closeReviewsModal(event)">
+  <div class="reviews-dialog" onclick="event.stopPropagation()">
+    <div class="reviews-dialog-head">
+      <div>
+        <div class="reviews-dialog-title" id="reviewsModalTitle">100 pengalaman pengguna</div>
+        <div class="reviews-dialog-subtitle">Beberapa tanggapan pengguna VTechOTP tentang pengalaman menggunakan aplikasi.</div>
+      </div>
+      <button class="modal-close" onclick="closeReviewsModal()" aria-label="Tutup komentar">
+        <svg width="18" height="18" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="comments-notice"><strong>Info:</strong> tanggapan di panel ini ditampilkan sebagai contoh pengalaman pengguna VTechOTP.</div>
+    <div class="modal-review-list" id="modalReviewList"></div>
+  </div>
+</div>
+
+<!-- Sticky bottom bar -->
+<div class="sticky-bottom" id="stickyBar">
+  <div class="sticky-icon"><img src="/assets/logo.png" alt="VTechOTP"></div>
+  <span class="sticky-name">VTechOTP</span>
+  <a class="sticky-install" href="/VTechOTP.apk" download="VTechOTP.apk" onclick="startDownload(event)">Instal</a>
+</div>
+
+<!-- Toast -->
+<div class="dl-toast" id="dlToast">
+  <svg width="17" height="17" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+  Mengunduh VTechOTP.apk...
+</div>
+
+<script>
+  /* ── Bar animation ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.bar-fill').forEach(b => {
+          b.style.width = b.dataset.width + '%';
+        });
+        obs.disconnect();
+      }
+    });
+  }, { threshold: .3 });
+  obs.observe(document.querySelector('.rating-bars'));
+
+  /* ── Topbar title on scroll ── */
+  const header = document.getElementById('appHeader');
+  const titleEl = document.getElementById('topbarTitle');
+  const stickyBar = document.getElementById('stickyBar');
+  const installBtn = document.getElementById('installBtn');
+  const io = new IntersectionObserver(entries => {
+    const visible = entries[0].isIntersecting;
+    titleEl.classList.toggle('visible', !visible);
+    stickyBar.classList.toggle('visible', !visible);
+  }, { threshold: 0 });
+  io.observe(installBtn);
+
+  /* ── Lightbox ── */
+  function openPreview(src) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    img.src = src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePreview() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closePreview();
+      closeReviewsModal();
+    }
+  });
+
+  /* ── Comments modal ── */
+  const reviewNames = [
+    ['Aulia Putri', '#dbeafe', '#1d4ed8'], ['Bagas Pratama', '#dcfce7', '#15803d'],
+    ['Citra Lestari', '#fce7f3', '#be185d'], ['Dimas Ramadhan', '#ffedd5', '#c2410c'],
+    ['Eka Saputra', '#ede9fe', '#6d28d9'], ['Fani Amelia', '#fef3c7', '#92400e'],
+    ['Galih Nugroho', '#cffafe', '#0e7490'], ['Hana Salsabila', '#f3e8ff', '#7e22ce'],
+    ['Intan Maharani', '#fee2e2', '#b91c1c'], ['Jovan Kurniawan', '#e0f2fe', '#0369a1'],
+    ['Kiki Ananda', '#ecfccb', '#3f6212'], ['Lukman Hakim', '#f1f5f9', '#334155'],
+    ['Maya Anggraini', '#fae8ff', '#a21caf'], ['Nanda Wijaya', '#d1fae5', '#047857'],
+    ['Oki Setiawan', '#ffedd5', '#9a3412'], ['Putri Wulandari', '#dbeafe', '#1e40af'],
+    ['Qori Azzahra', '#fce7f3', '#9d174d'], ['Rafi Maulana', '#e0e7ff', '#4338ca'],
+    ['Salsa Nabila', '#fef9c3', '#854d0e'], ['Teguh Santoso', '#dbeafe', '#1d4ed8'],
+    ['Umi Kalsum', '#dcfce7', '#166534'], ['Vino Akbar', '#f3e8ff', '#7e22ce'],
+    ['Wulan Sari', '#fce7f3', '#be185d'], ['Yogi Firmansyah', '#cffafe', '#155e75'],
+    ['Zahra Khairunnisa', '#ede9fe', '#6d28d9']
+  ];
+  const reviewTexts = [
+    'Tampilannya sekarang lebih gampang dipahami. Pilih negara, pilih layanan, lalu tinggal tunggu OTP.',
+    'Aku coba untuk kebutuhan testing aplikasi, proses ordernya cepat dan statusnya jelas.',
+    'Notifikasi update-nya membantu banget, jadi nggak perlu bolak-balik buka aplikasi.',
+    'Leaderboard-nya seru juga. Informasi order dan deposit ditampilkan cukup rapi.',
+    'Top up pakai QRIS praktis, saldo masuk tanpa harus menunggu lama.',
+    'Pertama kali pakai masih langsung ngerti alurnya. UI-nya ringan di HP saya.',
+    'Pilihan negara banyak dan pencarian platformnya memudahkan saat lagi buru-buru.',
+    'OTP masuk cepat untuk percobaan saya. Semoga stabil terus ke depannya.',
+    'Saya suka ada status proses yang real-time, jadi tidak bingung apakah order masih aktif.',
+    'Desain versi barunya terasa lebih fresh. Bagian notifikasi juga lebih informatif.',
+    'Buat developer yang perlu testing verifikasi, alurnya cukup enak dipakai.',
+    'Harga dan detail order terlihat jelas sebelum konfirmasi, ini bikin lebih tenang.',
+    'CS cukup responsif ketika saya tanya cara membaca status transaksi.',
+    'Aplikasi tidak terasa berat dan perpindahan menunya cepat.',
+    'Saya terbantu karena riwayat transaksi mudah dicari kembali.',
+    'Fitur update langsung di perangkat jadi lebih mudah mengikuti perubahan layanan.',
+    'Order pertama berhasil tanpa perlu refresh berkali-kali.',
+    'Layout dashboard-nya bersih, angka saldo dan order tidak berantakan.',
+    'Kalau ada kendala, informasi status dan refund-nya cukup mudah dipahami.',
+    'Versi 2.6 terlihat lebih lengkap, terutama leaderboard dan notifikasi aktif.'
+  ];
+  function renderReviews() {
+    const list = document.getElementById('modalReviewList');
+    if (list.children.length) return;
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < 100; i++) {
+      const [name, bg, color] = reviewNames[i % reviewNames.length];
+      const text = reviewTexts[i % reviewTexts.length];
+      const stars = i % 11 === 0 ? '★★★★☆' : '★★★★★';
+      const item = document.createElement('article');
+      item.className = 'modal-review';
+      item.innerHTML = `
+        <div class="av" style="background:${bg};color:${color};">${name.charAt(0)}</div>
+        <div class="modal-review-body">
+          <div class="modal-review-meta">
+            <span class="modal-review-name">${name}</span>
+            <span class="modal-review-date">${(i % 28) + 1} Jul 2026</span>
+          </div>
+          <div class="modal-review-stars" aria-label="${stars === '★★★★★' ? '5' : '4'} dari 5 bintang">${stars}</div>
+          <div class="modal-review-text">${text}</div>
+        </div>`;
+      fragment.appendChild(item);
+    }
+    list.appendChild(fragment);
+  }
+  function openReviewsModal() {
+    renderReviews();
+    document.getElementById('reviewsModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeReviewsModal(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('reviewsModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── About toggle ── */
+  function toggleAbout() {
+    const txt = document.getElementById('aboutText');
+    const btn = document.getElementById('aboutToggle');
+    const arrow = document.getElementById('aboutArrow');
+    const expanded = txt.classList.toggle('expanded');
+    btn.firstChild.textContent = expanded ? 'Lebih sedikit' : 'Selengkapnya';
+    arrow.style.transform = expanded ? 'rotate(180deg)' : '';
+    arrow.style.transition = 'transform .25s';
+  }
+
+  /* ── Review expand ── */
+  function expandReview(id, btn) {
+    const el = document.getElementById(id);
+    el.classList.toggle('expanded');
+    btn.textContent = el.classList.contains('expanded') ? 'Lebih sedikit' : 'Selengkapnya';
+  }
+
+  /* ── Helpful vote ── */
+  function voteHelpful(btn, count) {
+    if (btn.classList.contains('voted')) return;
+    const countEl = btn.querySelector('.helpful-count');
+    if (countEl) {
+      btn.classList.add('voted');
+      countEl.textContent = count + 1;
+    }
+  }
+
+  /* ── Filter chips ── */
+  function setFilter(el) {
+    document.querySelectorAll('.fchip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  /* ── Wishlist ── */
+  let wishlisted = false;
+  function toggleWishlist() {
+    wishlisted = !wishlisted;
+    const icon = document.getElementById('wishlistIcon');
+    if (wishlisted) {
+      icon.setAttribute('fill', '#e11d48');
+      icon.setAttribute('stroke', '#e11d48');
+    } else {
+      icon.setAttribute('fill', 'none');
+      icon.setAttribute('stroke', '#1f1f1f');
+    }
+  }
+
+  /* ── Share ── */
+  function shareApp() {
+    if (navigator.share) {
+      navigator.share({ title: 'VTechOTP', text: 'Download VTechOTP — layanan OTP virtual terbaik!', url: window.location.href });
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(() => showToast('Link disalin'));
+    }
+  }
+
+  /* ── Download ── */
+  function startDownload(e) {
+    const btn = document.getElementById('installBtn');
+    if (btn.classList.contains('loading')) return;
+    btn.classList.add('loading');
+    showToast('Mengunduh VTechOTP.apk...');
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.classList.add('done');
+      const span = btn.querySelector('.btn-text');
+      if (span) span.innerHTML = '<svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg> Buka';
+    }, 3000);
+  }
+
+  /* ── Toast ── */
+  function showToast(msg) {
+    const t = document.getElementById('dlToast');
+    t.childNodes[1].textContent = ' ' + msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3200);
+  }
+</script>
+</body>
+</html>
