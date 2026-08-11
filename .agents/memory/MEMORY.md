@@ -1,2 +1,0 @@
-- [Vercel Web Analytics](vercel-web-analytics.md) — HTML pages use Vercel’s script endpoint; local preview needs a non-production stub because Vercel serves it only after deployment.
-- [Review panel wording](review-panel-wording.md) — Keep non-official testimonial content labeled as example user experiences, not verified store reviews.
