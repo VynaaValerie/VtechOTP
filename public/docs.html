@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Dokumentasi Developer API v1 — VTechOTP</title>
+  <meta name="description" content="Dokumentasi resmi VTechOTP Developer API v1. Integrasi sewa nomor virtual, otomatisasi OTP, dan notifikasi real-time webhook.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+  <link rel="shortcut icon" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --sidebar-bg: #0f172a;
+      --card-bg: #131d31;
+      --card-border: #223049;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+      --accent-hover: #1d4ed8;
+      --accent-bg: rgba(37, 99, 235, 0.12);
+      --green: #10b981;
+      --green-bg: rgba(16, 185, 129, 0.12);
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.12);
+      --yellow: #f59e0b;
+      --yellow-bg: rgba(245, 158, 11, 0.12);
+      --code-bg: #050811;
+      --code-border: #1e293b;
+      --header-bg: rgba(15, 23, 42, 0.85);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --sidebar-bg: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+      --accent-hover: #1d4ed8;
+      --accent-bg: rgba(37, 99, 235, 0.08);
+      --green: #059669;
+      --green-bg: rgba(16, 185, 129, 0.1);
+      --red: #dc2626;
+      --red-bg: rgba(239, 68, 68, 0.1);
+      --yellow: #d97706;
+      --yellow-bg: rgba(245, 158, 11, 0.1);
+      --code-bg: #0f172a;
+      --code-border: #334155;
+      --header-bg: rgba(255, 255, 255, 0.88);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Mobile Topbar Header ── */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0 16px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 90;
+    }
+
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .mobile-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .icon-btn:hover { background: var(--card-border); }
+    .icon-btn svg { width: 18px; height: 18px; stroke: currentColor; }
+
+    /* ── Backdrop Overlay (Mobile) ── */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 95;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .sidebar-backdrop.active { display: block; opacity: 1; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 290px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100%;
+      z-index: 100;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 65px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .logo-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .logo-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      background: var(--accent-bg);
+      color: var(--accent-light);
+      border-radius: 6px;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+    }
+
+    .sidebar-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 12px 30px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--card-border) transparent;
+    }
+
+    .nav-group-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      padding: 14px 10px 6px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      margin-bottom: 2px;
+    }
+
+    .nav-link:hover {
+      background: var(--accent-bg);
+      color: var(--text);
+    }
+
+    .nav-link.active {
+      background: var(--accent-bg);
+      color: var(--accent-light);
+      font-weight: 700;
+    }
+
+    .nav-icon {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-icon svg { width: 15px; height: 15px; stroke: currentColor; }
+
+    .method-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.2px;
+      flex-shrink: 0;
+    }
+    .tag-get { background: var(--green-bg); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
+    .tag-post { background: var(--accent-bg); color: var(--accent-light); border: 1px solid rgba(59,130,246,0.25); }
+    .tag-patch { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(245,158,11,0.25); }
+
+    /* ── Main Content Area ── */
+    .main-wrap {
+      flex: 1;
+      overflow-y: auto;
+      padding: 40px 60px 120px;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--card-border) transparent;
+    }
+
+    .content-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.6px;
+      line-height: 1.25;
+      color: var(--text);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .doc-section {
+      margin-bottom: 60px;
+      scroll-margin-top: 30px;
+    }
+
+    .section-title {
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--card-border);
+      letter-spacing: -0.3px;
+    }
+
+    .section-title-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-light);
+    }
+    .section-title-icon svg { width: 20px; height: 20px; stroke: currentColor; }
+
+    .api-endpoint-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      margin-bottom: 14px;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    p { margin-bottom: 14px; font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+    p strong, p b { color: var(--text); font-weight: 700; }
+    
+    code {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 2px 6px;
+      border-radius: 5px;
+      color: var(--accent-light);
+    }
+
+    /* ── Code Box & Snippets ── */
+    .code-box {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 16px 0 24px;
+    }
+
+    .code-header {
+      background: rgba(255,255,255,0.02);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--code-border);
+      min-height: 40px;
+    }
+
+    .code-tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+
+    .code-tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all 0.15s ease;
+    }
+    .code-tab-btn:hover { color: var(--text); }
+    .code-tab-btn.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    .copy-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-sans);
+      transition: all 0.15s ease;
+    }
+    .copy-btn:hover { color: white; background: rgba(255,255,255,0.14); }
+    .copy-btn svg { width: 13px; height: 13px; stroke: currentColor; }
+
+    pre {
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #e2e8f0;
+      overflow-x: auto;
+      line-height: 1.55;
+    }
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+    
+    /* ── Responsive Table ── */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .param-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .param-table th {
+      background: rgba(255,255,255,0.03);
+      padding: 11px 14px;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 1px solid var(--card-border);
+      white-space: nowrap;
+    }
+
+    .param-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    .param-table tr:last-child td { border-bottom: none; }
+    .param-name { font-family: var(--font-mono); font-weight: 700; color: var(--text); }
+    .param-type { font-family: var(--font-mono); font-size: 11px; color: var(--accent-light); }
+    
+    .callout-box {
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: var(--accent-bg);
+      border-left: 4px solid var(--accent);
+      margin: 16px 0 24px;
+      font-size: 13.5px;
+      color: var(--text);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .callout-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--accent); margin-top: 2px; }
+    .callout-icon svg { width: 100%; height: 100%; stroke: currentColor; }
+
+    /* ── Mobile Breakpoints ── */
+    @media (max-width: 960px) {
+      .mobile-header { display: flex; }
+      body { flex-direction: column; height: 100vh; overflow: auto; }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .main-wrap {
+        padding: 80px 16px 80px;
+        height: auto;
+        overflow: visible;
+      }
+      .hero-title { font-size: 26px; }
+      .section-title { font-size: 19px; }
+      .api-endpoint-badge { font-size: 12px; }
+      pre { font-size: 12px; padding: 12px; }
+    }
+  </style>
+<!-- Vercel Web Analytics -->
+<script src="/js/analytics.js"></script>
+<!-- Vercel Speed Insights -->
+<script src="/js/speed-insights.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Topbar Header -->
+  <header class="mobile-header">
+    <a href="/" class="mobile-brand">
+      <img src="/assets/logo.png" alt="VTechOTP" class="logo-img">
+      <span>VTechOTP</span>
+      <span class="logo-badge">v1 IDR</span>
+    </a>
+    <div class="mobile-actions">
+      <button class="icon-btn" onclick="toggleDocTheme()" aria-label="Toggle Theme">
+        <svg id="theme-icon-mob" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn" onclick="toggleSidebarDrawer()" aria-label="Open Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleSidebarDrawer(false)"></div>
+
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="/" class="logo-wrap">
+        <img src="/assets/logo.png" alt="VTechOTP" class="logo-img">
+        <span>VTechOTP</span>
+        <span class="logo-badge">v1 IDR</span>
+      </a>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="icon-btn" onclick="toggleDocTheme()" title="Ganti Tema">
+          <svg id="theme-icon-desk" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button class="icon-btn" onclick="toggleSidebarDrawer(false)" style="display:none;" id="sidebar-close-btn" title="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-scroll">
+      <div class="nav-group-title">Integrasi Dasar</div>
+      <a href="#intro" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>Pengenalan</a>
+      <a href="#auth" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>Autentikasi (Token)</a>
+      <a href="#base-url" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>Base URL</a>
+      <a href="#errors" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Daftar Error Code</a>
+
+      <div class="nav-group-title">User &amp; Saldo</div>
+      <a href="#get-balance" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/balance</a>
+
+      <div class="nav-group-title">Deposit &amp; Payment Gateway</div>
+      <a href="#get-deposits-channels" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits/channels</a>
+      <a href="#post-deposits-create" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/deposits/create</a>
+      <a href="#get-deposit-detail" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits/{id}</a>
+      <a href="#get-deposits" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits</a>
+      <a href="#get-deposits-config" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits/config</a>
+
+      <div class="nav-group-title">Katalog &amp; Produk</div>
+      <a href="#get-countries" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/countries</a>
+      <a href="#get-services" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/services</a>
+      <a href="#get-operators" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/operators</a>
+      <a href="#get-products" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/products</a>
+
+      <div class="nav-group-title">Manajemen Order</div>
+      <a href="#post-orders-create" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/create</a>
+      <a href="#get-orders" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/orders</a>
+      <a href="#get-orders-active" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/orders/active</a>
+      <a href="#get-order-detail" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/orders/{id}</a>
+      <a href="#post-orders-cancel" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/cancel</a>
+      <a href="#post-orders-finish" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/finish</a>
+      <a href="#post-orders-resend" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/resend</a>
+
+      <div class="nav-group-title">Webhook Real-time</div>
+      <a href="#webhooks-overview" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>Konsep Webhook</a>
+      <a href="#get-webhook" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/webhook</a>
+      <a href="#patch-webhook" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-patch">PATCH</span>/webhook</a>
+      <a href="#post-webhook-test" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/webhook/test</a>
+      <a href="#webhook-verification" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Verifikasi Signature</a>
+    </div>
+  </aside>
+
+  <!-- Main Content Scroll Area -->
+  <main class="main-wrap">
+    <div class="content-container">
+
+      <!-- Introduction -->
+      <section id="intro" class="doc-section">
+        <h1 class="hero-title">Dokumentasi VTechOTP Developer API v1</h1>
+        <p class="hero-sub">Akses terprogram untuk sewa nomor virtual, otomatisasi penerimaan SMS/OTP, pengecekan saldo, dan notifikasi real-time webhook berbasis mata uang Rupiah (1 Coin = 1 IDR).</p>
+        
+        <div class="callout-box">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+          <div>
+            <b>Arsitektur RESTful Standar:</b> Developer API ini dirancang mengikuti format standar RESTful sehingga mudah dihubungkan dengan bot Telegram, skrip otomatisasi, bot Discord, maupun sistem reseller Anda.
+          </div>
+        </div>
+      </section>
+
+      <!-- Authentication -->
+      <section id="auth" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          Autentikasi
+        </h2>
+        <p>Setiap request ke API harus menyertakan <b>API Token</b> Anda pada HTTP Header <code>Authorization</code> dengan format Bearer token:</p>
+        
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);">HTTP Header</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>Authorization: Bearer vtk_your_api_token_here</code></pre>
+        </div>
+
+        <p>Anda dapat membuat atau memperbarui API Token kapan saja melalui menu <b>Profil &gt; Developer API &amp; Webhook</b> di aplikasi VTechOTP.</p>
+      </section>
+
+      <!-- Base URL -->
+      <section id="base-url" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          Base URL
+        </h2>
+        <p>Semua request API diarahkan ke endpoint resmi berikut:</p>
+        <div class="api-endpoint-badge">
+          <span style="color:var(--accent-light);font-weight:600;">https://app.otp.vtech.biz.id/api/v1</span>
+        </div>
+      </section>
+
+      <!-- Balance -->
+      <section id="get-balance" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+          Cek Saldo &amp; Profil
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/balance</span> atau <span>/user</span>
+        </div>
+        <p>Mengambil informasi saldo koin akun (1 koin = Rp 1), jumlah order aktif, dan status konfigurasi akun Anda.</p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);">cURL Example</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>curl -s https://app.otp.vtech.biz.id/api/v1/balance \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--green);font-weight:700;">200 OK Response</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "user_id": "6a8218b04fb8bbfcd472a981",
+    "email": "user@example.com",
+    "display_name": "DevUser",
+    "balance": 75000,
+    "currency": "IDR",
+    "active_orders": 1,
+    "total_orders": 68,
+    "success_orders": 65,
+    "webhook_configured": true,
+    "api_enabled": true
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ── DEPOSIT & QRIS SECTION ── -->
+
+      <!-- ── DEPOSIT & PAYMENT GATEWAY SECTION ── -->
+
+      <!-- Get Deposit Channels & Live Status -->
+      <section id="get-deposits-channels" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>
+          Daftar Saluran Pembayaran &amp; Cek Status Live (ON/OFF)
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/deposits/channels</span> <span style="color:var(--text-muted);font-size:12px;">(alias: <code>/deposit/channels</code>)</span>
+        </div>
+        <p>Mendapatkan daftar seluruh metode/saluran pembayaran yang didukung payment gateway secara real-time. Endpoint ini menampilkan status aktif/gangguan (<code>status: "ON"</code> atau <code>"OFF"</code>), batas minimum/maksimum nominal, dan biaya fee pada masing-masing saluran sehingga bot atau aplikasi Anda dapat memvalidasi saluran mana yang sedang online sebelum membuat tagihan invoice.</p>
+
+        <div class="callout-box">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+          <div>
+            <b>Daftar Kode Saluran (service_id) Populer:</b>
+            <div style="margin-top:6px;font-size:12px;color:var(--text-muted);line-height:1.6;">
+              • <b>QRIS Realtime:</b> <code>11</code> (Min. Rp 100 / Rp 1.000, Max. Rp 10.000.000) — <i>Rekomendasi Utama</i><br/>
+              • <b>Virtual Account (VA):</b> BCA (<code>1</code>), BRI (<code>2</code>), BNI (<code>4</code>), Mandiri (<code>5</code>), CIMB (<code>3</code>), Permata (<code>7</code>), Danamon (<code>8</code>), BSI (<code>9</code>), Neo (<code>10</code>), OCBC (<code>21</code>), Muamalat (<code>22</code>) (Min. Rp 10.000)<br/>
+              • <b>E-Wallet:</b> OVO (<code>12</code> - butuh parameter <code>phone</code>)<br/>
+              • <b>Gerai Retail:</b> Alfamart/Alfamidi (<code>18</code>), Indomaret/Ceriamart (<code>19</code>) (Min. Rp 10.000)
+            </div>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);">cURL Request</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>curl -s https://app.otp.vtech.biz.id/api/v1/deposits/channels</code></pre>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--green);font-weight:700;">200 OK Response (Contoh JSON)</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "payment_gateway": "configured_gateway",
+    "deposit_fee_flat": 100,
+    "deposit_fee_percent": 0,
+    "total_channels": 16,
+    "active_channels": 16,
+    "channels": [
+      {
+        "id": "11",
+        "service_id": "11",
+        "name": "QRIS Realtime",
+        "type": "QRIS",
+        "minimum": 1000,
+        "maximum": 10000000,
+        "fee": "0.7%",
+        "icon_url": "/assets/app-deposit.png",
+        "status": "ON",
+        "is_active": true
+      },
+      {
+        "id": "1",
+        "service_id": "1",
+        "name": "Virtual Account Bank BCA",
+        "type": "VA",
+        "minimum": 10000,
+        "maximum": 10000000,
+        "fee": 4900,
+        "icon_url": "/assets/app-deposit.png",
+        "status": "ON",
+        "is_active": true
+      },
+      {
+        "id": "2",
+        "service_id": "2",
+        "name": "Virtual Account Bank BRI",
+        "type": "VA",
+        "minimum": 10000,
+        "maximum": 50000000,
+        "fee": 2500,
+        "icon_url": "/assets/app-deposit.png",
+        "status": "ON",
+        "is_active": true
+      },
+      {
+        "id": "18",
+        "service_id": "18",
+        "name": "ALFAMART",
+        "type": "RETAIL",
+        "minimum": 10000,
+        "maximum": 5000000,
+        "fee": 2500,
+        "icon_url": "/assets/app-deposit.png",
+        "status": "ON",
+        "is_active": true
+      }
+    ]
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Create Deposit -->
+      <section id="post-deposits-create" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
+          Buat Tagihan Deposit (QRIS, VA, E-Wallet, Retail)
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-post">POST</span>
+          <span>/deposits/create</span> <span style="color:var(--text-muted);font-size:12px;">(alias: <code>/deposit/create</code>, <code>/deposits</code>)</span>
+        </div>
+        <p>Membuat tagihan invoice deposit saldo koin baru via payment gateway. Mendukung pembuatan tagihan otomatis untuk <b>QRIS Realtime</b> (mengembalikan gambar PNG, Base64, dan raw payload), <b>Virtual Account</b> (mengembalikan nomor VA), <b>E-Wallet</b>, dan <b>Gerai Retail</b> (Alfamart/Indomaret).</p>
+
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr><th>Parameter Body</th><th>Tipe</th><th>Wajib?</th><th>Deskripsi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="param-name">amount</td><td class="param-type">integer</td><td>Wajib</td><td>Nominal deposit dalam Rupiah (min. Rp 1.000 untuk QRIS, min. Rp 10.000 untuk VA/Retail)</td></tr>
+              <tr><td class="param-name">service_id</td><td class="param-type">string / integer</td><td>Opsional</td><td>Kode saluran pembayaran (contoh: <code>"11"</code> = QRIS, <code>"1"</code> = BCA VA, <code>"2"</code> = BRI VA, <code>"4"</code> = BNI VA, <code>"18"</code> = Alfamart, dll. Default: <code>"11"</code>)</td></tr>
+              <tr><td class="param-name">method</td><td class="param-type">string</td><td>Opsional</td><td>Metode pembayaran jika tidak mengirim <code>service_id</code>: <code>"QRIS"</code>, <code>"VA"</code>, <code>"E-Wallet"</code>, <code>"Retail"</code></td></tr>
+              <tr><td class="param-name">phone</td><td class="param-type">string</td><td>Opsional</td><td>Nomor HP pelanggan (wajib jika memilih metode OVO / service_id <code>"12"</code>)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="code-tabs">
+              <button class="code-tab-btn active" onclick="switchSnippet(this, 'dep-snippet-curl')">cURL</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'dep-snippet-node')">Node.js (Axios)</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'dep-snippet-py')">Python (Requests)</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'dep-snippet-php')">PHP</button>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+
+          <div id="dep-snippet-curl" class="snippet-content">
+            <pre><code>curl -s -X POST https://app.otp.vtech.biz.id/api/v1/deposits/create \
+  -H "Authorization: Bearer vtk_your_api_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 10000,
+    "service_id": "11"
+  }'</code></pre>
+          </div>
+
+          <div id="dep-snippet-node" class="snippet-content" style="display:none;">
+            <pre><code>const axios = require('axios');
+
+async function createDeposit(amount, serviceId = '11') {
+  const res = await axios.post('https://app.otp.vtech.biz.id/api/v1/deposits/create', {
+    amount: amount,
+    service_id: serviceId
+  }, {
+    headers: {
+      'Authorization': 'Bearer vtk_your_api_token_here',
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const dep = res.data.data;
+  console.log('ID Invoice:', dep.internal_ref);
+  console.log('Saluran:', dep.channel_name);
+  console.log('Gambar QRIS:', dep.qr_image_url);
+  console.log('Nomor VA:', dep.virtual_account || 'N/A');
+  console.log('Total Pembayaran:', dep.total_payment);
+  return dep;
+}
+
+createDeposit(10000, '11');</code></pre>
+          </div>
+
+          <div id="dep-snippet-py" class="snippet-content" style="display:none;">
+            <pre><code>import requests
+
+def create_deposit(amount, service_id="11"):
+    headers = {
+        'Authorization': 'Bearer vtk_your_api_token_here',
+        'Content-Type': 'application/json'
+    }
+    payload = {
+        'amount': amount,
+        'service_id': service_id
+    }
+    response = requests.post(
+        'https://app.otp.vtech.biz.id/api/v1/deposits/create',
+        headers=headers,
+        json=payload
+    )
+    data = response.json()['data']
+    print(f"ID Tagihan: {data['internal_ref']}")
+    print(f"Saluran: {data['channel_name']}")
+    print(f"Link Gambar QR: {data['qr_image_url']}")
+    return data
+
+create_deposit(10000, "11")</code></pre>
+          </div>
+
+          <div id="dep-snippet-php" class="snippet-content" style="display:none;">
+            <pre><code>&lt;?php
+$ch = curl_init('https://app.otp.vtech.biz.id/api/v1/deposits/create');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => json_encode(['amount' => 10000, 'service_id' => '11']),
+    CURLOPT_HTTPHEADER => [
+        'Authorization: Bearer vtk_your_api_token_here',
+        'Content-Type: application/json'
+    ]
+]);
+$response = json_decode(curl_exec($ch), true);
+curl_close($ch);
+
+$deposit = $response['data'];
+echo "Kode Tagihan: " . $deposit['internal_ref'] . "\n";
+echo "URL QRIS: " . $deposit['qr_image_url'] . "\n";
+?&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--green);font-weight:700;">201 Created Response (Contoh QRIS)</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "id": "66ce30d97960cf1c8152e9f1",
+    "internal_ref": "VTO1740645600000A1B",
+    "method": "QRIS",
+    "provider": "configured_gateway",
+    "channel_code": "11",
+    "channel_name": "QRIS Realtime",
+    "amount": 10000,
+    "fee": 100,
+    "total_payment": 10100,
+    "net_coins": 10000,
+    "status": "pending",
+    "qr_string": "00020101021226540014ID.LINKAJA.WWW0118936009110022201382021520021610212345...",
+    "qr_image_url": "https://app.otp.vtech.biz.id/api/qr?data=00020101021226540014ID.LINKAJA.WWW0118...",
+    "qr_image_base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFACAYAAAD6umHTAA...",
+    "virtual_account": "",
+    "payment_code": "",
+    "payment_url": "https://app.otp.vtech.biz.id/payment/checkout/VTO1740645600000A1B",
+    "payment_guide": null,
+    "expires_at": "2026-08-30T17:40:00.000Z",
+    "paid_at": null,
+    "credited_at": null,
+    "created_at": "2026-08-30T17:10:00.000Z",
+    "instructions": "Silakan scan kode QRIS menggunakan aplikasi m-banking atau e-wallet (BCA, Mandiri, BRI, BNI, GoPay, OVO, DANA, ShopeePay). Saldo koin akan otomatis bertambah setelah pembayaran berhasil diverifikasi."
+  }
+}</code></pre>
+        </div>
+
+        <div class="callout-box">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <b>💡 Panduan Menampilkan Gambar QRIS di Bot Telegram &amp; Web:</b>
+            <ul style="margin: 6px 0 0 18px; font-size:13px; color:var(--text-muted); line-height: 1.6;">
+              <li><b>Bot Telegram (Node.js/Telegraf):</b> <code>ctx.replyWithPhoto(data.qr_image_url, { caption: 'Silakan scan QRIS di atas...' })</code></li>
+              <li><b>Bot Telegram (Python/telebot):</b> <code>bot.send_photo(chat_id, photo=data['qr_image_url'], caption="Scan QRIS...")</code></li>
+              <li><b>Aplikasi Web / Frontend:</b> Gunakan tag <code>&lt;img src="data.qr_image_url" alt="QRIS" width="280" /&gt;</code> atau render inline via <code>data.qr_image_base64</code> tanpa perlu download manual.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Get Deposit Detail & Live Sync -->
+      <section id="get-deposit-detail" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          Cek Status &amp; Sinkronisasi Live Deposit
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/deposits/{id}</span> <span style="color:var(--text-muted);font-size:12px;">(alias: <code>/deposits/{id}/status</code>, <code>/deposit/{id}</code>)</span>
+        </div>
+        <p>Mengecek status tagihan deposit menggunakan <b>ID MongoDB (<code>_id</code>)</b> atau <b>Kode Referensi Internal (<code>internal_ref</code>)</b>. Jika deposit berstatus <code>pending</code>, endpoint ini <b>secara otomatis melakukan live-sync ke payment gateway</b> untuk memeriksa status pembayaran, mengkreditkan koin ke saldo Anda, dan memicu notifikasi serta webhook real-time jika telah lunas.</p>
+
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr><th>Parameter Path</th><th>Tipe</th><th>Wajib?</th><th>Deskripsi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="param-name">id</td><td class="param-type">string</td><td>Wajib</td><td>ID deposit (MongoDB ObjectId) atau kode internalRef (contoh: <code>VTO1740645600000A1B</code>)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="code-tabs">
+              <button class="code-tab-btn active" onclick="switchSnippet(this, 'dep-status-curl')">cURL</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'dep-status-node')">Node.js</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'dep-status-py')">Python</button>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+
+          <div id="dep-status-curl" class="snippet-content">
+            <pre><code>curl -s https://app.otp.vtech.biz.id/api/v1/deposits/VTO1740645600000A1B \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+          </div>
+
+          <div id="dep-status-node" class="snippet-content" style="display:none;">
+            <pre><code>const axios = require('axios');
+
+async function checkDepositStatus(depositRef) {
+  const res = await axios.get(`https://app.otp.vtech.biz.id/api/v1/deposits/${depositRef}`, {
+    headers: { 'Authorization': 'Bearer vtk_your_api_token_here' }
+  });
+  console.log('Status Deposit:', res.data.data.status); // 'pending' | 'credited' | 'expired'
+  return res.data.data;
+}
+
+checkDepositStatus('VTO1740645600000A1B');</code></pre>
+          </div>
+
+          <div id="dep-status-py" class="snippet-content" style="display:none;">
+            <pre><code>import requests
+
+def check_deposit_status(deposit_ref):
+    headers = {'Authorization': 'Bearer vtk_your_api_token_here'}
+    res = requests.get(f'https://app.otp.vtech.biz.id/api/v1/deposits/{deposit_ref}', headers=headers)
+    data = res.json()['data']
+    print(f"Status: {data['status']}, Saldo Masuk: {data['net_coins']}")
+    return data
+
+check_deposit_status('VTO1740645600000A1B')</code></pre>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--green);font-weight:700;">200 OK Response (Setelah Pembayaran Berhasil)</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "id": "66ce30d97960cf1c8152e9f1",
+    "internal_ref": "VTO1740645600000A1B",
+    "method": "QRIS",
+    "provider": "configured_gateway",
+    "channel_code": "11",
+    "channel_name": "QRIS Realtime",
+    "amount": 10000,
+    "fee": 100,
+    "total_payment": 10100,
+    "net_coins": 10000,
+    "status": "credited",
+    "qr_string": "000201010212...",
+    "qr_image_url": "https://app.otp.vtech.biz.id/api/qr?data=000201010212...",
+    "qr_image_base64": "data:image/png;base64,iVBORw0KGgo...",
+    "expires_at": "2026-08-30T17:40:00.000Z",
+    "paid_at": "2026-08-30T17:15:42.000Z",
+    "credited_at": "2026-08-30T17:15:43.000Z",
+    "created_at": "2026-08-30T17:10:00.000Z",
+    "instructions": "Silakan scan kode QRIS menggunakan aplikasi m-banking atau e-wallet..."
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Get Deposits History -->
+      <section id="get-deposits" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+          Riwayat Transaksi Deposit
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/deposits</span> <span style="color:var(--text-muted);font-size:12px;">(alias: <code>/deposit/history</code>)</span>
+        </div>
+        <p>Mengambil daftar seluruh riwayat pembuatan tagihan deposit yang pernah dibuat pada akun Anda, lengkap dengan pagination dan filter status.</p>
+
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr><th>Query Param</th><th>Tipe</th><th>Wajib?</th><th>Deskripsi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="param-name">page</td><td class="param-type">integer</td><td>Tidak</td><td>Halaman data (default: <code>1</code>)</td></tr>
+              <tr><td class="param-name">limit</td><td class="param-type">integer</td><td>Tidak</td><td>Jumlah data per halaman (1 - 100, default: <code>20</code>)</td></tr>
+              <tr><td class="param-name">status</td><td class="param-type">string</td><td>Tidak</td><td>Filter status transaksi: <code>pending</code>, <code>credited</code>, <code>expired</code>, <code>failed</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);">cURL Request</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>curl -s "https://app.otp.vtech.biz.id/api/v1/deposits?page=1&limit=10&status=credited" \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--green);font-weight:700;">200 OK Response</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "deposits": [
+      {
+        "id": "66ce30d97960cf1c8152e9f1",
+        "internal_ref": "VTO1740645600000A1B",
+        "method": "QRIS",
+        "provider": "configured_gateway",
+        "channel_code": "11",
+        "channel_name": "QRIS Realtime",
+        "amount": 10000,
+        "fee": 100,
+        "total_payment": 10100,
+        "net_coins": 10000,
+        "status": "credited",
+        "qr_string": "000201010212...",
+        "qr_image_url": "https://app.otp.vtech.biz.id/api/qr?data=000201010212...",
+        "qr_image_base64": "data:image/png;base64,iVBORw0KGgo...",
+        "expires_at": "2026-08-30T17:40:00.000Z",
+        "paid_at": "2026-08-30T17:15:42.000Z",
+        "credited_at": "2026-08-30T17:15:43.000Z",
+        "created_at": "2026-08-30T17:10:00.000Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 10,
+      "total": 1,
+      "total_pages": 1
+    }
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Get Deposit Config -->
+      <section id="get-deposits-config" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+          Konfigurasi &amp; Biaya Fee Deposit
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/deposits/config</span> <span style="color:var(--text-muted);font-size:12px;">(alias: <code>/deposit/config</code>)</span>
+        </div>
+        <p>Mendapatkan informasi batas minimum deposit, maksimum deposit, dan pengaturan biaya admin (fee) flat yang sedang aktif di sistem.</p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);">cURL Request</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>curl -s https://app.otp.vtech.biz.id/api/v1/deposits/config</code></pre>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--green);font-weight:700;">200 OK Response</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "min_deposit": 5000,
+    "max_deposit": 5000000,
+    "deposit_fee_flat": 100,
+    "deposit_fee_percent": 0,
+    "payment_provider": "configured_gateway",
+    "supported_methods": ["QRIS", "Virtual Account", "E-Wallet", "Retail"],
+    "currency": "IDR",
+    "notes": "1 Coin = Rp 1. Biaya admin fee ditambahkan ke total tagihan pembayaran."
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Countries -->
+      <section id="get-countries" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          Daftar Negara
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/catalog/countries</span>
+        </div>
+        <p>Mendapatkan seluruh daftar negara yang tersedia beserta ID, kode ISO, dan kode panggilan telepon.</p>
+      </section>
+
+      <!-- Services -->
+      <section id="get-services" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+          Daftar Layanan / Platform
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/catalog/services</span>
+        </div>
+        <p>Mendapatkan daftar platform/aplikasi yang didukung (seperti WhatsApp, Telegram, Google, TikTok, Instagram, dll.).</p>
+      </section>
+
+      <!-- Products & Pricelist -->
+      <section id="get-products" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
+          Daftar Harga Produk (Pricelist)
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/catalog/products</span>
+        </div>
+        <p>Mendapatkan daftar harga sewa nomor virtual real-time (setelah markup), ketersediaan stok, ID operator, dan <code>catalog_product_id</code>.</p>
+
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr><th>Query Param</th><th>Tipe</th><th>Wajib?</th><th>Deskripsi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="param-name">country_id</td><td class="param-type">integer</td><td>Tidak</td><td>Filter berdasarkan ID negara (misal 6 untuk Indonesia)</td></tr>
+              <tr><td class="param-name">platform_id</td><td class="param-type">integer</td><td>Tidak</td><td>Filter berdasarkan ID layanan (misal 1 untuk WhatsApp)</td></tr>
+              <tr><td class="param-name">operator_id</td><td class="param-type">integer</td><td>Tidak</td><td>Filter berdasarkan ID operator tertentu</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Create Order -->
+      <section id="post-orders-create" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></span>
+          Buat Order (Sewa Nomor Virtual)
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-post">POST</span>
+          <span>/orders/create</span>
+        </div>
+        <p>Membuat pesanan sewa nomor baru. Saldo koin akun Anda akan dipotong otomatis sesuai harga setelah markup.</p>
+
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr><th>Parameter Body</th><th>Tipe</th><th>Wajib?</th><th>Deskripsi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="param-name">product_id</td><td class="param-type">integer</td><td>Opsional</td><td>ID produk spesifik</td></tr>
+              <tr><td class="param-name">catalog_product_id</td><td class="param-type">integer</td><td>Opsional</td><td>ID katalog produk untuk routing otomatis</td></tr>
+              <tr><td class="param-name">country_id</td><td class="param-type">integer</td><td>Opsional</td><td>ID negara tujuan</td></tr>
+              <tr><td class="param-name">platform_id</td><td class="param-type">integer</td><td>Opsional</td><td>ID layanan/aplikasi</td></tr>
+              <tr><td class="param-name">max_price</td><td class="param-type">integer</td><td>Opsional</td><td>Batas harga maksimum dalam Rupiah</td></tr>
+              <tr><td class="param-name">quantity</td><td class="param-type">integer</td><td>Opsional</td><td>Jumlah nomor (1 - 10, default: 1)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);">cURL Request</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>curl -s -X POST https://app.otp.vtech.biz.id/api/v1/orders/create \
+  -H "Authorization: Bearer vtk_your_api_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "country_id": 6,
+    "platform_id": 1,
+    "max_price": 3000
+  }'</code></pre>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--green);font-weight:700;">201 Created Response</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "success": true,
+  "data": {
+    "orders": [
+      {
+        "id": "6a85817c80524ba18c72834b",
+        "order_id": 982145,
+        "product_id": 142,
+        "service": "WhatsApp",
+        "country": "Indonesia",
+        "phone_number": "+6281234567890",
+        "price": 2500,
+        "status": "ACTIVE",
+        "expires_at": "2026-08-16T20:45:00.000Z",
+        "created_at": "2026-08-16T20:25:00.000Z"
+      }
+    ]
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Get Order Detail -->
+      <section id="get-order-detail" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          Detail Order &amp; Status OTP
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-get">GET</span>
+          <span>/orders/{id}</span>
+        </div>
+        <p>Mengambil status terkini nomor, waktu kedaluwarsa, dan kode SMS/OTP yang telah masuk.</p>
+      </section>
+
+      <!-- Cancel Order -->
+      <section id="post-orders-cancel" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
+          Batalkan Order &amp; Refund Saldo
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-post">POST</span>
+          <span>/orders/{id}/cancel</span> atau <span>/orders/cancel</span>
+        </div>
+        <p>Membatalkan order yang masih berstatus <code>ACTIVE</code> (belum menerima SMS). Saldo koin yang telah dipotong akan <b>langsung di-refund 100%</b> ke akun Anda.</p>
+      </section>
+
+      <!-- Finish Order -->
+      <section id="post-orders-finish" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+          Selesaikan Order
+        </h2>
+        <div class="api-endpoint-badge">
+          <span class="method-tag tag-post">POST</span>
+          <span>/orders/{id}/finish</span> atau <span>/orders/finish</span>
+        </div>
+        <p>Menandai pesanan telah selesai setelah Anda berhasil memverifikasi OTP di aplikasi tujuan.</p>
+      </section>
+
+      <!-- Webhook Overview -->
+      <section id="webhooks-overview" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+          Notifikasi Webhook Real-time
+        </h2>
+        <p>Alih-alih melakukan polling manual, daftarkan <b>Webhook URL (HTTPS)</b> agar server VTechOTP otomatis mengirimkan notifikasi HTTP POST instan saat SMS/OTP tiba atau pesanan selesai.</p>
+
+        <div class="callout-box">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <div>
+            <b>Daftar Event Webhook:</b><br>
+            • <code>order.otp_received</code> — Kode OTP telah masuk<br>
+            • <code>order.completed</code> — Pesanan ditandai selesai<br>
+            • <code>order.canceled</code> — Pesanan dibatalkan &amp; saldo di-refund<br>
+            • <code>order.expired</code> — Waktu sewa habis &amp; saldo di-refund otomatis<br>
+            • <code>deposit.credited</code> — Tagihan QRIS berhasil dibayar &amp; saldo koin masuk ke akun
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);">Contoh JSON Webhook Payload</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+          <pre><code>{
+  "event": "order.otp_received",
+  "timestamp": 1786905500,
+  "data": {
+    "order_id": 982145,
+    "service": "WhatsApp",
+    "country": "Indonesia",
+    "phone_number": "+6281234567890",
+    "price": 2500,
+    "status": "OTP_RECEIVED",
+    "otp_code": "482910",
+    "otp_message": "Kode WhatsApp Anda adalah 482-910",
+    "expires_at": "2026-08-16T20:45:00.000Z"
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Signature Verification -->
+      <section id="webhook-verification" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          Verifikasi HMAC-SHA256 Signature
+        </h2>
+        <p>Setiap panggilan webhook menyertakan header <code>X-Webhook-Signature</code> untuk memastikan request benar-benar berasal dari server resmi VTechOTP.</p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="code-tabs">
+              <button class="code-tab-btn active" onclick="switchSnippet(this, 'snippet-node')">Node.js</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'snippet-py')">Python</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'snippet-php')">PHP</button>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Salin
+            </button>
+          </div>
+
+          <div id="snippet-node" class="snippet-content">
+            <pre><code>const crypto = require('crypto');
+
+app.post('/my-webhook-handler', (req, res) => {
+  const signature = req.headers['x-webhook-signature'];
+  const webhookSecret = 'sec_your_webhook_secret_here';
+
+  const expectedSig = 'sha256=' + crypto
+    .createHmac('sha256', webhookSecret)
+    .update(JSON.stringify(req.body))
+    .digest('hex');
+
+  if (signature !== expectedSig) {
+    return res.status(401).send('Invalid signature');
+  }
+
+  const { event, data } = req.body;
+  if (event === 'order.otp_received') {
+    console.log(`OTP Masuk: ${data.otp_code} untuk ${data.phone_number}`);
+  } else if (event === 'deposit.credited') {
+    console.log(`Deposit Berhasil: Rp ${data.net_coins} telah masuk.`);
+  }
+
+  res.status(200).send('OK');
+});</code></pre>
+          </div>
+
+          <div id="snippet-py" class="snippet-content" style="display:none;">
+            <pre><code>import hmac, hashlib, json
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/my-webhook-handler', methods=['POST'])
+def handle_webhook():
+    signature = request.headers.get('X-Webhook-Signature', '')
+    webhook_secret = b'sec_your_webhook_secret_here'
+    
+    expected_sig = 'sha256=' + hmac.new(webhook_secret, request.data, hashlib.sha256).hexdigest()
+    
+    if not hmac.compare_digest(signature, expected_sig):
+        return jsonify({'error': 'Invalid signature'}), 401
+        
+    payload = request.get_json()
+    print(f"Event: {payload['event']}, Data: {payload.get('data')}")
+    return jsonify({'status': 'ok'}), 200</code></pre>
+          </div>
+
+          <div id="snippet-php" class="snippet-content" style="display:none;">
+            <pre><code>&lt;?php
+$rawBody = file_get_contents('php://input');
+$signature = $_SERVER['HTTP_X_WEBHOOK_SIGNATURE'] ?? '';
+$secret = 'sec_your_webhook_secret_here';
+
+$expectedSig = 'sha256=' . hash_hmac('sha256', $rawBody, $secret);
+
+if (!hash_equals($expectedSig, $signature)) {
+    http_response_code(401);
+    exit('Invalid signature');
+}
+
+$payload = json_decode($rawBody, true);
+// Proses kode OTP / event deposit...
+http_response_code(200);
+echo 'OK';</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Error Codes -->
+      <section id="errors" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+          Daftar Kode Error (Error Codes)
+        </h2>
+        
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr><th>Kode Error</th><th>HTTP Status</th><th>Keterangan</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="param-name">UNAUTHORIZED</td><td>401</td><td>Header API Token tidak disertakan dalam request</td></tr>
+              <tr><td class="param-name">INVALID_TOKEN</td><td>401</td><td>API Token salah atau tidak terdaftar</td></tr>
+              <tr><td class="param-name">PHONE_NOT_VERIFIED</td><td>403</td><td>Nomor WhatsApp belum diverifikasi pada akun Anda</td></tr>
+              <tr><td class="param-name">API_ACCESS_DISABLED</td><td>403</td><td>Akses API untuk akun Anda dinonaktifkan oleh admin</td></tr>
+              <tr><td class="param-name">SERVICE_MAINTENANCE</td><td>503</td><td>Layanan API secara global sedang dalam pemeliharaan</td></tr>
+              <tr><td class="param-name">INSUFFICIENT_BALANCE</td><td>409</td><td>Saldo koin tidak mencukupi untuk melakukan order</td></tr>
+              <tr><td class="param-name">MAX_ACTIVE_ORDERS_EXCEEDED</td><td>429</td><td>Maksimal 5 pesanan aktif secara bersamaan telah tercapai</td></tr>
+              <tr><td class="param-name">NO_OFFER_AVAILABLE</td><td>422</td><td>Stok nomor untuk layanan/negara tersebut sedang kosong</td></tr>
+              <tr><td class="param-name">ORDER_NOT_FOUND</td><td>404</td><td>Pesanan tidak ditemukan</td></tr>
+              <tr><td class="param-name">MIN_DEPOSIT_ERROR</td><td>422</td><td>Nominal deposit di bawah batas minimum saluran pembayaran</td></tr>
+              <tr><td class="param-name">MAX_DEPOSIT_ERROR</td><td>422</td><td>Nominal deposit melebihi batas maksimum saluran pembayaran</td></tr>
+              <tr><td class="param-name">DEPOSIT_NOT_FOUND</td><td>404</td><td>Tagihan deposit tidak ditemukan</td></tr>
+              <tr><td class="param-name">PAYMENT_CHANNEL_OFFLINE</td><td>502 / 422</td><td>Saluran pembayaran yang dipilih sedang gangguan/offline di payment gateway</td></tr>
+              <tr><td class="param-name">GATEWAY_ERROR</td><td>502</td><td>Gagal berkomunikasi dengan gateway pembayaran</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    function copyCode(btn) {
+      const codeEl = btn.closest('.code-box').querySelector('pre code');
+      if (codeEl) {
+        navigator.clipboard.writeText(codeEl.textContent);
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="width:13px;height:13px"><polyline points="20 6 9 17 4 12"/></svg> <span style="color:#10b981">Tersalin</span>`;
+        setTimeout(() => btn.innerHTML = originalHtml, 2000);
+      }
+    }
+
+    function switchSnippet(tabBtn, snippetId) {
+      const box = tabBtn.closest('.code-box');
+      box.querySelectorAll('.code-tab-btn').forEach(b => b.classList.remove('active'));
+      box.querySelectorAll('.snippet-content').forEach(s => s.style.display = 'none');
+      tabBtn.classList.add('active');
+      const target = box.querySelector('#' + snippetId);
+      if (target) target.style.display = 'block';
+    }
+
+    function toggleDocTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('vtk_docs_theme', next);
+    }
+
+    function toggleSidebarDrawer(force) {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      const closeBtn = document.getElementById('sidebar-close-btn');
+      const shouldOpen = force !== undefined ? force : !sidebar.classList.contains('open');
+      
+      if (shouldOpen) {
+        sidebar.classList.add('open');
+        backdrop.classList.add('active');
+        if (closeBtn) closeBtn.style.display = 'flex';
+      } else {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('active');
+        if (closeBtn) closeBtn.style.display = 'none';
+      }
+    }
+
+    function handleNavClick() {
+      if (window.innerWidth <= 960) {
+        toggleSidebarDrawer(false);
+      }
+    }
+
+    // Restore saved theme
+    (function() {
+      const saved = localStorage.getItem('vtk_docs_theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</body>
+</html>

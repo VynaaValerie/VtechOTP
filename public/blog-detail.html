@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="metaTitle">Panduan Verifikasi OTP — VTechOTP</title>
+  <meta name="description" id="metaDesc" content="Artikel panduan penggunaan nomor virtual OTP internasional dan tips verifikasi akun instan." />
+  <meta name="keywords" content="nomor virtual, sms otp, otp murah, verifikasi akun, vtechotp, developer testing" />
+  <meta name="author" content="Tim VTechOTP" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" id="ogTitle" content="Panduan Verifikasi OTP — VTechOTP" />
+  <meta property="og:description" id="ogDesc" content="Panduan terlengkap penggunaan nomor virtual OTP di VTechOTP." />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome 6 CDN (NO EMOJIS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css?v=1.0.2" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <img src="/assets/logo.png" alt="VTechOTP Logo" class="nav-logo" />
+        <span class="nav-name">VTechOTP</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"><i class="fa-solid fa-house"></i> Beranda</a></li>
+        <li><a href="/docs"><i class="fa-solid fa-code"></i> API Docs</a></li>
+        <li><a href="/blog" class="active"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+        <li><a href="/pusat-bantuan"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+        <li><a href="/syarat-ketentuan"><i class="fa-solid fa-file-contract"></i> S&amp;K</a></li>
+        <li><a href="/kebijakan-privasi"><i class="fa-solid fa-shield-halved"></i> Privasi</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <a href="/playstore" class="nav-cta" title="Download Android APK"><i class="fa-brands fa-google-play"></i> Android</a>
+        <a href="/appstore" class="nav-cta" style="background:#000;border-color:#333;" title="Download iOS IPA"><i class="fa-brands fa-apple"></i> iOS</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu">
+      <a href="/" class="mob-link"><i class="fa-solid fa-house"></i> Beranda</a>
+      <a href="/docs" class="mob-link" style="color: var(--blue-600); font-weight: 700;"><i class="fa-solid fa-code"></i> Developer API Docs</a>
+      <a href="/blog" class="mob-link"><i class="fa-solid fa-newspaper"></i> Blog</a>
+      <a href="/pusat-bantuan" class="mob-link"><i class="fa-solid fa-circle-question"></i> Bantuan</a>
+      <a href="/syarat-ketentuan" class="mob-link"><i class="fa-solid fa-file-contract"></i> S&amp;K</a>
+      <a href="/kebijakan-privasi" class="mob-link"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a>
+      <a href="/playstore" class="mob-link mob-cta"><i class="fa-brands fa-google-play"></i> Play Store (Android)</a>
+      <a href="/appstore" class="mob-link mob-cta" style="background:#000;margin-top:6px;"><i class="fa-brands fa-apple"></i> App Store (iOS)</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="page-header-container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/"><i class="fa-solid fa-house"></i> Beranda</a>
+        <i class="fa-solid fa-chevron-right sep"></i>
+        <a href="/blog">Blog</a>
+        <i class="fa-solid fa-chevron-right sep"></i>
+        <span id="breadcrumbTitle">Detail Artikel</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Article Detail Section -->
+  <section class="article-section">
+    <div class="section-container">
+      <div class="article-layout">
+        
+        <!-- Article Main Content -->
+        <main class="article-main" id="articleMain">
+          <div style="text-align: center; padding: 60px 0; color: var(--gray-500);">
+            <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color: var(--blue-600); margin-bottom: 12px;"></i>
+            <p>Memuat artikel VTechOTP...</p>
+          </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+          
+          <!-- Table of Contents Widget -->
+          <div class="sidebar-widget">
+            <h3 class="widget-title"><i class="fa-solid fa-list-ol"></i> Daftar Isi</h3>
+            <ul class="toc-list" id="tocList">
+              <li style="color: var(--gray-400); font-size: 0.85rem;">Memuat daftar isi...</li>
+            </ul>
+          </div>
+
+          <!-- Developer API Widget -->
+          <div class="sidebar-widget" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; border: 1px solid #334155;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <span style="background: #2563eb; color: white; font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">API v1</span>
+              <span style="font-weight: 700; font-size: 0.95rem;">Developer API</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 14px; line-height: 1.45;">
+              Integrasikan sewa nomor virtual dan webhook real-time ke aplikasi atau bot Anda.
+            </p>
+            <a href="/docs" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: #2563eb; color: white; padding: 9px 14px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: background 0.2s;">
+              <i class="fa-solid fa-book-open"></i> Buka API Docs
+            </a>
+          </div>
+
+          <!-- CTA Widget -->
+          <div class="sidebar-widget cta-widget">
+            <i class="fa-solid fa-mobile-screen-button fa-2x" style="margin-bottom: 12px; color: #93C5FD;"></i>
+            <h4>Butuh Nomor Virtual OTP?</h4>
+            <p>Dapatkan nomor virtual instan untuk WhatsApp, Telegram, Instagram &amp; 200+ aplikasi dengan garansi auto refund!</p>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+              <a href="/playstore" class="btn-cta-widget">
+                <i class="fa-brands fa-google-play"></i> Download Android (APK)
+              </a>
+              <a href="/appstore" class="btn-cta-widget" style="background: #000; border-color: #333;">
+                <i class="fa-brands fa-apple"></i> Download iOS (App Store)
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <img src="/assets/logo.png" alt="VTechOTP Logo" class="footer-logo" />
+          <span class="footer-name">VTechOTP</span>
+        </div>
+        <p class="footer-desc">
+          Penyedia layanan gateway nomor virtual OTP internasional terpercaya #1 di Indonesia. Aman, instan, dan aktif seketika.
+        </p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/docs"><i class="fa-solid fa-code"></i> API Docs</a></li>
+            <li><a href="/blog">Blog &amp; Panduan</a></li>
+            <li><a href="/pusat-bantuan">Pusat Bantuan</a></li>
+            <li><a href="/playstore">Google Play (Android)</a></li>
+            <li><a href="/appstore">App Store (iOS)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+            <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VTechOTP. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile nav setup
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+        });
+      }
+
+      loadArticleDetail();
+    });
+
+    async function loadArticleDetail() {
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      const slug = pathParts[pathParts.length - 1] || 'sms-activate-shutdown-alternatives';
+
+      const mainEl = document.getElementById('articleMain');
+      try {
+        const res = await fetch(`/api/blog-proxy/${slug}`);
+        if (!res.ok) throw new Error('Artikel tidak ditemukan');
+
+        const data = await res.json();
+        const post = data.post;
+        if (!post) throw new Error('Detail artikel kosong');
+
+        // Meta tags update
+        document.title = `${post.title} — VTechOTP`;
+        document.getElementById('metaTitle').innerText = `${post.title} — VTechOTP`;
+        document.getElementById('metaDesc').content = post.description || '';
+        document.getElementById('breadcrumbTitle').innerText = post.title;
+
+        // Clean contentHtml to remove external broken Astro image tags
+        let cleanHtml = post.contentHtml || `<p>${post.description}</p>`;
+        cleanHtml = cleanHtml.replace(/<img[^>]*article-header-image[^>]*>/gi, '');
+
+        const tagsHtml = (post.tags || []).map(t => `<span class="tag-badge"><i class="fa-solid fa-hashtag"></i> ${t}</span>`).join(' ');
+
+        // Render main content with VTechOTP branded header cover
+        mainEl.innerHTML = `
+          <header class="article-header-hero">
+            <div style="margin-bottom: 12px;">${tagsHtml}</div>
+            <h1 class="article-h-title">${post.title}</h1>
+            <div class="article-meta-row">
+              <div class="article-author-chip">
+                <img src="/assets/logo.png" alt="VTechOTP" style="width: 22px; height: 22px; border-radius: 6px;" />
+                <span>${post.author || 'Tim VTechOTP'}</span>
+              </div>
+              <div><i class="fa-regular fa-calendar-days"></i> ${post.date || '2026'}</div>
+              <div><i class="fa-regular fa-clock"></i> ${post.readTime || '10 min read'}</div>
+            </div>
+          </header>
+
+          <div class="article-banner-brand">
+            <div class="brand-banner-glow"></div>
+            <img src="/assets/logo.png" alt="VTechOTP Logo" class="brand-banner-logo" />
+            <div class="brand-banner-badge"><i class="fa-solid fa-shield-halved"></i> VTechOTP Official Article</div>
+          </div>
+
+          <div class="article-body">
+            ${cleanHtml}
+          </div>
+        `;
+
+        // Render TOC from headings
+        renderTOC(post.headings || []);
+        initReadingProgress();
+
+      } catch (err) {
+        console.error(err);
+        mainEl.innerHTML = `
+          <div style="text-align: center; padding: 60px 0; color: #EF4444;">
+            <i class="fa-solid fa-circle-exclamation fa-3x" style="margin-bottom: 16px;"></i>
+            <h2>Gagal Memuat Artikel</h2>
+            <p>Artikel tidak dapat ditemukan atau koneksi ke server terputus.</p>
+            <a href="/blog" class="nav-cta" style="display: inline-block; margin-top: 16px;">
+              <i class="fa-solid fa-arrow-left"></i> Kembali ke Blog
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    function renderTOC(headings) {
+      const tocEl = document.getElementById('tocList');
+      if (!headings || headings.length === 0) {
+        tocEl.innerHTML = '<li style="color: var(--gray-400); font-size: 0.85rem;">Tidak ada sub-judul</li>';
+        return;
+      }
+
+      tocEl.innerHTML = headings.map(h => {
+        const id = h.text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        const isH3 = h.level === 'h3';
+        return `
+          <li class="${isH3 ? 'toc-h3' : ''}">
+            <a href="#${id}"><i class="fa-solid fa-angle-right" style="font-size: 0.75rem; color: var(--blue-500);"></i> ${h.text}</a>
+          </li>
+        `;
+      }).join('');
+    }
+
+    function initReadingProgress() {
+      const bar = document.createElement('div');
+      bar.id = 'readingProgressBar';
+      bar.style.cssText = 'position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#2563EB,#38BDF8);z-index:9999;width:0;transition:width 0.1s linear;';
+      document.body.appendChild(bar);
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>

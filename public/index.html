@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VTechOTP - Provider Layanan Nomor Virtual OTP Internasional Terpercaya #1 di Indonesia. Verifikasi WhatsApp, Telegram, Instagram, Google &amp; 200+ platform. Instan, aman, garansi refund." />
+  <meta name="keywords" content="nomor virtual OTP, SMS OTP internasional, verifikasi akun online, beli OTP instant, verifikasi SMS cloud, nomor virtual developer, VTechOTP, receive sms online indonesia" />
+  <meta name="author" content="VTechOTP" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1565C0" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VTechOTP - Layanan Gateway Nomor Virtual OTP Terpercaya" />
+  <meta property="og:description" content="Dapatkan nomor virtual OTP internasional instan untuk WhatsApp, Telegram, Instagram &amp; 200+ platform. Cepat, aman, aktif seketika dengan QRIS." />
+  <meta property="og:image" content="/assets/logo.png" />
+  <meta property="og:site_name" content="VTechOTP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VTechOTP - Provider Nomor Virtual OTP Terpercaya" />
+  <meta name="twitter:description" content="Nomor virtual OTP instan untuk 200+ platform global dengan integrasi API cepat." />
+  <meta name="twitter:image" content="/assets/logo.png" />
+  <link rel="canonical" href="https://otp.vtech.biz.id/" />
+  <title>VTechOTP - Gateway Nomor Virtual OTP Internasional Terpercaya #1</title>
+
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome 6 CDN (NO EMOJIS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css?v=1.0.2" />
+
+  <!-- Schema.org JSON-LD Structured Data for Google SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "VTechOTP",
+    "url": "https://vtechotp.com",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Android, Web",
+    "description": "Layanan gateway nomor virtual OTP internasional untuk verifikasi developer dan testing WhatsApp, Telegram, Instagram, dan 200+ platform global.",
+    "offers": {
+      "@type": "Offer",
+      "price": "1000",
+      "priceCurrency": "IDR"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <img src="/assets/logo.png" alt="VTechOTP Logo" class="nav-logo" />
+        <span class="nav-name">VTechOTP</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#features"><i class="fa-solid fa-star"></i> Fitur</a></li>
+        <li><a href="/#platforms"><i class="fa-solid fa-layer-group"></i> Platform</a></li>
+        <li><a href="/#how-it-works"><i class="fa-solid fa-list-check"></i> Cara Kerja</a></li>
+        <li><a href="/docs"><i class="fa-solid fa-code"></i> API Docs</a></li>
+        <li><a href="/blog"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+        <li><a href="/pusat-bantuan"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <a href="/playstore" class="nav-cta" title="Download Android APK"><i class="fa-brands fa-google-play"></i> Android</a>
+        <a href="/appstore" class="nav-cta" style="background:#000;border-color:#333;" title="Download iOS IPA"><i class="fa-brands fa-apple"></i> iOS</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu">
+      <a href="/#features" class="mob-link"><i class="fa-solid fa-star"></i> Fitur</a>
+      <a href="/#platforms" class="mob-link"><i class="fa-solid fa-layer-group"></i> Platform</a>
+      <a href="/#how-it-works" class="mob-link"><i class="fa-solid fa-list-check"></i> Cara Kerja</a>
+      <a href="/docs" class="mob-link" style="color: var(--blue-600); font-weight: 700;"><i class="fa-solid fa-code"></i> Developer API Docs</a>
+      <a href="/blog" class="mob-link"><i class="fa-solid fa-newspaper"></i> Blog &amp; Panduan</a>
+      <a href="/pusat-bantuan" class="mob-link"><i class="fa-solid fa-circle-question"></i> Pusat Bantuan</a>
+      <a href="/syarat-ketentuan" class="mob-link"><i class="fa-solid fa-file-contract"></i> Syarat &amp; Ketentuan</a>
+      <a href="/kebijakan-privasi" class="mob-link"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a>
+      <a href="/playstore" class="mob-link mob-cta"><i class="fa-brands fa-google-play"></i> Download Android (Play Store)</a>
+      <a href="/appstore" class="mob-link mob-cta" style="background:#000;margin-top:6px;"><i class="fa-brands fa-apple"></i> Download iOS (App Store)</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <canvas id="heroCanvas"></canvas>
+    </div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Nomor Virtual OTP<br />
+          <span class="hero-gradient">Instan &amp; Terpercaya</span>
+        </h1>
+        <p class="hero-desc">
+          Verifikasi akun di WhatsApp, Telegram, Instagram, dan 200+ platform lainnya menggunakan nomor virtual VtechOTP. Proses kilat, privasi terjaga, aktif seketika.
+        </p>
+        <div class="hero-stats-row" style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(219, 234, 254, 0.8); border-radius: 16px; padding: 12px 18px; margin-top: 18px; display: inline-flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; color: var(--blue-900);">
+            <i class="fa-solid fa-globe" style="color: var(--blue-600);"></i> 200+ Negara Global
+          </div>
+          <div style="width: 1px; height: 16px; background: var(--blue-200);"></div>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; color: var(--blue-900);">
+            <i class="fa-solid fa-bolt" style="color: #F59E0B;"></i> Verifikasi Cloud Real-time
+          </div>
+          <div style="width: 1px; height: 16px; background: var(--blue-200);"></div>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; color: var(--blue-900);">
+            <i class="fa-solid fa-shield-halved" style="color: #10B981;"></i> 100% Auto Refund
+          </div>
+        </div>
+
+        <!-- Hero Actions -->
+        <div class="hero-actions-container" style="margin-top: 24px; margin-bottom: 24px; max-width: 440px;">
+          <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+            <a href="/playstore" class="btn-mobile-dl" style="flex: 1; padding: 13px 14px; font-size: 0.92rem; text-decoration: none; justify-content: center;">
+              <span class="btn-mdl-left" style="gap: 7px;">
+                <i class="fa-brands fa-google-play"></i>
+                Android APK
+              </span>
+            </a>
+            <a href="/appstore" class="btn-mobile-dl" style="flex: 1; padding: 13px 14px; font-size: 0.92rem; background: #000000; text-decoration: none; justify-content: center;">
+              <span class="btn-mdl-left" style="gap: 7px;">
+                <i class="fa-brands fa-apple"></i>
+                iOS App Store
+              </span>
+            </a>
+          </div>
+          <a href="https://app.otp.vtech.biz.id/" class="btn-mobile-web" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 20px;border-radius:14px;background:white;border:1.5px solid #CBD5E1;color:#1E3A8A;font-weight:600;font-size:.92rem;text-decoration:none;box-sizing:border-box;">
+            Buka via Web App (Instan)
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="hero-mobile-trust-note" style="display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 0.8rem; color: #64748B; font-weight: 500;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#64748B" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span>Aman, ringan (v2.13), dan bebas iklan</span>
+          </div>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>Tanpa Registrasi Rumit</span>
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>OTP Realtime</span>
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>Support 24 Jam</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-scene">
+          <div class="phone-glow"></div>
+          <div class="phone-wrapper" id="phoneWrapper">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="/assets/app-home.png" alt="VtechOTP App" class="screen-img active" id="screenImg" />
+              </div>
+            </div>
+            <div class="phone-reflection"></div>
+          </div>
+          <div class="floating-card card-1" id="floatCard1">
+            <div class="fc-icon fc-green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="currentColor"/></svg>
+            </div>
+            <div class="fc-text">
+              <span class="fc-label">OTP Diterima</span>
+              <span class="fc-val">124 789</span>
+            </div>
+          </div>
+          <div class="floating-card card-2" id="floatCard2">
+            <div class="fc-icon fc-blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+            </div>
+            <div class="fc-text">
+              <span class="fc-label">Deposit Berhasil</span>
+              <span class="fc-val">Rp 50.000</span>
+            </div>
+          </div>
+          <div class="floating-card card-3" id="floatCard3">
+            <div class="fc-icon fc-orange">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M13 2.05V4.05C17.39 4.59 20.5 8.58 19.96 12.97C19.5 16.61 16.64 19.5 13 19.93V21.93C18.5 21.38 22.5 16.5 21.95 11C21.5 6.25 17.73 2.5 13 2.05M11 2.06C9.05 2.25 7.19 3 5.67 4.26L7.1 5.74C8.22 4.84 9.57 4.26 11 4.06V2.06M4.26 5.67C3 7.19 2.25 9.05 2.06 11H4.06C4.26 9.57 4.84 8.22 5.74 7.1L4.26 5.67M2.06 13C2.25 14.96 3 16.81 4.26 18.34L5.74 16.9C4.84 15.78 4.26 14.43 4.06 13H2.06M7.1 18.37L5.67 19.74C7.18 21 9.04 21.79 11 22V20C9.58 19.82 8.23 19.25 7.1 18.37M12 7L10 12H12V17L14 12H12V7Z" fill="currentColor"/></svg>
+            </div>
+            <div class="fc-text">
+              <span class="fc-label">Order Aktif</span>
+              <span class="fc-val">WhatsApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse">
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Stats -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-item"><span class="mi-dot mi-green"></span>WhatsApp — OTP Sukses</div>
+      <div class="marquee-item"><span class="mi-dot mi-blue"></span>Telegram — Verifikasi Instan</div>
+      <div class="marquee-item"><span class="mi-dot mi-pink"></span>Instagram — Aktif Seketika</div>
+      <div class="marquee-item"><span class="mi-dot mi-black"></span>TikTok — Nomor Tersedia</div>
+      <div class="marquee-item"><span class="mi-dot mi-fb"></span>Facebook — 10.248+ Nomor</div>
+      <div class="marquee-item"><span class="mi-dot mi-red"></span>Google — Harga Terjangkau</div>
+      <div class="marquee-item"><span class="mi-dot mi-purple"></span>Discord — Privasi Terjaga</div>
+      <div class="marquee-item"><span class="mi-dot mi-teal"></span>Twitter — 200+ Negara</div>
+      <div class="marquee-item"><span class="mi-dot mi-red"></span>Netflix — Proses Cepat</div>
+      <div class="marquee-item"><span class="mi-dot mi-orange"></span>Shopee — Support 24 Jam</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item"><span class="mi-dot mi-green"></span>WhatsApp — OTP Sukses</div>
+      <div class="marquee-item"><span class="mi-dot mi-blue"></span>Telegram — Verifikasi Instan</div>
+      <div class="marquee-item"><span class="mi-dot mi-pink"></span>Instagram — Aktif Seketika</div>
+      <div class="marquee-item"><span class="mi-dot mi-black"></span>TikTok — Nomor Tersedia</div>
+      <div class="marquee-item"><span class="mi-dot mi-fb"></span>Facebook — 10.248+ Nomor</div>
+      <div class="marquee-item"><span class="mi-dot mi-red"></span>Google — Harga Terjangkau</div>
+      <div class="marquee-item"><span class="mi-dot mi-purple"></span>Discord — Privasi Terjaga</div>
+      <div class="marquee-item"><span class="mi-dot mi-teal"></span>Twitter — 200+ Negara</div>
+      <div class="marquee-item"><span class="mi-dot mi-red"></span>Netflix — Proses Cepat</div>
+      <div class="marquee-item"><span class="mi-dot mi-orange"></span>Shopee — Support 24 Jam</div>
+    </div>
+  </div>
+
+  <!-- Interactive Platform & Price Simulator -->
+  <section class="platforms" id="platforms" style="padding: 80px 0; background: linear-gradient(180deg, #F0F6FF 0%, #FFFFFF 100%);">
+    <div class="section-container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Katalog &amp; Simulasi Harga</div>
+        <h2 class="section-title">Cek Ketersediaan &amp; Harga Nomor Real-Time</h2>
+        <p class="section-desc">Pilih platform di bawah ini untuk melihat estimasi harga IDR, stok nomor aktif, dan kecepatan rata-rata OTP masuk.</p>
+      </div>
+
+      <div class="simulator-card" data-aos="fade-up">
+        <div class="sim-tabs-wrap">
+          <button class="sim-tab-btn active" data-platform="whatsapp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="18" height="18" alt="WA" /> WhatsApp
+          </button>
+          <button class="sim-tab-btn" data-platform="telegram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" width="18" height="18" alt="TG" /> Telegram
+          </button>
+          <button class="sim-tab-btn" data-platform="tiktok">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" width="18" height="18" alt="TikTok" /> TikTok
+          </button>
+          <button class="sim-tab-btn" data-platform="instagram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="18" height="18" alt="IG" /> Instagram
+          </button>
+          <button class="sim-tab-btn" data-platform="google">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="30" height="12" alt="Google" /> Google
+          </button>
+          <button class="sim-tab-btn" data-platform="openai">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" width="18" height="18" alt="OpenAI" /> OpenAI / ChatGPT
+          </button>
+          <button class="sim-tab-btn" data-platform="shopee">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopee_logo.svg" width="18" height="18" alt="Shopee" /> Shopee
+          </button>
+        </div>
+
+        <div class="sim-display-grid">
+          <div>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <span id="simTag" class="sim-live-tag">Paling Populer</span>
+              <span style="font-size: 0.85rem; color: var(--gray-500);"><i class="fa-solid fa-bolt" style="color: #F59E0B;"></i> Auto-Refund 100% jika OTP tidak masuk</span>
+            </div>
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--gray-900); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+              <img id="simIcon" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="32" height="32" alt="Platform" />
+              Verifikasi <span id="simPlatformName">WhatsApp</span>
+            </h3>
+            <p style="color: var(--gray-600); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+              Nomor virtual fresh siap pakai untuk verifikasi akun baru, pergantian nomor, atau testing otomatis. Tidak ada ikatan kontrak, saldo hanya terpotong saat SMS kode OTP berhasil masuk ke perangkat Anda.
+            </p>
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+              <a href="/playstore" class="btn-primary btn-glow" style="padding: 12px 24px; font-size: 0.9rem;">
+                <i class="fa-solid fa-download"></i> Pesan Nomor di Aplikasi
+              </a>
+              <a href="https://app.otp.vtech.biz.id/" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding: 12px 20px; font-size: 0.9rem;">
+                Buka Web App &#8599;
+              </a>
+            </div>
+          </div>
+
+          <div class="sim-preview-box">
+            <div class="sim-preview-header">
+              <span style="font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Live Status &amp; Pricing</span>
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px #22C55E;"></span>
+            </div>
+            <table class="sim-stats-table">
+              <tr>
+                <td style="color: #94A3B8;">Estimasi Harga</td>
+                <td id="simPrice" style="font-size: 1.25rem; color: #60A5FA;">Rp 2.150</td>
+              </tr>
+              <tr>
+                <td style="color: #94A3B8;">Stok Tersedia</td>
+                <td id="simStock">12.450+ Nomor</td>
+              </tr>
+              <tr>
+                <td style="color: #94A3B8;">Rata-rata Latensi OTP</td>
+                <td id="simLatency">4.2 Detik</td>
+              </tr>
+              <tr>
+                <td style="color: #94A3B8;">Tingkat Keberhasilan</td>
+                <td id="simSuccess" style="color: #4ADE80;">99.2%</td>
+              </tr>
+              <tr>
+                <td style="color: #94A3B8;">Dukungan Negara</td>
+                <td>Indonesia, US, UK, dll.</td>
+              </tr>
+            </table>
+            <div style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.15); border-radius: 12px; padding: 10px 14px; font-size: 0.78rem; color: #CBD5E1; text-align: center;">
+              *Harga per 1 kali verifikasi SMS. Refund 100% otomatis jika timeout 20 menit.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Asymmetric Spotlight Features -->
+  <section class="features" id="features">
+    <div class="section-container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Keunggulan Teknologi</div>
+        <h2 class="section-title">Mengapa VTechOTP Menjadi Pilihan #1</h2>
+        <p class="section-desc">Dirancang dengan infrastruktur telekomunikasi modern untuk memastikan verifikasi Anda bebas hambatan.</p>
+      </div>
+
+      <div class="asym-grid" data-aos="fade-up">
+        <!-- Spotlight Card -->
+        <div class="spotlight-card">
+          <div>
+            <div class="spotlight-badge"><i class="fa-solid fa-shield-halved"></i> Garansi Saldo 100% Aman</div>
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--gray-900); margin-bottom: 14px; line-height: 1.3;">
+              Mesin OTP Real-Time dengan Proteksi Auto-Refund Otomatis
+            </h3>
+            <p style="color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px;">
+              Sistem kami terhubung langsung dengan gateway SIM pool internasional. Begitu platform mengirim SMS, kode OTP langsung diteruskan ke layar Anda dalam hitungan detik. Jika platform mengalami gangguan dan OTP tidak terkirim, saldo Anda dikembalikan 100% secara instan tanpa perlu mengajukan tiket CS.
+            </p>
+          </div>
+          <div style="background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 16px; padding: 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(34,197,94,0.12); color: #16A34A; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div>
+                <div style="font-weight: 700; font-size: 0.9rem; color: var(--gray-900);">Zero-Loss Guarantee</div>
+                <div style="font-size: 0.78rem; color: var(--gray-500);">Tidak dapat OTP = Bebas Biaya</div>
+              </div>
+            </div>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--blue-700); background: var(--blue-50); padding: 6px 14px; border-radius: 999px;">
+              Sistem Aktif 24/7
+            </span>
+          </div>
+        </div>
+
+        <!-- Sub-features Column -->
+        <div class="sub-cards-col">
+          <div class="sub-feature-item">
+            <div class="sub-feature-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div>
+              <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--gray-900); margin-bottom: 6px;">200+ Negara &amp; Jaringan Global</h4>
+              <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.6;">Akses nomor virtual dari Indonesia, Amerika Serikat, Inggris, Malaysia, hingga Rusia dengan routing lokal berkualitas tinggi.</p>
+            </div>
+          </div>
+
+          <div class="sub-feature-item">
+            <div class="sub-feature-icon" style="background: rgba(245,158,11,0.1); color: #D97706;">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <div>
+              <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--gray-900); margin-bottom: 6px;">Deposit QRIS Otomatis Real-Time</h4>
+              <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.6;">Top up saldo mulai Rp 10.000 menggunakan BCA, Mandiri, BRI, BNI, GoPay, OVO, DANA, atau ShopeePay. Saldo masuk otomatis 3 detik.</p>
+            </div>
+          </div>
+
+          <div class="sub-feature-item">
+            <div class="sub-feature-icon" style="background: rgba(139,92,246,0.1); color: #7C3AED;">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div>
+              <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--gray-900); margin-bottom: 6px;">Privasi Maksimal &amp; Zero-Log</h4>
+              <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.6;">Identitas pribadi dan nomor utama Anda terlindungi sepenuhnya dari spam marketing, kebocoran data, dan pelacakan digital.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Benchmark Table -->
+      <div class="benchmark-card" data-aos="fade-up">
+        <div style="padding: 24px; border-bottom: 1px solid var(--gray-200); background: var(--gray-50); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--gray-900); margin-bottom: 4px;">Perbandingan Layanan VTechOTP</h3>
+            <p style="font-size: 0.85rem; color: var(--gray-500);">Lihat mengapa ribuan reseller, developer, dan pengguna beralih ke VTechOTP.</p>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--blue-700); background: white; border: 1px solid var(--blue-200); padding: 6px 14px; border-radius: 999px;">
+            Updated 2026
+          </span>
+        </div>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th style="width: 34%;">Fitur &amp; Kemampuan</th>
+              <th class="highlight" style="width: 26%;"><i class="fa-solid fa-circle-check" style="color: var(--blue-600); margin-right: 6px;"></i> VTechOTP</th>
+              <th style="width: 20%; color: var(--gray-600);">SMS Provider Luar</th>
+              <th style="width: 20%; color: var(--gray-600);">Bot Manual Lain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Metode Pembayaran</strong></td>
+              <td class="highlight"><strong>QRIS Instan (IDR Rupiah)</strong></td>
+              <td>Kartu Kredit / Crypto</td>
+              <td>Transfer Manual (Antri)</td>
+            </tr>
+            <tr>
+              <td><strong>Garansi Refund Saldo</strong></td>
+              <td class="highlight"><span style="color: #16A34A; font-weight: 700;">100% Otomatis Seketika</span></td>
+              <td>Proses Tiket Manual</td>
+              <td>Sering Hangus</td>
+            </tr>
+            <tr>
+              <td><strong>Kecepatan Diterima OTP</strong></td>
+              <td class="highlight"><strong>3 - 8 Detik</strong></td>
+              <td>15 - 60 Detik</td>
+              <td>Tidak Menentu</td>
+            </tr>
+            <tr>
+              <td><strong>Developer REST API &amp; Webhook</strong></td>
+              <td class="highlight"><span style="color: var(--blue-700); font-weight: 700;">Tersedia (Katalog Lengkap)</span></td>
+              <td>API Rumit</td>
+              <td>Tidak Tersedia</td>
+            </tr>
+            <tr>
+              <td><strong>Bantuan Customer Support</strong></td>
+              <td class="highlight"><strong>24/7 Bahasa Indonesia</strong></td>
+              <td>Bahasa Asing / Bot</td>
+              <td>Slow Respon</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Screenshots Showcase -->
+  <section class="showcase" id="showcase">
+    <div class="section-container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Tampilan Aplikasi</div>
+        <h2 class="section-title">Antarmuka Bersih,<br />Pengalaman Mulus</h2>
+      </div>
+      <div class="showcase-scroll" data-aos="fade-up">
+        <div class="showcase-track">
+          <div class="showcase-phone">
+            <img src="/assets/app-home.png" alt="Home Screen" />
+            <span>Beranda</span>
+          </div>
+          <div class="showcase-phone active-phone">
+            <img src="/assets/app-buy.png" alt="Buy Number" />
+            <span>Beli Nomor</span>
+          </div>
+          <div class="showcase-phone">
+            <img src="/assets/app-otp.png" alt="OTP Screen" />
+            <span>Terima OTP</span>
+          </div>
+          <div class="showcase-phone">
+            <img src="/assets/app-deposit.png" alt="Deposit Screen" />
+            <span>Deposit</span>
+          </div>
+          <div class="showcase-phone">
+            <img src="/assets/app-countries.png" alt="Countries" />
+            <span>Pilih Negara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works (4 Step Journey) -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Alur Penggunaan</div>
+        <h2 class="section-title">4 Langkah Mudah<br />Nomor Aktif &amp; OTP Masuk</h2>
+        <p class="section-desc">Mulai verifikasi akun Anda hanya dalam hitungan menit tanpa prosedur registrasi KTP yang rumit.</p>
+      </div>
+      <div class="journey-timeline" data-aos="fade-up">
+        <div class="journey-step">
+          <div class="journey-step-num">01</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 8px;">Unduh APK / Buka Web</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.6;">Dapatkan aplikasi VTechOTP di Android atau langsung gunakan Web App tanpa perlu download.</p>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-num">02</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 8px;">Top Up Saldo via QRIS</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.6;">Deposit saldo mulai Rp 10.000 menggunakan QRIS dari aplikasi m-banking atau e-wallet apa saja.</p>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-num">03</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 8px;">Pilih Layanan &amp; Negara</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.6;">Pilih platform yang ingin diverifikasi (misal WhatsApp) lalu pilih negara yang Anda kehendaki.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Activity Feed -->
+  <section class="activity" id="activity">
+    <div class="section-container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">
+          <span class="live-pulse"></span>
+          Live Aktivitas
+        </div>
+        <h2 class="section-title">Ribuan Transaksi<br />Terjadi Setiap Menit</h2>
+        <p class="section-desc">Data transaksi berjalan secara realtime. Bergabunglah bersama ratusan ribu pengguna VtechOTP.</p>
+      </div>
+      <div class="activity-layout" data-aos="fade-up">
+        <div class="activity-col">
+          <div class="activity-header">
+            <div class="act-title">
+              <div class="act-live-dot"></div>
+              <span>Order Terbaru</span>
+            </div>
+            <span class="act-count" id="orderCount">0 order</span>
+          </div>
+          <div class="activity-list" id="orderList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+        <div class="activity-col">
+          <div class="activity-header">
+            <div class="act-title">
+              <div class="act-live-dot act-dep"></div>
+              <span>Deposit Masuk</span>
+            </div>
+            <span class="act-count" id="depositCount">0 deposit</span>
+          </div>
+          <div class="activity-list" id="depositList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deposit Section -->
+  <section class="deposit-section" id="deposit">
+    <div class="section-container">
+      <div class="deposit-wrapper" data-aos="fade-up">
+        <div class="deposit-content">
+          <div class="section-tag">Top Up Mudah</div>
+          <h2>Deposit via QRIS<br /><span>Kapan Saja, Instan</span></h2>
+          <p>Tidak perlu transfer manual. Cukup scan QRIS dari aplikasi bank atau dompet digital manapun. Saldo langsung aktif, 24 jam non-stop.</p>
+          <ul class="deposit-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="#22C55E"/></svg>
+              Minimal deposit Rp 10.000
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="#22C55E"/></svg>
+              Semua bank dan e-wallet didukung
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="#22C55E"/></svg>
+              Konfirmasi otomatis, tanpa CS
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="#22C55E"/></svg>
+              Tersedia 24 jam penuh
+            </li>
+          </ul>
+          <a href="#download" class="btn-primary">Mulai Sekarang</a>
+        </div>
+        <div class="deposit-visual">
+          <div class="dep-phone-wrap">
+            <img src="/assets/app-deposit.png" alt="Deposit Screen" class="dep-phone-img" />
+            <div class="dep-badge dep-badge-1">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="currentColor"/></svg>
+              <span>Berhasil</span>
+            </div>
+            <div class="dep-badge dep-badge-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#3B82F6"><path d="M13 10V3L4 14h7v7l9-11h-7z" fill="currentColor"/></svg>
+              <span>Instan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer API Showcase Section -->
+  <section class="developer-section" id="developer" style="padding: 70px 0; background: linear-gradient(180deg, #090d16 0%, #0d1527 100%); color: #f1f5f9; position: relative; overflow: hidden;">
+    <div style="position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 70%); top: -100px; right: -100px; pointer-events: none; border-radius: 50%;"></div>
+    <div class="section-container" style="position: relative; z-index: 2;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 32px; align-items: center;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,0.18); border: 1px solid rgba(59,130,246,0.3); padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; color: #60a5fa; margin-bottom: 20px;">
+            <i class="fa-solid fa-code"></i> RESTful API &amp; Webhook v1
+          </div>
+          <h2 style="font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 800; line-height: 1.25; margin-bottom: 18px; letter-spacing: -0.5px;">
+            Otomatisasi Verifikasi OTP <br/><span style="color: #60a5fa;">Melalui Developer API</span>
+          </h2>
+          <p style="color: #94a3b8; font-size: clamp(0.95rem, 2vw, 1.05rem); line-height: 1.6; margin-bottom: 24px;">
+            Integrasikan layanan sewa nomor virtual VTechOTP langsung ke bot Telegram, skrip Python, panel reseller, atau aplikasi Anda. Rate limit longgar, response JSON cepat, dan webhook event real-time.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #cbd5e1;">
+              <i class="fa-solid fa-check-circle" style="color: #10b981;"></i> 1 Coin = 1 IDR (Rupiah)
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #cbd5e1;">
+              <i class="fa-solid fa-check-circle" style="color: #10b981;"></i> Webhook Signature SHA256
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #cbd5e1;">
+              <i class="fa-solid fa-check-circle" style="color: #10b981;"></i> 200+ Negara &amp; Katalog Lengkap
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="/docs" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #2563eb; color: white; padding: 12px 22px; border-radius: 12px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(37,99,235,0.4); transition: all 0.2s; font-size: 0.95rem;">
+              <i class="fa-solid fa-book-open"></i> Buka Dokumentasi API
+            </a>
+            <a href="/docs#post-orders-create" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #e2e8f0; padding: 12px 18px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: all 0.2s; font-size: 0.95rem;">
+              <i class="fa-solid fa-terminal"></i> Quickstart &amp; Endpoint
+            </a>
+          </div>
+        </div>
+        <div>
+          <div style="background: #050811; border: 1px solid #1e293b; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            <div style="background: #0f172a; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e293b;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="width: 11px; height: 11px; border-radius: 50%; background: #ef4444;"></span>
+                <span style="width: 11px; height: 11px; border-radius: 50%; background: #f59e0b;"></span>
+                <span style="width: 11px; height: 11px; border-radius: 50%; background: #10b981;"></span>
+                <span style="margin-left: 10px; font-family: monospace; font-size: 0.8rem; color: #94a3b8;">POST /v1/orders/create</span>
+              </div>
+              <span style="background: #10b981; color: #022c22; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-radius: 6px; font-family: monospace;">201 CREATED</span>
+            </div>
+            <pre style="padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; overflow-x: auto; margin: 0;"><code><span style="color: #64748b;">// Request Header</span>
+<span style="color: #38bdf8;">Authorization</span>: Bearer &lt;YOUR_API_TOKEN&gt;
+<span style="color: #38bdf8;">Content-Type</span>: application/json
+
+<span style="color: #64748b;">// Response Body</span>
+{
+  <span style="color: #60a5fa;">"status"</span>: <span style="color: #34d399;">"success"</span>,
+  <span style="color: #60a5fa;">"order_id"</span>: <span style="color: #f59e0b;">"ord_8829471"</span>,
+  <span style="color: #60a5fa;">"phone_number"</span>: <span style="color: #34d399;">"+628129841289"</span>,
+  <span style="color: #60a5fa;">"service"</span>: <span style="color: #34d399;">"whatsapp"</span>,
+  <span style="color: #60a5fa;">"country"</span>: <span style="color: #34d399;">"indonesia"</span>,
+  <span style="color: #60a5fa;">"price_idr"</span>: <span style="color: #f59e0b;">2150</span>,
+  <span style="color: #60a5fa;">"status_text"</span>: <span style="color: #34d399;">"WAITING_CODE"</span>,
+  <span style="color: #60a5fa;">"expires_at"</span>: <span style="color: #34d399;">"2026-08-17T06:20:00Z"</span>
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq" style="padding: 80px 0; background: #FAFDFE;">
+    <div class="section-container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">Tanya Jawab</div>
+        <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+        <p class="section-desc">Jawaban lengkap mengenai cara kerja nomor virtual, proses deposit, dan garansi refund VTechOTP.</p>
+      </div>
+
+      <div class="faq-accordion" data-aos="fade-up">
+        <div class="faq-item active">
+          <button class="faq-question">
+            <span>Bagaimana jika kode SMS OTP tidak masuk?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Sistem VTechOTP dilengkapi fitur <strong>Auto-Refund 100%</strong>. Jika kode OTP tidak diterima dalam batas waktu 20 menit (atau jika Anda membatalkan order secara manual), saldo akun Anda akan langsung dikembalikan seketika tanpa potongan sepeser pun.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Metode pembayaran apa saja yang didukung untuk deposit?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Kami mendukung <strong>QRIS Nasional 24 Jam</strong> yang kompatibel dengan seluruh aplikasi mobile banking (BCA, Mandiri, BRI, BNI, Danamon, CIMB) serta seluruh e-wallet (GoPay, OVO, DANA, ShopeePay, LinkAja). Minimal deposit hanya Rp 10.000 dan saldo masuk otomatis dalam 3 detik.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah saya perlu mendaftar menggunakan KTP atau data pribadi?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <strong>Tidak sama sekali.</strong> VTechOTP menganut prinsip privasi penuh (Zero-Log Policy). Anda cukup mengunduh aplikasi atau membuka Web App untuk mulai memesan nomor virtual tanpa perlu upload dokumen pribadi.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah tersedia API untuk integrasi bot Telegram / script otomatis?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Ya! Kami menyediakan <strong>Developer REST API v1</strong> dengan format JSON, token bearer authentication, rate limit tinggi, dan webhook event notification real-time. Dokumentasi lengkap dapat diakses di <a href="/docs" style="color: var(--blue-600); font-weight: 600;">Halaman API Docs</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="download" id="download">
+    <div class="download-bg">
+      <div class="dl-orb dl-orb-1"></div>
+      <div class="dl-orb dl-orb-2"></div>
+      <canvas id="dlCanvas"></canvas>
+    </div>
+    <div class="section-container">
+      <div class="download-content" data-aos="fade-up">
+        <img src="/assets/logo.png" alt="VtechOTP" class="dl-logo" />
+        <h2 class="dl-title">Siap Mulai Verifikasi<br />Tanpa Batas?</h2>
+        <p class="dl-desc">Download VtechOTP sekarang dan nikmati kemudahan OTP instan untuk semua platform favorit kamu.</p>
+        <div class="dl-stats">
+          <div class="dl-stat">
+            <span class="dl-stat-num">200+</span>
+            <span class="dl-stat-label">Negara Global</span>
+          </div>
+          <div class="dl-stat-div"></div>
+          <div class="dl-stat">
+            <span class="dl-stat-num">100%</span>
+            <span class="dl-stat-label">Auto Refund</span>
+          </div>
+          <div class="dl-stat-div"></div>
+          <div class="dl-stat">
+            <span class="dl-stat-num">24/7</span>
+            <span class="dl-stat-label">Server Aktif</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:14px;">
+          <a href="/playstore" class="btn-download" id="apkBtn" style="min-width:220px;">
+            <div class="btn-dl-icon">
+              <i class="fa-brands fa-google-play" style="font-size: 26px; color: white;"></i>
+            </div>
+            <div class="btn-dl-text">
+              <span class="btn-dl-sub">Versi 2.13 — Android</span>
+              <span class="btn-dl-main">Download APK (7.3 MB)</span>
+            </div>
+          </a>
+          <a href="/appstore" class="btn-download" id="ipaBtn" style="min-width:220px;background:#000;box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+            <div class="btn-dl-icon">
+              <i class="fa-brands fa-apple" style="font-size: 30px; color: white;"></i>
+            </div>
+            <div class="btn-dl-text">
+              <span class="btn-dl-sub">Versi 2.13 — iOS iPhone</span>
+              <span class="btn-dl-main">Download IPA (263 KB)</span>
+            </div>
+          </a>
+        </div>
+        <p class="dl-note">Kompatibel dengan Android 5.0+ &amp; iOS 14.0+. File aman, terverifikasi bebas virus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="/assets/logo.png" alt="VTechOTP" class="footer-logo" />
+          <span class="footer-name">VTechOTP</span>
+        </div>
+        <p class="footer-tagline">Provider Layanan Nomor Virtual OTP Internasional Terpercaya #1 di Indonesia. Nikmati verifikasi akun instan tanpa hambatan.</p>
+      </div>
+      <div class="footer-links">
+        <div class="fl-col">
+          <span class="fl-title">Navigasi</span>
+          <a href="/#platforms"><i class="fa-solid fa-layer-group"></i> Platform App</a>
+          <a href="/#how-it-works"><i class="fa-solid fa-list-check"></i> Cara Kerja</a>
+          <a href="/docs"><i class="fa-solid fa-code"></i> API Developer</a>
+          <a href="/blog"><i class="fa-solid fa-newspaper"></i> Blog &amp; Panduan</a>
+          <a href="/playstore"><i class="fa-brands fa-google-play"></i> Google Play (Android)</a>
+          <a href="/appstore"><i class="fa-brands fa-apple"></i> App Store (iOS)</a>
+        </div>
+        <div class="fl-col">
+          <span class="fl-title">Layanan OTP</span>
+          <a href="/#deposit"><i class="fa-solid fa-qrcode"></i> Top Up QRIS</a>
+          <a href="/#activity"><i class="fa-solid fa-chart-line"></i> Live Feed Order</a>
+          <a href="/docs"><i class="fa-solid fa-terminal"></i> Integrasi Bot &amp; Webhook</a>
+          <a href="/#features"><i class="fa-solid fa-bolt"></i> Garansi OTP Instan</a>
+        </div>
+        <div class="fl-col">
+          <span class="fl-title">Bantuan &amp; Legal</span>
+          <a href="/pusat-bantuan"><i class="fa-solid fa-circle-question"></i> Pusat Bantuan &amp; FAQ</a>
+          <a href="/syarat-ketentuan"><i class="fa-solid fa-file-contract"></i> Syarat &amp; Ketentuan</a>
+          <a href="/kebijakan-privasi"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 VTechOTP. Seluruh hak cipta dilindungi. Gateway Nomor Virtual OTP Internasional Terpercaya.</span>
+      <span class="footer-secure">
+        <i class="fa-solid fa-lock" style="color: var(--blue-500); margin-right: 6px;"></i>
+        Sistem Aman &amp; Enkripsi SSL 256-bit
+      </span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="/js/animations.js"></script>
+  <script src="/js/live-feed.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

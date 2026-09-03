@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Komitmen VTechOTP terhadap keselamatan anak, pencegahan eksploitasi, pelaporan konten berbahaya, dan perlindungan pengguna.">
+  <meta name="author" content="VTechOTP">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <title>Child Safety Center — VTechOTP</title>
+  <style>
+    :root {
+      --ink-950: #07111f;
+      --ink-900: #0d1b2e;
+      --ink-800: #152a43;
+      --ink-700: #294665;
+      --ink-500: #617994;
+      --ink-300: #bdcada;
+      --ink-100: #e7eef5;
+      --paper: #f7fafc;
+      --white: #ffffff;
+      --blue-700: #155eef;
+      --blue-600: #2563eb;
+      --blue-100: #e7f0ff;
+      --cyan-500: #06b6d4;
+      --cyan-100: #e1f8fc;
+      --green-600: #0e9f6e;
+      --green-100: #e8f8f1;
+      --red-600: #d13d4f;
+      --red-100: #fff0f2;
+      --amber-600: #b7791f;
+      --amber-100: #fff7e3;
+      --shadow-sm: 0 4px 18px rgba(13, 27, 46, .06);
+      --shadow-lg: 0 20px 60px rgba(13, 27, 46, .11);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --max-width: 1180px;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink-900);
+      font-family: var(--sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(calc(100% - 40px), var(--max-width)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(247, 250, 252, .88);
+      border-bottom: 1px solid rgba(189, 202, 218, .7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.35px;
+      white-space: nowrap;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 10px; object-fit: contain; }
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--blue-700);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .header-nav { display: flex; align-items: center; gap: 25px; }
+    .header-nav a {
+      color: var(--ink-700);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color .18s ease;
+    }
+    .header-nav a:hover, .header-nav a:focus-visible { color: var(--blue-700); }
+    .header-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--blue-600);
+      border-radius: 11px;
+      padding: 9px 14px;
+      color: var(--blue-700) !important;
+      background: var(--white);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, .08);
+    }
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--ink-100);
+      background: var(--white);
+      border-radius: 10px;
+      width: 42px;
+      height: 40px;
+      color: var(--ink-900);
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 82px 0 70px;
+      background:
+        radial-gradient(circle at 84% 12%, rgba(6, 182, 212, .15), transparent 29%),
+        radial-gradient(circle at 7% 88%, rgba(37, 99, 235, .1), transparent 31%),
+        var(--paper);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -125px;
+      bottom: -190px;
+      border: 1px solid rgba(37, 99, 235, .12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 32px rgba(37, 99, 235, .035), 0 0 0 64px rgba(37, 99, 235, .025);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 74px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: var(--blue-700);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: var(--cyan-500);
+      border-radius: 4px;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 690px;
+      margin-bottom: 21px;
+      color: var(--ink-950);
+      font-size: clamp(2.45rem, 5.2vw, 4.45rem);
+      line-height: 1.04;
+      letter-spacing: -.065em;
+    }
+    .hero-copy {
+      max-width: 625px;
+      margin-bottom: 29px;
+      color: var(--ink-500);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 11px 17px;
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary {
+      background: var(--blue-700);
+      color: var(--white);
+      box-shadow: 0 10px 22px rgba(21, 94, 239, .2);
+    }
+    .button-primary:hover { background: #0d4ec9; box-shadow: 0 13px 26px rgba(21, 94, 239, .25); }
+    .button-secondary {
+      border-color: var(--ink-100);
+      background: var(--white);
+      color: var(--ink-800);
+      box-shadow: var(--shadow-sm);
+    }
+    .button-secondary:hover { background: var(--blue-100); }
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 22px;
+      color: var(--ink-500);
+      font-size: 12px;
+    }
+    .hero-note svg { color: var(--green-600); flex: 0 0 auto; }
+
+    .signal-card {
+      position: relative;
+      padding: 28px;
+      border: 1px solid rgba(37, 99, 235, .15);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(150deg, #102849 0%, #0b1d35 72%, #092c4b 100%);
+      color: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+    .signal-card::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      width: 62px;
+      height: 62px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 18px;
+      transform: rotate(14deg);
+    }
+    .shield {
+      display: grid;
+      place-items: center;
+      width: 53px;
+      height: 53px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(147, 224, 255, .28);
+      border-radius: 16px;
+      background: rgba(74, 185, 237, .15);
+      color: #9be8ff;
+    }
+    .signal-card h2 { max-width: 330px; margin-bottom: 11px; font-size: 24px; line-height: 1.23; letter-spacing: -.035em; }
+    .signal-card p { margin-bottom: 24px; color: #b6c9dd; font-size: 14px; line-height: 1.7; }
+    .signal-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: #dff8ee;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #35d69d; box-shadow: 0 0 0 5px rgba(53, 214, 157, .12); }
+
+    .anchor-bar {
+      border-top: 1px solid var(--ink-100);
+      border-bottom: 1px solid var(--ink-100);
+      background: var(--white);
+    }
+    .anchor-inner { display: flex; align-items: center; gap: 26px; overflow-x: auto; min-height: 57px; }
+    .anchor-inner a {
+      flex: 0 0 auto;
+      color: var(--ink-500);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .anchor-inner a:hover, .anchor-inner a:focus-visible { color: var(--blue-700); }
+
+    .section { padding: 86px 0; }
+    .section-muted { background: #eef5fa; }
+    .section-head { max-width: 720px; margin-bottom: 36px; }
+    .section-kicker {
+      margin-bottom: 10px;
+      color: var(--blue-700);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .section h2 {
+      margin-bottom: 13px;
+      color: var(--ink-950);
+      font-size: clamp(1.85rem, 3.4vw, 2.8rem);
+      line-height: 1.12;
+      letter-spacing: -.05em;
+    }
+    .section-lead { color: var(--ink-500); font-size: 15px; line-height: 1.75; }
+
+    .commitment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .commitment-card {
+      min-height: 220px;
+      padding: 25px;
+      border: 1px solid var(--ink-100);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+    .icon-box {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      margin-bottom: 21px;
+      border-radius: 13px;
+      background: var(--blue-100);
+      color: var(--blue-700);
+    }
+    .icon-box.green { background: var(--green-100); color: var(--green-600); }
+    .icon-box.cyan { background: var(--cyan-100); color: #0588a0; }
+    .commitment-card h3 { margin-bottom: 8px; color: var(--ink-900); font-size: 16px; letter-spacing: -.02em; }
+    .commitment-card p { margin-bottom: 0; color: var(--ink-500); font-size: 13px; line-height: 1.7; }
+
+    .risk-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 58px; align-items: start; }
+    .risk-intro {
+      position: sticky;
+      top: 104px;
+      padding: 27px;
+      border: 1px solid #f4d2d7;
+      border-radius: var(--radius-md);
+      background: var(--red-100);
+    }
+    .risk-intro .icon-box { background: #ffe0e4; color: var(--red-600); }
+    .risk-intro h3 { margin-bottom: 11px; color: #8f2636; font-size: 21px; line-height: 1.25; }
+    .risk-intro p { margin-bottom: 0; color: #9e4b57; font-size: 13px; line-height: 1.72; }
+    .risk-list { display: grid; gap: 12px; }
+    .risk-item {
+      display: grid;
+      grid-template-columns: 37px 1fr;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--ink-100);
+      border-radius: 14px;
+      background: var(--white);
+    }
+    .risk-number {
+      display: grid;
+      place-items: center;
+      width: 31px;
+      height: 31px;
+      border-radius: 9px;
+      background: var(--red-100);
+      color: var(--red-600);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .risk-item h3 { margin: 1px 0 4px; color: var(--ink-900); font-size: 14px; }
+    .risk-item p { margin-bottom: 0; color: var(--ink-500); font-size: 12.5px; line-height: 1.65; }
+
+    .report-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 35px; align-items: stretch; }
+    .steps { display: grid; gap: 13px; }
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 15px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--ink-100);
+      border-radius: 14px;
+      background: var(--white);
+    }
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--ink-900);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .step h3 { margin: 1px 0 4px; font-size: 14px; }
+    .step p { margin-bottom: 0; color: var(--ink-500); font-size: 12.5px; line-height: 1.65; }
+    .report-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 29px;
+      border-radius: var(--radius-lg);
+      background: var(--ink-900);
+      color: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+    .report-card h3 { max-width: 310px; margin-bottom: 11px; font-size: 24px; line-height: 1.25; letter-spacing: -.04em; }
+    .report-card p { margin-bottom: 26px; color: #aec1d5; font-size: 13px; line-height: 1.7; }
+    .report-card .button { align-self: flex-start; background: var(--white); color: var(--ink-900); }
+    .report-card .button:hover { background: var(--cyan-100); }
+    .report-footnote { margin: 24px 0 0; color: #7791aa; font-size: 11px; line-height: 1.6; }
+
+    .guidance-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
+    .guidance-card {
+      padding: 25px;
+      border: 1px solid var(--ink-100);
+      border-radius: var(--radius-md);
+      background: var(--white);
+    }
+    .guidance-card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 16px; }
+    .guidance-card h3 svg { color: var(--blue-700); }
+    .guidance-card p { margin-bottom: 0; color: var(--ink-500); font-size: 13px; line-height: 1.75; }
+
+    .enforcement-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: center; }
+    .enforcement-panel {
+      padding: 31px;
+      border: 1px solid rgba(37, 99, 235, .16);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, var(--blue-100), #f8fbff);
+    }
+    .enforcement-panel h3 { margin-bottom: 11px; color: var(--ink-900); font-size: 22px; line-height: 1.28; letter-spacing: -.035em; }
+    .enforcement-panel p { margin-bottom: 0; color: var(--ink-700); font-size: 13px; line-height: 1.72; }
+    .enforcement-list { display: grid; gap: 20px; }
+    .enforcement-row { display: grid; grid-template-columns: 31px 1fr; gap: 13px; }
+    .enforcement-row svg { margin-top: 3px; color: var(--blue-700); }
+    .enforcement-row h3 { margin: 0 0 4px; color: var(--ink-900); font-size: 14px; }
+    .enforcement-row p { margin: 0; color: var(--ink-500); font-size: 12.5px; line-height: 1.65; }
+
+    .faq-wrap { max-width: 850px; }
+    .faq-item { border-top: 1px solid var(--ink-100); }
+    .faq-item:last-child { border-bottom: 1px solid var(--ink-100); }
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 21px 0;
+      color: var(--ink-900);
+      font-size: 14px;
+      font-weight: 750;
+      cursor: pointer;
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      color: var(--blue-700);
+      font-size: 23px;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-answer { max-width: 760px; padding: 0 42px 21px 0; color: var(--ink-500); font-size: 13px; line-height: 1.75; }
+
+    .footer {
+      padding: 36px 0 42px;
+      border-top: 1px solid var(--ink-100);
+      background: var(--white);
+    }
+    .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 30px; }
+    .footer-brand { color: var(--ink-900); font-size: 14px; font-weight: 800; }
+    .footer-copy { max-width: 430px; margin: 7px 0 0; color: var(--ink-500); font-size: 11px; line-height: 1.7; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 17px; }
+    .footer-links a { color: var(--ink-500); font-size: 12px; font-weight: 650; text-decoration: none; }
+    .footer-links a:hover { color: var(--blue-700); }
+
+    :focus-visible { outline: 3px solid rgba(6, 182, 212, .55); outline-offset: 3px; }
+    @media (max-width: 900px) {
+      .hero-grid, .risk-layout, .report-grid, .enforcement-layout { grid-template-columns: 1fr; gap: 32px; }
+      .risk-intro { position: static; }
+      .hero { padding-top: 62px; }
+      .hero-grid { gap: 42px; }
+      .commitment-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(calc(100% - 30px), var(--max-width)); }
+      .header-inner { min-height: 66px; }
+      .header-nav {
+        display: none;
+        position: absolute;
+        top: 66px;
+        left: 15px;
+        right: 15px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px;
+        border: 1px solid var(--ink-100);
+        border-radius: 14px;
+        background: var(--white);
+        box-shadow: var(--shadow-lg);
+      }
+      .header-nav.open { display: flex; }
+      .header-nav a { padding: 12px; }
+      .header-action { justify-content: center; margin-top: 3px; }
+      .menu-toggle { display: inline-grid; place-items: center; }
+      .hero { padding: 54px 0 58px; }
+      h1 { font-size: clamp(2.4rem, 13vw, 3.6rem); }
+      .hero-copy { font-size: 15px; }
+      .section { padding: 63px 0; }
+      .commitment-grid, .guidance-grid { grid-template-columns: 1fr; }
+      .commitment-card { min-height: auto; }
+      .signal-card, .report-card, .enforcement-panel { padding: 23px; }
+      .footer-inner { flex-direction: column; }
+      .footer-links { justify-content: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="VTechOTP beranda">
+        <img src="/assets/logo.png" alt="Logo VTechOTP">
+        <span>VTechOTP</span>
+        <span class="brand-mark">Safety Center</span>
+      </a>
+      <nav class="header-nav" id="headerNav" aria-label="Navigasi halaman">
+        <a href="#komitmen">Komitmen</a>
+        <a href="#larangan">Standar kami</a>
+        <a href="#pelaporan">Pelaporan</a>
+        <a href="#faq">FAQ</a>
+        <a class="header-action" href="/pusat-bantuan">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          Pusat bantuan
+        </a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="headerNav">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Kebijakan keselamatan publik</p>
+          <h1 id="heroTitle">Keselamatan anak adalah standar kami.</h1>
+          <p class="hero-copy">VTechOTP berkomitmen menjaga layanan tetap aman, bertanggung jawab, dan bebas dari eksploitasi anak. Kami melarang segala bentuk penyalahgunaan layanan yang dapat membahayakan anak atau orang di bawah umur.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#pelaporan">
+              Laporkan masalah
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+            <a class="button button-secondary" href="#komitmen">Pelajari komitmen kami</a>
+          </div>
+          <p class="hero-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12 4 4L19 6"/></svg>
+            Kebijakan ini berlaku untuk seluruh pengguna dan seluruh fitur layanan.
+          </p>
+        </div>
+        <aside class="signal-card" aria-label="Ringkasan komitmen keselamatan">
+          <div class="shield">
+            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg>
+          </div>
+          <h2>Ruang digital yang lebih aman dan bertanggung jawab.</h2>
+          <p>Kami menggabungkan aturan penggunaan yang jelas, proses pelaporan, peninjauan internal, dan tindakan tegas untuk mencegah serta menangani risiko keselamatan anak.</p>
+          <div class="signal-status"><span class="status-dot"></span> Komitmen keselamatan aktif</div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="anchor-bar">
+      <div class="container anchor-inner" aria-label="Daftar bagian">
+        <a href="#komitmen">01 Komitmen</a>
+        <a href="#larangan">02 Standar perlindungan</a>
+        <a href="#pelaporan">03 Cara melapor</a>
+        <a href="#orang-tua">04 Panduan wali</a>
+        <a href="#penegakan">05 Penegakan</a>
+        <a href="#faq">06 FAQ</a>
+      </div>
+    </div>
+
+    <section class="section" id="komitmen" aria-labelledby="commitmentTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Komitmen inti</p>
+          <h2 id="commitmentTitle">Kami membangun perlindungan ke dalam cara layanan digunakan.</h2>
+          <p class="section-lead">Child Safety Center ini menjelaskan prinsip yang kami gunakan untuk mencegah penyalahgunaan, merespons laporan, dan melindungi pengguna dari risiko yang berkaitan dengan anak.</p>
+        </div>
+        <div class="commitment-grid">
+          <article class="commitment-card">
+            <div class="icon-box">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="M9 12h6M12 9v6"/></svg>
+            </div>
+            <h3>Zero tolerance</h3>
+            <p>Kami tidak menoleransi eksploitasi seksual anak, materi pelecehan seksual anak, grooming, pemaksaan, perdagangan, atau tindakan yang membahayakan anak.</p>
+          </article>
+          <article class="commitment-card">
+            <div class="icon-box green">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="m7 9 3 3-3 3M12 15h5"/></svg>
+            </div>
+            <h3>Pelaporan yang jelas</h3>
+            <p>Pengguna dapat melaporkan dugaan penyalahgunaan melalui Pusat Bantuan VTechOTP agar laporan dapat dicatat dan ditinjau dengan tepat.</p>
+          </article>
+          <article class="commitment-card">
+            <div class="icon-box cyan">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/><path d="M4.9 4.9 3 3"/></svg>
+            </div>
+            <h3>Respons bertanggung jawab</h3>
+            <p>Kami melakukan peninjauan berdasarkan informasi yang tersedia, mengambil tindakan sesuai tingkat risiko, dan dapat bekerja sama dengan pihak berwenang.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="larangan" aria-labelledby="standardTitle">
+      <div class="container risk-layout">
+        <div class="risk-intro">
+          <div class="icon-box">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4M12 16h.01"/></svg>
+          </div>
+          <h3 id="standardTitle">Tidak ada pengecualian untuk keselamatan anak.</h3>
+          <p>Pelanggaran dapat menyebabkan pembatasan atau penghentian akun, penghapusan akses, penahanan transaksi yang relevan, dan pelaporan kepada pihak yang berwenang bila diperlukan.</p>
+        </div>
+        <div class="risk-list">
+          <article class="risk-item">
+            <div class="risk-number">01</div>
+            <div><h3>Eksploitasi atau pelecehan seksual anak</h3><p>Setiap upaya membuat, menyimpan, meminta, membagikan, menjual, atau memfasilitasi materi seksual yang melibatkan anak dilarang.</p></div>
+          </article>
+          <article class="risk-item">
+            <div class="risk-number">02</div>
+            <div><h3>Grooming dan pendekatan yang manipulatif</h3><p>Penggunaan layanan untuk membangun kepercayaan secara manipulatif, memindahkan komunikasi, atau mempersiapkan eksploitasi anak tidak diperbolehkan.</p></div>
+          </article>
+          <article class="risk-item">
+            <div class="risk-number">03</div>
+            <div><h3>Pemaksaan, ancaman, dan pemerasan</h3><p>Ancaman, pemerasan seksual, pemaksaan pengiriman gambar, atau bentuk kontrol lain terhadap anak dan pengguna rentan dilarang.</p></div>
+          </article>
+          <article class="risk-item">
+            <div class="risk-number">04</div>
+            <div><h3>Perdagangan dan perekrutan yang membahayakan</h3><p>Layanan tidak boleh digunakan untuk perdagangan manusia, perekrutan eksploitatif, atau aktivitas ilegal yang menempatkan anak dalam bahaya.</p></div>
+          </article>
+          <article class="risk-item">
+            <div class="risk-number">05</div>
+            <div><h3>Penyalahgunaan fitur komunikasi dan OTP</h3><p>Dilarang menggunakan nomor virtual, OTP, atau API untuk melewati perlindungan, mengakses akun tanpa izin, atau menyamarkan aktivitas yang membahayakan anak.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pelaporan" aria-labelledby="reportTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Pelaporan</p>
+          <h2 id="reportTitle">Melihat sesuatu yang mengkhawatirkan?</h2>
+          <p class="section-lead">Laporan yang jelas membantu kami memahami konteks dan menentukan tindakan yang tepat. Jangan sebarkan ulang materi berbahaya dan jangan mempertaruhkan keselamatan Anda untuk mengumpulkan bukti.</p>
+        </div>
+        <div class="report-grid">
+          <div class="steps">
+            <article class="step">
+              <div class="step-number">1</div>
+              <div><h3>Amankan diri terlebih dahulu</h3><p>Jika ada ancaman langsung, hubungi layanan darurat atau pihak berwenang setempat. Jangan berkonfrontasi dengan pelaku.</p></div>
+            </article>
+            <article class="step">
+              <div class="step-number">2</div>
+              <div><h3>Catat informasi penting</h3><p>Sertakan waktu, akun, tautan, ID transaksi, dan ringkasan kejadian. Hindari mengunduh atau meneruskan materi seksual yang melibatkan anak.</p></div>
+            </article>
+            <article class="step">
+              <div class="step-number">3</div>
+              <div><h3>Kirim laporan melalui kanal resmi</h3><p>Gunakan Pusat Bantuan VTechOTP dan pilih topik terkait penyalahgunaan, keamanan, atau keselamatan anak.</p></div>
+            </article>
+            <article class="step">
+              <div class="step-number">4</div>
+              <div><h3>Biarkan tim menindaklanjuti</h3><p>Kami dapat meminta detail tambahan bila diperlukan. Kerahasiaan laporan ditangani dengan pertimbangan keamanan dan hukum yang berlaku.</p></div>
+            </article>
+          </div>
+          <aside class="report-card">
+            <div>
+              <div class="shield">
+                <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="M8 12h8M12 8v8"/></svg>
+              </div>
+              <h3>Gunakan kanal resmi kami.</h3>
+              <p>Untuk laporan penyalahgunaan layanan, akses Pusat Bantuan dan berikan informasi yang aman untuk dibagikan. Jangan masukkan data pribadi anak yang tidak diperlukan.</p>
+              <a class="button" href="/pusat-bantuan">Buka Pusat Bantuan <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13"/><path d="m13 6 6 6-6 6"/></svg></a>
+            </div>
+            <p class="report-footnote">Laporan palsu atau laporan yang sengaja digunakan untuk mengganggu pengguna lain juga dapat dikenai tindakan.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="orang-tua" aria-labelledby="parentTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Panduan orang tua dan wali</p>
+          <h2 id="parentTitle">Bantu anak tetap aman di ruang digital.</h2>
+          <p class="section-lead">VTechOTP tidak ditujukan untuk anak di bawah umur yang belum memiliki kecakapan hukum untuk melakukan transaksi keuangan mandiri. Orang tua atau wali tetap menjadi pendamping utama dalam keselamatan digital anak.</p>
+        </div>
+        <div class="guidance-grid">
+          <article class="guidance-card">
+            <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg> Bicarakan batasan privasi</h3>
+            <p>Ajarkan anak untuk tidak membagikan foto pribadi, kode verifikasi, kata sandi, lokasi, atau informasi identitas kepada orang yang tidak dikenal.</p>
+          </article>
+          <article class="guidance-card">
+            <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Perhatikan perubahan perilaku</h3>
+            <p>Perubahan mendadak dalam penggunaan perangkat, kecemasan, atau komunikasi rahasia dapat menjadi alasan untuk membuka percakapan yang tenang dan tidak menghakimi.</p>
+          </article>
+          <article class="guidance-card">
+            <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg> Gunakan kanal bantuan</h3>
+            <p>Jika anak melaporkan ancaman atau pendekatan yang mencurigakan, dengarkan tanpa menyalahkan, simpan informasi yang relevan dengan aman, lalu laporkan melalui kanal resmi.</p>
+          </article>
+          <article class="guidance-card">
+            <h3><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg> Pahami aturan usia</h3>
+            <p>Jangan membuat akun atau melakukan transaksi atas nama anak yang belum memenuhi persyaratan usia dan kecakapan hukum yang berlaku.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="penegakan" aria-labelledby="enforcementTitle">
+      <div class="container enforcement-layout">
+        <div class="enforcement-panel">
+          <p class="section-kicker">Respons dan penegakan</p>
+          <h3 id="enforcementTitle">Kami menilai risiko, bukan hanya kata-kata.</h3>
+          <p>Setiap laporan ditinjau berdasarkan konteks dan informasi yang tersedia. Prioritas utama kami adalah mengurangi risiko terhadap anak, menjaga proses tetap bertanggung jawab, dan mencegah pelanggaran berulang.</p>
+        </div>
+        <div class="enforcement-list">
+          <article class="enforcement-row">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="M9 12h6"/></svg>
+            <div><h3>Pembatasan akses</h3><p>Akun, sesi, fitur, atau transaksi dapat dibatasi saat terdapat indikasi penyalahgunaan atau risiko keselamatan.</p></div>
+          </article>
+          <article class="enforcement-row">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="m8 12 2.5 2.5L16 9"/></svg>
+            <div><h3>Peninjauan dan dokumentasi</h3><p>Informasi laporan dicatat seperlunya untuk membantu peninjauan, keputusan penegakan, dan pencegahan kejadian serupa.</p></div>
+          </article>
+          <article class="enforcement-row">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg>
+            <div><h3>Kerja sama dengan pihak berwenang</h3><p>Jika diwajibkan hukum atau diperlukan untuk melindungi anak, kami dapat menanggapi permintaan resmi dan meneruskan informasi yang relevan.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="faq" aria-labelledby="faqTitle">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Pertanyaan umum</p>
+          <h2 id="faqTitle">Jawaban singkat tentang kebijakan ini.</h2>
+        </div>
+        <div class="faq-wrap">
+          <details class="faq-item">
+            <summary>Apakah VTechOTP ditujukan untuk anak-anak?</summary>
+            <div class="faq-answer">Tidak. Layanan VTechOTP ditujukan untuk pengguna yang memenuhi persyaratan usia dan kecakapan hukum yang berlaku. Anak di bawah umur tidak boleh membuat akun atau melakukan transaksi keuangan mandiri.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Apa yang harus saya lakukan jika ada bahaya langsung?</summary>
+            <div class="faq-answer">Utamakan keselamatan. Hubungi layanan darurat atau pihak berwenang setempat, dan jangan berkonfrontasi dengan pihak yang diduga sebagai pelaku. Setelah aman, Anda dapat mengirim laporan melalui Pusat Bantuan VTechOTP.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Informasi apa yang sebaiknya dicantumkan dalam laporan?</summary>
+            <div class="faq-answer">Sertakan ringkasan kejadian, waktu, nama pengguna atau ID yang relevan, tautan, dan ID transaksi bila ada. Jangan mengirimkan materi seksual yang melibatkan anak atau data pribadi yang tidak diperlukan.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Bagaimana VTechOTP menindak laporan?</summary>
+            <div class="faq-answer">Kami meninjau informasi yang tersedia, menilai tingkat risikonya, dan dapat membatasi akun atau fitur terkait. Untuk kasus tertentu, kami dapat bekerja sama dengan pihak berwenang sesuai hukum yang berlaku.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Di mana saya dapat membaca kebijakan lain?</summary>
+            <div class="faq-answer">Baca <a href="/kebijakan-privasi">Kebijakan Privasi</a> dan <a href="/syarat-ketentuan">Syarat dan Ketentuan Layanan</a> untuk memahami pemrosesan data serta aturan penggunaan VTechOTP secara lebih lengkap.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">VTechOTP Child Safety Center</div>
+        <p class="footer-copy">Halaman ini menjelaskan komitmen dan standar keselamatan anak VTechOTP. Terakhir diperbarui: 30 Agustus 2026.</p>
+      </div>
+      <nav class="footer-links" aria-label="Tautan footer">
+        <a href="/">Beranda</a>
+        <a href="/pusat-bantuan">Pusat Bantuan</a>
+        <a href="/kebijakan-privasi">Privasi</a>
+        <a href="/syarat-ketentuan">Syarat layanan</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const headerNav = document.getElementById('headerNav');
+
+    menuToggle.addEventListener('click', () => {
+      const open = headerNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+    });
+
+    headerNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        headerNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Buka menu');
+      });
+    });
+  </script>
+</body>
+</html>

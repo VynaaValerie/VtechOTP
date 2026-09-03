@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Syarat &amp; Ketentuan Layanan — VTechOTP</title>
+  <meta name="description" content="Syarat & Ketentuan resmi penggunaan layanan nomor virtual OTP, API gateway pengembang, dan pengisian saldo di VTechOTP. Kepatuhan hukum dan aturan penggunaan yang sah." />
+  <meta name="keywords" content="syarat ketentuan, terms of service, vtechotp legal, kebijakan nomor virtual, aturan otp, api gateway" />
+  <meta name="author" content="VTechOTP" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome 6 CDN (NO EMOJIS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css?v=1.0.2" />
+  <style>
+    .doc-section {
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .doc-section:last-of-type {
+      border-bottom: none;
+    }
+    .doc-section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .doc-section h2 i {
+      color: var(--blue-600);
+      font-size: 1.15rem;
+    }
+    .doc-section p {
+      font-size: 0.95rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .doc-section ul {
+      padding-left: 24px;
+      margin-bottom: 14px;
+    }
+    .doc-section li {
+      font-size: 0.93rem;
+      color: var(--gray-700);
+      line-height: 1.65;
+      margin-bottom: 8px;
+    }
+    .legal-alert-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid var(--blue-600);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 28px;
+    }
+    .legal-alert-box.danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+      border-left-color: #dc2626;
+    }
+    .legal-alert-box h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legal-alert-box p {
+      font-size: 0.88rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <img src="/assets/logo.png" alt="VTechOTP Logo" class="nav-logo" />
+        <span class="nav-name">VTechOTP</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"><i class="fa-solid fa-house"></i> Beranda</a></li>
+        <li><a href="/docs"><i class="fa-solid fa-code"></i> API Docs</a></li>
+        <li><a href="/blog"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+        <li><a href="/pusat-bantuan"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+        <li><a href="/syarat-ketentuan" class="active"><i class="fa-solid fa-file-contract"></i> S&amp;K</a></li>
+        <li><a href="/kebijakan-privasi"><i class="fa-solid fa-shield-halved"></i> Privasi</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <a href="/playstore" class="nav-cta" title="Download Android APK"><i class="fa-brands fa-google-play"></i> Android</a>
+        <a href="/appstore" class="nav-cta" style="background:#000;border-color:#333;" title="Download iOS IPA"><i class="fa-brands fa-apple"></i> iOS</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu">
+      <a href="/" class="mob-link"><i class="fa-solid fa-house"></i> Beranda</a>
+      <a href="/docs" class="mob-link" style="color: var(--blue-600); font-weight: 700;"><i class="fa-solid fa-code"></i> Developer API Docs</a>
+      <a href="/blog" class="mob-link"><i class="fa-solid fa-newspaper"></i> Blog</a>
+      <a href="/pusat-bantuan" class="mob-link"><i class="fa-solid fa-circle-question"></i> Bantuan</a>
+      <a href="/syarat-ketentuan" class="mob-link"><i class="fa-solid fa-file-contract"></i> S&amp;K</a>
+      <a href="/kebijakan-privasi" class="mob-link"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a>
+      <a href="/playstore" class="mob-link mob-cta"><i class="fa-brands fa-google-play"></i> Google Play (Android)</a>
+      <a href="/appstore" class="mob-link mob-cta" style="background:#000;margin-top:6px;"><i class="fa-brands fa-apple"></i> App Store (iOS)</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="page-header-container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/"><i class="fa-solid fa-house"></i> Beranda</a>
+        <i class="fa-solid fa-chevron-right sep"></i>
+        <span>Syarat &amp; Ketentuan</span>
+      </nav>
+      <h1 class="page-title">Syarat &amp; Ketentuan Layanan</h1>
+      <p class="page-subtitle">
+        Harap membaca Syarat &amp; Ketentuan berikut secara seksama sebelum mengakses atau menggunakan aplikasi, website, API, dan layanan VTechOTP.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <section style="padding: 60px 0 100px; background: #FAFDFE;">
+    <div class="section-container">
+      <div class="doc-container" style="background: white; border: 1px solid var(--gray-200); border-radius: 20px; padding: 36px 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+        
+        <div class="legal-alert-box">
+          <h4><i class="fa-solid fa-circle-info" style="color: var(--blue-600);"></i> Pemberitahuan Kepatuhan Hukum &amp; Legalitas</h4>
+          <p>
+            VTechOTP beroperasi sebagai platform penyedia gateway nomor virtual cloud internasional untuk keperluan pengujian sistem perangkat lunak, verifikasi developer/QA, dan perlindungan privasi komunikasi yang sah. Layanan kami <strong>tidak menggunakan atau memperjualbelikan data identitas kependudukan fisik (KTP/KK) warga negara</strong> dan melarang keras segala bentuk penyalahgunaan untuk tindak pidana.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-scale-balanced"></i> 1. KETENTUAN UMUM</h2>
+          <p>
+            Dengan mengakses, mengunduh, menginstal, membuat akun, melakukan deposit, atau menggunakan layanan VTechOTP, pengguna dianggap telah membaca, memahami, dan menyetujui seluruh Syarat &amp; Ketentuan ini.
+          </p>
+          <p>
+            Apabila pengguna tidak menyetujui ketentuan yang berlaku, pengguna tidak diperkenankan menggunakan layanan VTechOTP.
+          </p>
+          <p>
+            VTechOTP berhak memperbarui Syarat &amp; Ketentuan ini dari waktu ke waktu. Perubahan akan diberlakukan setelah dipublikasikan melalui platform resmi VTechOTP.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-mobile-screen-button"></i> 2. LAYANAN NOMOR VIRTUAL &amp; OTP</h2>
+          <p>
+            VTechOTP menyediakan akses nomor telepon virtual sementara yang dapat digunakan untuk menerima kode verifikasi SMS (OTP) pada berbagai platform yang tersedia di dalam layanan.
+          </p>
+          <ul>
+            <li>Nomor virtual bersifat sementara dan bukan merupakan nomor telepon permanen atau kepemilikan pengguna.</li>
+            <li>Ketersediaan nomor, negara, operator, platform tujuan, serta kemampuan menerima SMS dapat berbeda-beda berdasarkan ketersediaan layanan dan penyedia infrastruktur yang digunakan.</li>
+            <li>VTechOTP dapat menggunakan penyedia layanan atau infrastruktur pihak ketiga untuk mendukung penyediaan nomor virtual dan penerimaan SMS.</li>
+            <li>VTechOTP tidak menjamin bahwa setiap nomor akan selalu dapat digunakan pada seluruh platform atau layanan pihak ketiga.</li>
+            <li>Setiap transaksi mengikuti ketentuan, durasi, dan mekanisme yang ditampilkan pada sistem VTechOTP saat transaksi dilakukan.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-rotate-left"></i> 3. GARANSI &amp; AUTO REFUND</h2>
+          <p>
+            VTechOTP menyediakan mekanisme garansi dan pengembalian saldo secara otomatis untuk transaksi yang memenuhi ketentuan garansi:
+          </p>
+          <ul>
+            <li>Apabila OTP tidak diterima dalam batas waktu transaksi dan transaksi memenuhi persyaratan refund, saldo akan dikembalikan secara otomatis sesuai dengan sistem dan ketentuan VTechOTP.</li>
+            <li>Refund tidak berlaku untuk transaksi yang telah berhasil menerima OTP atau transaksi yang tidak memenuhi ketentuan garansi.</li>
+            <li>VTechOTP dapat melakukan pemeriksaan terhadap transaksi yang dianggap tidak wajar atau berpotensi disalahgunakan sebelum memberikan refund.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-wallet"></i> 4. SALDO, DEPOSIT &amp; PEMBAYARAN</h2>
+          <p>
+            Layanan VTechOTP menggunakan sistem saldo internal untuk melakukan transaksi:
+          </p>
+          <ul>
+            <li>Deposit dapat dilakukan melalui metode pembayaran yang tersedia dan ditampilkan secara resmi pada platform VTechOTP, termasuk QRIS, transfer bank, dan e-wallet yang didukung.</li>
+            <li>Deposit melalui metode pembayaran otomatis dapat diproses secara otomatis sesuai dengan sistem pembayaran yang digunakan.</li>
+            <li>Saldo yang telah berhasil masuk ke akun pada prinsipnya tidak dapat ditarik atau diuangkan kembali, kecuali apabila diwajibkan oleh peraturan yang berlaku, terjadi kesalahan transaksi, atau berdasarkan kebijakan refund VTechOTP.</li>
+            <li>Saldo pengguna tidak memiliki tanggal kedaluwarsa selama akun dan layanan VTechOTP masih tersedia, kecuali terdapat ketentuan lain yang diberitahukan kepada pengguna.</li>
+            <li>Apabila terjadi kegagalan sistem pada saat transaksi dan saldo telah terpotong tanpa layanan berhasil diberikan, sistem dapat mengembalikan saldo sesuai dengan mekanisme yang berlaku.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-ban"></i> 5. PENGGUNAAN YANG DILARANG</h2>
+          <div class="legal-alert-box danger">
+            <h4><i class="fa-solid fa-triangle-exclamation" style="color: #dc2626;"></i> Larangan Mutlak Tindak Melawan Hukum</h4>
+            <p>
+              Pengguna dilarang keras menggunakan VTechOTP untuk kegiatan apa pun yang melanggar hukum Republik Indonesia (termasuk UU ITE, UU Telekomunikasi, UU Perlindungan Data Pribadi, KUHP), hukum internasional yang berlaku, maupun ketentuan platform pihak ketiga.
+            </p>
+          </div>
+          <p>
+            Larangan tersebut termasuk namun tidak terbatas pada:
+          </p>
+          <ul>
+            <li>Penipuan, scam, phishing, dan social engineering.</li>
+            <li>Pencurian, manipulasi, atau penyalahgunaan data identitas pihak lain.</li>
+            <li>Pengambilalihan akun secara tidak sah milik pihak lain (account takeover).</li>
+            <li>Peretasan atau upaya melewati sistem keamanan secara tidak sah (hacking/bypass ilegal).</li>
+            <li>Spam atau penyalahgunaan layanan secara massal.</li>
+            <li>Aktivitas cybercrime, perjudian daring (judi online), kejahatan finansial, atau pencucian uang.</li>
+            <li>Pembuatan akun palsu secara massal untuk tujuan penyalahgunaan atau tindakan melawan hukum.</li>
+            <li>Segala aktivitas lain yang merugikan pihak lain atau melanggar norma hukum yang berlaku.</li>
+          </ul>
+          <p>
+            VTechOTP berhak membatasi, membekukan, atau menutup akun pengguna secara permanen apabila ditemukan aktivitas yang melanggar ketentuan ini atau berpotensi membahayakan stabilitas layanan. Dalam kondisi tertentu, tindakan dapat dilakukan tanpa pemberitahuan terlebih dahulu untuk mencegah kerugian lebih lanjut.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-layer-group"></i> 6. PENGGUNAAN PADA PLATFORM PIHAK KETIGA</h2>
+          <p>
+            VTechOTP bukan pemilik, pengelola, terafiliasi resmi, atau perwakilan dari platform pihak ketiga mana pun yang dapat digunakan bersama layanan VTechOTP.
+          </p>
+          <ul>
+            <li>Nama, logo, merek dagang, dan layanan pihak ketiga seperti WhatsApp, Telegram, Instagram, Google, Meta, dan platform lainnya merupakan milik sah dari masing-masing pemilik hak cipta.</li>
+            <li>Pengguna bertanggung jawab penuh untuk memastikan bahwa penggunaan nomor virtual sesuai dengan ketentuan dan kebijakan platform yang digunakan.</li>
+            <li>VTechOTP tidak menjamin bahwa nomor virtual akan selalu diterima atau dipertahankan oleh platform pihak ketiga tertentu.</li>
+            <li>Pemblokiran akun, penolakan nomor, perubahan kebijakan, atau tindakan moderasi yang dilakukan oleh platform pihak ketiga berada di luar kendali dan tanggung jawab VTechOTP.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-network-wired"></i> 7. PENYEDIA LAYANAN PIHAK KETIGA</h2>
+          <p>
+            Untuk menyediakan layanan nomor virtual dan penerimaan SMS, VTechOTP dapat menggunakan infrastruktur atau layanan dari penyedia pihak ketiga internasional.
+          </p>
+          <p>
+            Ketersediaan nomor, penerimaan SMS, kualitas layanan, serta waktu penerimaan OTP dapat dipengaruhi oleh penyedia tersebut, operator telekomunikasi, maupun platform tujuan. VTechOTP akan berupaya menjaga ketersediaan layanan sebaik mungkin, namun tidak dapat menjamin layanan akan selalu bebas gangguan teknis dari pihak operator.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-lock"></i> 8. KEAMANAN &amp; AKUN PENGGUNA</h2>
+          <ul>
+            <li>Pengguna bertanggung jawab penuh menjaga kerahasiaan dan keamanan akun, password, token otentikasi, API key, dan informasi akses lainnya.</li>
+            <li>Pengguna dilarang membagikan API key atau kredensial akun kepada pihak yang tidak berwenang.</li>
+            <li>Apabila pengguna mendeteksi adanya akses tidak sah atau aktivitas mencurigakan pada akun, pengguna wajib segera menghubungi VTechOTP melalui saluran customer support resmi.</li>
+            <li>VTechOTP dapat menerapkan rate limit, pembatasan volume transaksi, sistem deteksi penyalahgunaan, atau tindakan keamanan lainnya demi menjaga integritas sistem.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-code"></i> 9. API DEVELOPER</h2>
+          <ul>
+            <li>Penggunaan API VTechOTP wajib mengikuti dokumentasi resmi, batas laju permintaan (rate limit), dan ketentuan teknis yang ditetapkan.</li>
+            <li>Pengguna API dilarang keras menggunakan API untuk spamming, serangan terhadap server (DDoS/Brute Force), eksploitasi resource, aktivitas ilegal, atau tindakan yang mengganggu kestabilan sistem.</li>
+            <li>VTechOTP berhak membatasi atau menonaktifkan API key secara sepihak jika terindikasi melakukan penyalahgunaan atau pelanggaran ketentuan.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-shield-halved"></i> 10. BATASAN TANGGUNG JAWAB</h2>
+          <p>
+            VTechOTP menyediakan sarana dan infrastruktur gateway teknis untuk membantu pengguna menerima SMS verifikasi melalui nomor virtual cloud.
+          </p>
+          <p>
+            VTechOTP tidak bertanggung jawab atas keputusan, kebijakan, pemblokiran, pembatasan, atau tindakan yang dilakukan oleh platform pihak ketiga terhadap akun pengguna.
+          </p>
+          <p>
+            VTechOTP juga tidak bertanggung jawab atas kegagalan layanan yang disebabkan oleh faktor di luar kendali yang wajar, termasuk namun tidak terbatas pada gangguan operator seluler internasional, bencana alam, downtime penyedia infrastruktur hulu, gangguan jaringan internet global, atau perubahan regulasi telekomunikasi.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-arrows-rotate"></i> 11. PERUBAHAN LAYANAN</h2>
+          <p>
+            VTechOTP berhak melakukan perubahan, penambahan, pengurangan, pemeliharaan teknis, penghentian sementara, atau penghentian suatu fitur maupun layanan apabila diperlukan untuk peningkatan keamanan, pemeliharaan sistem, pengembangan teknologi, kepatuhan regulasi, atau alasan operasional lainnya.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-gavel"></i> 12. PELANGGARAN, PENEGAKAN KETENTUAN &amp; KERJA SAMA HUKUM</h2>
+          <p>
+            Apabila pengguna terbukti atau terindikasi kuat melanggar Syarat &amp; Ketentuan ini, VTechOTP berhak mengambil tindakan tegas yang diperlukan, termasuk:
+          </p>
+          <ul>
+            <li>Memberikan peringatan administratif.</li>
+            <li>Membatasi volume transaksi dan fitur akun.</li>
+            <li>Membekukan atau menutup akun dan akses API secara permanen tanpa kompensasi.</li>
+            <li>Menyimpan dan menyerahkan data teknis log yang relevan kepada pihak penegak hukum yang berwenang (seperti Kepolisian Republik Indonesia) sesuai dengan prosedur dan ketentuan hukum yang berlaku.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-user-shield"></i> 13. PRIVASI</h2>
+          <p>
+            Pengelolaan dan pelindungan data pengguna diatur lebih lanjut secara terperinci dalam <a href="/kebijakan-privasi" style="color: var(--blue-600); font-weight: 600; text-decoration: underline;">Kebijakan Privasi VTechOTP</a>. Pengguna disarankan membaca Kebijakan Privasi sebelum menggunakan layanan.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h2><i class="fa-solid fa-headset"></i> 14. HUBUNGI KAMI</h2>
+          <p>
+            Apabila pengguna memiliki pertanyaan, laporan kendala, atau klarifikasi terkait layanan dan Syarat &amp; Ketentuan ini, silakan menghubungi kami melalui menu <a href="/pusat-bantuan" style="color: var(--blue-600); font-weight: 600;">Pusat Bantuan</a> atau saluran Customer Support resmi yang tersedia pada aplikasi dan website.
+          </p>
+          <p style="margin-top: 20px; font-weight: 600; color: var(--gray-800);">
+            Dengan menggunakan layanan VTechOTP, pengguna menyatakan telah membaca, memahami, dan menyetujui seluruh isi Syarat &amp; Ketentuan ini secara sadar dan tanpa paksaan.
+          </p>
+        </div>
+
+        <div class="seo-tags-cloud" style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="seo-tag"><i class="fa-solid fa-shield"></i> Syarat Layanan Resmi</span>
+          <span class="seo-tag"><i class="fa-solid fa-check"></i> Kepatuhan Regulasi RI</span>
+          <span class="seo-tag"><i class="fa-solid fa-lock"></i> Keamanan Layanan Cloud</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <img src="/assets/logo.png" alt="VTechOTP Logo" class="footer-logo" />
+          <span class="footer-name">VTechOTP</span>
+        </div>
+        <p class="footer-desc">Platform layanan nomor virtual OTP &amp; gateway verifikasi SMS terpercaya.</p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/docs"><i class="fa-solid fa-code"></i> API Developer</a></li>
+            <li><a href="/blog">Blog &amp; Panduan</a></li>
+            <li><a href="/pusat-bantuan">Pusat Bantuan</a></li>
+            <li><a href="/playstore">Google Play (Android)</a></li>
+            <li><a href="/appstore">App Store (iOS)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legalitas &amp; Keamanan</h4>
+          <ul>
+            <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+            <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VTechOTP. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
