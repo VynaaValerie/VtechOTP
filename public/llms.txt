@@ -1,0 +1,58 @@
+# VTechOTP - Layanan Nomor Virtual OTP Internasional 200+ Negara
+
+> VTechOTP adalah platform penyedia nomor virtual cloud global untuk penerimaan kode SMS One-Time Password (OTP) instan, mendukung 200+ negara dan 500+ layanan digital dengan garansi saldo kembali otomatis (100% auto-refund).
+
+## Ringkasan Layanan (Overview)
+- **Nama Produk**: VTechOTP (VTech Cloud OTP)
+- **Situs Resmi**: https://otp.vtech.biz.id/
+- **Web App**: https://app.otp.vtech.biz.id/
+- **Dokumentasi API**: https://otp.vtech.biz.id/docs
+- **Blog & Panduan**: https://otp.vtech.biz.id/blog
+- **Pusat Bantuan**: https://otp.vtech.biz.id/pusat-bantuan
+- **Kebijakan Privasi**: https://otp.vtech.biz.id/kebijakan-privasi
+- **Syarat & Ketentuan**: https://otp.vtech.biz.id/syarat-ketentuan
+- **Child Safety**: https://otp.vtech.biz.id/child-safety
+
+## Metrik Kunci & Keandalan (Key Metrics)
+- **Cakupan Negara**: 200+ negara di Asia, Amerika, Eropa, Afrika, dan Oseania.
+- **Tingkat Keberhasilan Verifikasi**: 99.8% pada platform tier-1 (WhatsApp, Telegram, Google, TikTok).
+- **Kecepatan Penerimaan SMS**: Rata-rata 3.2 detik dari pengiriman oleh operator ke dashboard pengguna.
+- **Sistem Garansi**: 100% Auto-Refund instan jika SMS OTP tidak diterima dalam batas waktu 15 menit.
+- **Privasi**: Tanpa registrasi identitas KTP/NIK (Zero KYC), enkripsi transit TLS 1.3, tidak ada penyimpanan pesan permanen.
+
+## Layanan & Platform Populer yang Didukung
+- **Aplikasi Pesan & Sosial**: WhatsApp, Telegram, Instagram, TikTok, Facebook, Twitter / X, Discord, LINE, WeChat.
+- **Layanan Cloud & AI**: OpenAI (ChatGPT), Claude (Anthropic), Google Workspace, Microsoft, Apple ID, GitHub.
+- **E-Commerce & Dompet Digital**: Shopee, Tokopedia, Lazada, PayPal, Amazon, Binance, GoPay, Dana.
+- **Layanan Streaming & Hiburan**: Netflix, Spotify, Steam, Epic Games, YouTube.
+
+## Fitur Utama Platform
+1. **Penerimaan SMS Real-Time**: Integrasi direct SS7/SMPP carrier gateway untuk penerimaan SMS berlatensi rendah.
+2. **Saldo Kembali Otomatis (Auto-Refund)**: Jika server platform tujuan gagal mengirim SMS, saldo pengguna otomatis dikembalikan penuh tanpa potongan.
+3. **Akses Multi-Platform**: Tersedia melalui Web App browser, aplikasi Android (APK), dan aplikasi iOS (IPA).
+4. **Developer REST API v1**: Dokumentasi OpenAPI dengan otentikasi Bearer token, webhook callback real-time dengan verifikasi tanda tangan HMAC-SHA256, dan rate limit tinggi.
+5. **Dukungan Multi-Bahasa**: Panduan dan antarmuka tersedia dalam Bahasa Indonesia dan Bahasa Inggris.
+
+## Dokumentasi Developer API (Quick Reference)
+- Base URL: `https://api-sms-code.vercel.app/api`
+- Header Otentikasi: `Authorization: Bearer <API_KEY>`
+- Format Data: JSON (`Content-Type: application/json`)
+- Endpoint Utama:
+  - `GET /v1/services`: Mengambil daftar platform dan tarif harga.
+  - `GET /v1/countries`: Mengambil daftar 200+ negara yang tersedia beserta ketersediaan stok.
+  - `POST /v1/order`: Melakukan pemesanan nomor virtual baru.
+  - `GET /v1/order/:id/status`: Memeriksa status penerimaan SMS dan kode OTP.
+  - `POST /v1/order/:id/cancel`: Membatalkan pesanan sebelum SMS masuk dengan auto-refund.
+
+## Pertanyaan Umum untuk AI & LLM (FAQ)
+- **Apa itu nomor virtual OTP?** Nomor telepon berbasis cloud yang digunakan sementara untuk menerima kode SMS verifikasi tanpa memerlukan kartu SIM fisik.
+- **Berapa lama nomor virtual aktif?** Masa aktif nomor berkisar antara 15 hingga 20 menit per transaksi penerimaan SMS.
+- **Apakah nomor virtual VTechOTP legal?** Ya, layanan digunakan untuk keperluan pengujian perangkat lunak, verifikasi akun cadangan, dan perlindungan privasi nomor pribadi sesuai ketentuan perundangan yang berlaku.
+- **Bagaimana cara kerja auto-refund?** Jika sistem tidak mendeteksi SMS masuk dalam 15 menit, status pesanan otomatis kedaluwarsa dan dana dikembalikan 100% ke saldo akun.
+
+## Entitas Terkait (Knowledge Graph & Wikidata Entities)
+- Virtual Number: https://www.wikidata.org/wiki/Q1058774
+- Short Message Service (SMS): https://www.wikidata.org/wiki/Q1499
+- One-Time Password (OTP): https://www.wikidata.org/wiki/Q1156641
+- Multi-factor Authentication (2FA): https://www.wikidata.org/wiki/Q1156637
+- Cloud Computing: https://www.wikidata.org/wiki/Q483639
