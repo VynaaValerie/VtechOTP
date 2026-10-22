@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "vtechotp-developer-api-collection",
+    "name": "VTechOTP Developer API v1",
+    "description": "Postman Collection for VTechOTP Developer API v1. Includes all balance, catalog, virtual phone number ordering, SMS OTP polling, deposit, and webhook endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://app.otp.vtech.biz.id/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "apiToken",
+      "value": "vtk_your_api_token_here",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{apiToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "1. User & Balance",
+      "item": [
+        {
+          "name": "Get Balance & Limits",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/balance",
+              "host": ["{{baseUrl}}"],
+              "path": ["balance"]
+            }
+          }
+        },
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["profile"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Catalog & Products",
+      "item": [
+        {
+          "name": "List Countries (200+)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/catalog/countries",
+              "host": ["{{baseUrl}}"],
+              "path": ["catalog", "countries"]
+            }
+          }
+        },
+        {
+          "name": "List Platforms & Services",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/catalog/services",
+              "host": ["{{baseUrl}}"],
+              "path": ["catalog", "services"]
+            }
+          }
+        },
+        {
+          "name": "List Operators",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/catalog/operators?country_id=6&platform_id=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["catalog", "operators"],
+              "query": [
+                { "key": "country_id", "value": "6" },
+                { "key": "platform_id", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Products & Pricing (Smart Line Health)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/catalog/products?country_id=6&platform_id=1&sort=quality",
+              "host": ["{{baseUrl}}"],
+              "path": ["catalog", "products"],
+              "query": [
+                { "key": "country_id", "value": "6" },
+                { "key": "platform_id", "value": "1" },
+                { "key": "sort", "value": "quality" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Orders & SMS OTP",
+      "item": [
+        {
+          "name": "Create Order (Rent Virtual Number)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country_id\": 6,\n  \"platform_id\": 1,\n  \"operator_id\": 22\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "create"]
+            }
+          }
+        },
+        {
+          "name": "Get Order List (History)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/orders?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Active Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/orders/active",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "active"]
+            }
+          }
+        },
+        {
+          "name": "Get Order Detail & Incoming OTP Code",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/orders/89201",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "89201"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Order (100% Refund)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/orders/89201/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "89201", "cancel"]
+            }
+          }
+        },
+        {
+          "name": "Finish Order",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/orders/89201/finish",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "89201", "finish"]
+            }
+          }
+        },
+        {
+          "name": "Resend SMS (Secondary Code)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/orders/89201/resend",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "89201", "resend"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Deposits & Payment Gateway",
+      "item": [
+        {
+          "name": "Get Payment Channels",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/deposits/channels",
+              "host": ["{{baseUrl}}"],
+              "path": ["deposits", "channels"]
+            }
+          }
+        },
+        {
+          "name": "Create Deposit Invoice (QRIS / VA / Retail)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel_code\": \"11\",\n  \"amount\": 50000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/deposits/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["deposits", "create"]
+            }
+          }
+        },
+        {
+          "name": "Get Deposit Invoice Status",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/deposits/VTO1740645600000A1B",
+              "host": ["{{baseUrl}}"],
+              "path": ["deposits", "VTO1740645600000A1B"]
+            }
+          }
+        },
+        {
+          "name": "Get Deposit History",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/deposits?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["deposits"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Deposit Limits & Config",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/deposits/config",
+              "host": ["{{baseUrl}}"],
+              "path": ["deposits", "config"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Webhooks",
+      "item": [
+        {
+          "name": "Get Webhook Configuration",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/webhook",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhook"]
+            }
+          }
+        },
+        {
+          "name": "Update Webhook URL & Secret",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://yourdomain.com/webhook\",\n  \"secret\": \"sec_your_custom_secret_here\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhook",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhook"]
+            }
+          }
+        },
+        {
+          "name": "Dispatch Test Webhook Event",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/webhook/test",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhook", "test"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

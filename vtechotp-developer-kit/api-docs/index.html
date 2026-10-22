@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>VTechOTP Developer API v1 — Global Documentation & Starter Kit</title>
+  <meta name="description" content="Official VTechOTP Developer API v1 Documentation. Instant virtual phone numbers, automated SMS OTP verification for 200+ countries, multi-currency & crypto payments, 100% auto-refund guarantee.">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+  <link rel="shortcut icon" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --sidebar-bg: #0f172a;
+      --card-bg: #131d31;
+      --card-border: #223049;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+      --accent-hover: #1d4ed8;
+      --accent-bg: rgba(37, 99, 235, 0.12);
+      --green: #10b981;
+      --green-bg: rgba(16, 185, 129, 0.12);
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.12);
+      --yellow: #f59e0b;
+      --yellow-bg: rgba(245, 158, 11, 0.12);
+      --purple: #8b5cf6;
+      --purple-bg: rgba(139, 92, 246, 0.12);
+      --code-bg: #050811;
+      --code-border: #1e293b;
+      --header-bg: rgba(15, 23, 42, 0.88);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --sidebar-bg: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+      --accent-hover: #1d4ed8;
+      --accent-bg: rgba(37, 99, 235, 0.08);
+      --green: #059669;
+      --green-bg: rgba(16, 185, 129, 0.1);
+      --red: #dc2626;
+      --red-bg: rgba(239, 68, 68, 0.1);
+      --yellow: #d97706;
+      --yellow-bg: rgba(245, 158, 11, 0.1);
+      --purple: #7c3aed;
+      --purple-bg: rgba(124, 58, 237, 0.1);
+      --code-bg: #0f172a;
+      --code-border: #334155;
+      --header-bg: rgba(255, 255, 255, 0.92);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Mobile Topbar Header ── */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--header-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0 16px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 90;
+    }
+
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .mobile-brand .logo-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+    }
+    .mobile-brand .logo-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      background: var(--accent-bg);
+      color: var(--accent-light);
+      border-radius: 6px;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+    }
+
+    .mobile-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .icon-btn:hover { background: var(--card-border); }
+    .icon-btn svg { width: 18px; height: 18px; stroke: currentColor; }
+
+    /* ── Language Switcher UI ── */
+    .lang-switcher {
+      display: inline-flex;
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Backdrop Overlay (Mobile) ── */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 95;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .sidebar-backdrop.active { display: block; opacity: 1; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 300px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100%;
+      z-index: 100;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sidebar-brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.3px;
+    }
+    .logo-wrap .logo-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+    }
+    .logo-badge {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      background: var(--accent-bg);
+      color: var(--accent-light);
+      border-radius: 6px;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+    }
+
+    .sidebar-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--card-border) transparent;
+    }
+    .sidebar-scroll::-webkit-scrollbar { width: 5px; }
+    .sidebar-scroll::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+
+    .nav-group-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin: 16px 8px 8px 8px;
+    }
+    .nav-group-title:first-child { margin-top: 4px; }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 10px;
+      border-radius: 7px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .nav-link:hover {
+      background: var(--card-bg);
+      color: var(--text);
+    }
+    .nav-link.active {
+      background: var(--accent-bg);
+      color: var(--accent-light);
+      font-weight: 600;
+    }
+    .nav-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .nav-icon svg { width: 14px; height: 14px; stroke: currentColor; }
+
+    .method-tag {
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      min-width: 42px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .tag-get { background: var(--green-bg); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.25); }
+    .tag-post { background: var(--accent-bg); color: var(--accent-light); border: 1px solid rgba(59, 130, 246, 0.25); }
+    .tag-patch { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(245, 158, 11, 0.25); }
+    .tag-delete { background: var(--red-bg); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.25); }
+    .tag-crypto { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(139, 92, 246, 0.25); }
+
+    /* ── Main Content Area ── */
+    .content-area {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      background: var(--bg);
+      position: relative;
+    }
+    .content-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 32px 100px;
+    }
+
+    /* ── Toolkit Action Bar ── */
+    .toolkit-banner {
+      background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(139,92,246,0.12));
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .toolkit-info h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolkit-info p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .toolkit-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .toolkit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .toolkit-btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+    .toolkit-btn-primary:hover { background: var(--accent-hover); }
+    .toolkit-btn-secondary {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+    .toolkit-btn-secondary:hover { background: var(--card-border); }
+
+    /* ── Section Titles & Headers ── */
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .doc-section {
+      margin-bottom: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--card-border);
+    }
+    .doc-section:first-of-type { border-top: none; padding-top: 0; }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: var(--accent-bg);
+      color: var(--accent-light);
+    }
+    .section-title-icon svg { width: 16px; height: 16px; stroke: currentColor; }
+
+    .endpoint-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .endpoint-path {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── Callout Box ── */
+    .callout-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .callout-box.green { border-left-color: var(--green); }
+    .callout-box.yellow { border-left-color: var(--yellow); }
+    .callout-box.purple { border-left-color: var(--purple); }
+    .callout-icon {
+      color: var(--accent-light);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .callout-box.green .callout-icon { color: var(--green); }
+    .callout-box.yellow .callout-icon { color: var(--yellow); }
+    .callout-box.purple .callout-icon { color: var(--purple); }
+    .callout-icon svg { width: 18px; height: 18px; stroke: currentColor; }
+
+    /* ── Code Blocks & Tabs ── */
+    .code-box {
+      background: var(--code-bg, #060913);
+      border: 1px solid var(--code-border, #1e293b);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 16px 0 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .code-box:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 6px 24px rgba(37, 99, 235, 0.12);
+    }
+    .code-header {
+      background: rgba(15, 23, 42, 0.75);
+      border-bottom: 1px solid var(--code-border);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .code-tabs {
+      display: flex;
+      gap: 4px;
+    }
+    .code-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .code-tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .code-tab-btn.active {
+      background: var(--accent-bg);
+      color: var(--accent-light);
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--code-border);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+    .copy-btn:hover { color: var(--text); border-color: var(--text-muted); }
+    .copy-btn svg { width: 12px; height: 12px; stroke: currentColor; }
+
+    pre {
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--card-border) transparent;
+      background: transparent !important;
+    }
+    pre code { font-family: inherit; }
+
+    /* ── Syntax Highlighting Tokens (Dark Mode) ── */
+    .tok-key { color: #38bdf8; font-weight: 600; }          /* Sky blue JSON keys */
+    .tok-str { color: #4ade80; }                             /* Emerald mint strings */
+    .tok-num { color: #fb923c; }                             /* Coral orange numbers */
+    .tok-bool { color: #f472b6; font-weight: 600; }         /* Pink booleans */
+    .tok-null { color: #94a3b8; font-style: italic; }        /* Muted null */
+    .tok-kw { color: #c084fc; font-weight: 600; }           /* Purple keywords (const, def, import, return) */
+    .tok-fn { color: #60a5fa; }                             /* Blue function calls */
+    .tok-cmd { color: #38bdf8; font-weight: 700; }          /* Bright cyan CLI commands (curl) */
+    .tok-flag { color: #fbbf24; font-weight: 600; }         /* Amber flags (-s, -X, -H, -d) */
+    .tok-method {
+      display: inline-block;
+      padding: 1px 6px;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 4px;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+    .tok-url { color: #67e8f9; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+    .tok-header-name { color: #f43f5e; font-weight: 600; }  /* Rose HTTP headers */
+    .tok-header { color: #38bdf8; }
+    .tok-token { color: #f1f5f9; background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+    .tok-var { color: #fb923c; font-weight: 500; }          /* PHP $variables */
+    .tok-tag { color: #e11d48; font-weight: 700; }          /* <?php tag */
+    .tok-comment { color: #64748b; font-style: italic; }     /* Comments */
+    .tok-punct { color: #64748b; }                          /* Colons, braces, commas */
+
+    /* ── Syntax Highlighting Tokens (Light Mode) ── */
+    [data-theme="light"] .code-box {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    [data-theme="light"] .code-header {
+      background: #edf2f7;
+      border-bottom-color: #e2e8f0;
+    }
+    [data-theme="light"] pre { color: #1e293b; }
+    [data-theme="light"] .tok-key { color: #0284c7; }
+    [data-theme="light"] .tok-str { color: #15803d; }
+    [data-theme="light"] .tok-num { color: #ea580c; }
+    [data-theme="light"] .tok-bool { color: #db2777; }
+    [data-theme="light"] .tok-null { color: #64748b; }
+    [data-theme="light"] .tok-kw { color: #7c3aed; }
+    [data-theme="light"] .tok-fn { color: #2563eb; }
+    [data-theme="light"] .tok-cmd { color: #0369a1; }
+    [data-theme="light"] .tok-flag { color: #d97706; }
+    [data-theme="light"] .tok-method {
+      background: rgba(37, 99, 235, 0.1);
+      color: #1d4ed8;
+      border-color: rgba(37, 99, 235, 0.25);
+    }
+    [data-theme="light"] .tok-url { color: #0284c7; }
+    [data-theme="light"] .tok-header-name { color: #be123c; }
+    [data-theme="light"] .tok-header { color: #0284c7; }
+    [data-theme="light"] .tok-token { color: #0f172a; background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); }
+    [data-theme="light"] .tok-var { color: #c2410c; }
+    [data-theme="light"] .tok-tag { color: #b91c1c; }
+    [data-theme="light"] .tok-comment { color: #94a3b8; }
+    [data-theme="light"] .tok-punct { color: #94a3b8; }
+
+    /* ── Parameters Table ── */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+    th {
+      background: var(--sidebar-bg);
+      color: var(--text-muted);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--card-border);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text);
+    }
+    tr:last-child td { border-bottom: none; }
+    .param-name {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+    .param-type {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── Live API Playground ── */
+    .tester-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0 32px;
+    }
+    .tester-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tester-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 768px) {
+      .tester-grid { grid-template-columns: 1fr; }
+    }
+    .tester-input, .tester-select {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 7px;
+      outline: none;
+      width: 100%;
+    }
+    .tester-input:focus, .tester-select:focus {
+      border-color: var(--accent);
+    }
+    .tester-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+    .tester-btn:hover { background: var(--accent-hover); }
+    .tester-output {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 8px;
+      padding: 12px;
+      max-height: 240px;
+      overflow-y: auto;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: #38bdf8;
+      display: none;
+    }
+
+    /* ── Mobile Breakpoints ── */
+    @media (max-width: 960px) {
+      .mobile-header { display: flex; }
+      body { flex-direction: column; height: 100vh; overflow-x: hidden; overflow-y: auto; }
+      .sidebar {
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .content-area { padding-top: 60px; }
+      .content-container { padding: 24px 16px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Topbar Header -->
+  <header class="mobile-header">
+    <a href="/" class="mobile-brand">
+      <img src="images/logo.png" alt="VTechOTP" class="logo-img">
+      <span>VTechOTP</span>
+      <span class="logo-badge">v1 Global</span>
+    </a>
+    <div class="mobile-actions">
+      <div class="lang-switcher">
+        <button type="button" class="lang-btn" data-lang="en" onclick="setDocLang('en')">EN</button>
+        <button type="button" class="lang-btn" data-lang="id" onclick="setDocLang('id')">ID</button>
+        <button type="button" class="lang-btn" data-lang="ru" onclick="setDocLang('ru')">RU</button>
+      </div>
+      <button class="icon-btn" onclick="toggleDocTheme()" aria-label="Toggle Theme">
+        <svg id="theme-icon-mob" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="icon-btn" onclick="toggleSidebarDrawer()" aria-label="Open Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleSidebarDrawer(false)"></div>
+
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-brand-row">
+        <a href="/" class="logo-wrap">
+          <img src="images/logo.png" alt="VTechOTP" class="logo-img">
+          <span>VTechOTP</span>
+          <span class="logo-badge">v1 Global</span>
+        </a>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <button class="icon-btn" onclick="toggleDocTheme()" title="Toggle Theme">
+            <svg id="theme-icon-desk" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+          <button class="icon-btn" onclick="toggleSidebarDrawer(false)" style="display:none;" id="sidebar-close-btn" title="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="lang-switcher" style="width:100%;display:grid;grid-template-columns:repeat(3, 1fr);text-align:center;">
+        <button type="button" class="lang-btn active" data-lang="en" onclick="setDocLang('en')">English</button>
+        <button type="button" class="lang-btn" data-lang="id" onclick="setDocLang('id')">Indonesia</button>
+        <button type="button" class="lang-btn" data-lang="ru" onclick="setDocLang('ru')">Русский</button>
+      </div>
+    </div>
+
+    <div class="sidebar-scroll">
+      <div class="nav-group-title" data-i18n="nav.basic">Basic Integration</div>
+      <a href="#intro" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span><span data-i18n="nav.intro">Introduction</span></a>
+      <a href="#global-buyers" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-crypto">GLOBAL</span><span data-i18n="nav.global_buyers">Buyers & Multi-Currency</span></a>
+      <a href="#auth" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span data-i18n="nav.auth">Authentication</span></a>
+      <a href="#base-url" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>Base URL</a>
+      <a href="#errors" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span data-i18n="nav.errors">Error Codes</span></a>
+
+      <div class="nav-group-title" data-i18n="nav.user_balance">User & Balance</div>
+      <a href="#get-balance" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/balance</a>
+      <a href="#get-profile" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/profile</a>
+
+      <div class="nav-group-title" data-i18n="nav.catalog">Catalog & Products</div>
+      <a href="#get-countries" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/countries</a>
+      <a href="#get-services" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/services</a>
+      <a href="#get-operators" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/operators</a>
+      <a href="#get-products" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/catalog/products</a>
+
+      <div class="nav-group-title" data-i18n="nav.orders">Orders & SMS OTP</div>
+      <a href="#post-orders-create" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/create</a>
+      <a href="#get-orders" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/orders</a>
+      <a href="#get-orders-active" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/orders/active</a>
+      <a href="#get-order-detail" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/orders/{id}</a>
+      <a href="#post-orders-cancel" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/{id}/cancel</a>
+      <a href="#post-orders-finish" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/{id}/finish</a>
+      <a href="#post-orders-resend" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/orders/{id}/resend</a>
+
+      <div class="nav-group-title" data-i18n="nav.deposits">Deposits & Payments</div>
+      <a href="#get-deposits-channels" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits/channels</a>
+      <a href="#post-deposits-create" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-post">POST</span>/deposits/create</a>
+      <a href="#get-deposit-detail" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits/{id}</a>
+      <a href="#get-deposits" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits</a>
+      <a href="#get-deposits-config" class="nav-link" onclick="handleNavClick()"><span class="method-tag tag-get">GET</span>/deposits/config</a>
+
+      <div class="nav-group-title" data-i18n="nav.webhook">Webhook Real-time</div>
+      <a href="#webhooks-overview" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><span data-i18n="nav.webhook_concept">Webhook Concept</span></a>
+      <a href="#webhook-verification" class="nav-link" onclick="handleNavClick()"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span data-i18n="nav.signature">Signature Verification</span></a>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="content-area">
+    <div class="content-container">
+
+      <!-- ── TOOLKIT DOWNLOAD BAR ── -->
+      <div class="toolkit-banner">
+        <div class="toolkit-info">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--accent-light)"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span data-i18n="kit.title">Developer Starter Kit & Specs</span>
+          </h4>
+          <p data-i18n="kit.desc">Includes OpenAPI 3.0 spec, Postman Collection, Telegram/WhatsApp bot template, and Reseller Wiki.</p>
+        </div>
+        <div class="toolkit-actions">
+          <a href="../vtechotp.postman_collection.json" download="vtechotp.postman_collection.json" class="toolkit-btn toolkit-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Postman Collection
+          </a>
+          <a href="../openapi.json" download="openapi.json" class="toolkit-btn toolkit-btn-secondary">
+            OpenAPI 3.0
+          </a>
+          <a href="../WIKI.md" class="toolkit-btn toolkit-btn-secondary">
+            Reseller Wiki & Guide
+          </a>
+          <a href="../example-bot/bot.js" class="toolkit-btn toolkit-btn-secondary">
+            Bot Source Code
+          </a>
+        </div>
+      </div>
+
+      <!-- ── SECTION: INTRODUCTION ── -->
+      <section id="intro" class="doc-section">
+        <h1 class="hero-title">
+          <span data-i18n="intro.title_pre">VTechOTP Developer API</span> 
+          <span class="hero-gradient">v1</span>
+        </h1>
+        <p class="hero-sub" data-i18n="intro.sub">
+          Programmatic access for virtual phone numbers, automated SMS OTP reception, balance management, and real-time webhook push events across 200+ countries and 500+ digital applications.
+        </p>
+
+        <!-- Live Sandbox Tester -->
+        <div class="tester-card">
+          <div class="tester-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--accent-light)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span data-i18n="tester.title">Interactive Live API Sandbox</span>
+          </div>
+          <div class="tester-grid">
+            <input type="text" id="sandbox-token" class="tester-input" placeholder="Enter API Token (vtk_...)" value="">
+            <select id="sandbox-endpoint" class="tester-select">
+              <option value="/balance">GET /balance (Check Coins)</option>
+              <option value="/catalog/services">GET /catalog/services (Supported Apps)</option>
+              <option value="/catalog/countries">GET /catalog/countries (200+ Countries)</option>
+              <option value="/deposits/config">GET /deposits/config (Deposit Limits)</option>
+            </select>
+            <button type="button" class="tester-btn" onclick="executeSandboxTest()">
+              <span data-i18n="tester.btn">Test Request</span>
+            </button>
+          </div>
+          <pre id="sandbox-output" class="tester-output"><code></code></pre>
+        </div>
+
+        <div class="callout-box green">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          </div>
+          <div>
+            <b data-i18n="intro.auto_refund_title">100% Auto-Refund Guarantee:</b>
+            <span data-i18n="intro.auto_refund_desc"> If an SMS verification code is not received within the rental timeout (15–20 minutes), all deducted coins are immediately and automatically refunded to your balance. Zero financial risk.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION: GLOBAL BUYERS & MULTI-CURRENCY ── -->
+      <section id="global-buyers" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <span data-i18n="global.title">Global Buyers, Crypto & Multi-Currency</span>
+        </h2>
+        <p data-i18n="global.desc">
+          VTechOTP welcomes international developers and resellers. Our internal ledger operates on <b>Coins</b> (1 Coin = 1 IDR). Here is the international exchange standard:
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="global.th_coin">Coin Balance</th>
+                <th data-i18n="global.th_usd">Approx. USD ($)</th>
+                <th data-i18n="global.th_crypto">Crypto Equivalent</th>
+                <th data-i18n="global.th_capacity">Capacity / Virtual Numbers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="param-name">16,000 Coins</td>
+                <td>~$1.00 USD</td>
+                <td>1.00 USDT / 0.015 LTC / 0.2 TON</td>
+                <td data-i18n="global.cap_1">~3 to 10 SMS Verifications</td>
+              </tr>
+              <tr>
+                <td class="param-name">80,000 Coins</td>
+                <td>~$5.00 USD</td>
+                <td>5.00 USDT / 0.075 LTC / 1.0 TON</td>
+                <td data-i18n="global.cap_2">~20 to 50 SMS Verifications</td>
+              </tr>
+              <tr>
+                <td class="param-name">160,000 Coins</td>
+                <td>~$10.00 USD</td>
+                <td>10.00 USDT / 0.15 LTC / 2.0 TON</td>
+                <td data-i18n="global.cap_3">~40 to 100 SMS Verifications</td>
+              </tr>
+              <tr>
+                <td class="param-name">800,000 Coins</td>
+                <td>~$50.00 USD</td>
+                <td>50.00 USDT / 0.75 LTC / 10 TON</td>
+                <td data-i18n="global.cap_4">~250 to 500 SMS Verifications (Reseller Tier)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout-box purple">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div>
+            <b data-i18n="global.crypto_title">Crypto Payment Gateways for Global Buyers:</b>
+            <span data-i18n="global.crypto_desc"> International buyers can top up balances using USDT (TRC-20, BEP-20), Litecoin (LTC), TON, or Bitcoin. Contact support or choose Crypto on your account top-up menu.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION: AUTHENTICATION ── -->
+      <section id="auth" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <span data-i18n="auth.title">Authentication</span>
+        </h2>
+        <p data-i18n="auth.desc">All API requests must include your developer API Bearer token in the <code>Authorization</code> HTTP header:</p>
+        
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);">HTTP Header</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-i18n="btn.copy">Copy</span>
+            </button>
+          </div>
+          <pre><code>Authorization: Bearer vtk_your_api_token_here
+Content-Type: application/json</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: BASE URL ── -->
+      <section id="base-url" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          Base URL
+        </h2>
+        <p data-i18n="base_url.desc">Direct all REST API requests to either the official production endpoint or web portal gateway:</p>
+        <div class="callout-box">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          </div>
+          <div>
+            <b>Production Server:</b> <code>https://app.otp.vtech.biz.id/api/v1</code><br>
+            <b>Web Gateway:</b> <code>https://vtechotp.web.id/api/v1</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION: GET BALANCE ── -->
+      <section id="get-balance" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-get">GET</span>
+          <span class="endpoint-path">/balance</span>
+        </div>
+        <p data-i18n="balance.desc">Fetches your current coin balance, number of currently active orders, and maximum concurrent order slots.</p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="code-tabs">
+              <button class="code-tab-btn active" onclick="switchSnippet(this, 'bal-curl')">cURL</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'bal-node')">Node.js</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'bal-py')">Python</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'bal-go')">Go</button>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-i18n="btn.copy">Copy</span>
+            </button>
+          </div>
+          <div id="bal-curl" class="snippet-content">
+            <pre><code>curl -s https://app.otp.vtech.biz.id/api/v1/balance \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+          </div>
+          <div id="bal-node" class="snippet-content" style="display:none;">
+            <pre><code>const axios = require('axios');
+
+async function getBalance() {
+  const { data } = await axios.get('https://app.otp.vtech.biz.id/api/v1/balance', {
+    headers: { Authorization: 'Bearer vtk_your_api_token_here' }
+  });
+  console.log('Balance:', data.data.balance, 'Coins');
+}
+getBalance();</code></pre>
+          </div>
+          <div id="bal-py" class="snippet-content" style="display:none;">
+            <pre><code>import requests
+
+headers = {'Authorization': 'Bearer vtk_your_api_token_here'}
+res = requests.get('https://app.otp.vtech.biz.id/api/v1/balance', headers=headers)
+print(res.json())</code></pre>
+          </div>
+          <div id="bal-go" class="snippet-content" style="display:none;">
+            <pre><code>req, _ := http.NewRequest("GET", "https://app.otp.vtech.biz.id/api/v1/balance", nil)
+req.Header.Set("Authorization", "Bearer vtk_your_api_token_here")
+res, err := http.DefaultClient.Do(req)</code></pre>
+          </div>
+        </div>
+
+        <p><b data-i18n="common.example_response">Example Response (200 OK):</b></p>
+        <div class="code-box">
+          <pre><code>{
+  "status": true,
+  "data": {
+    "balance": 150000,
+    "active_orders": 2,
+    "max_active_orders": 5,
+    "currency": "IDR"
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: GET PRODUCTS (SMART LINE HEALTH) ── -->
+      <section id="get-products" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-get">GET</span>
+          <span class="endpoint-path">/catalog/products</span>
+        </div>
+        <p data-i18n="products.desc">Returns real-time prices, stock availability, operator carrier IDs, and product tokens. Always use <code>sort=quality</code> for highest OTP delivery success rate.</p>
+
+        <div class="callout-box green">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div>
+            <b data-i18n="products.health_title">Smart Line Health Routing:</b>
+            <span data-i18n="products.health_desc"> Passing <code>?sort=quality</code> automatically prioritizes carriers with verified live SMS throughput and filters out telecom lines experiencing temporary carrier blocks.</span>
+          </div>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);">cURL (WhatsApp in Indonesia)</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-i18n="btn.copy">Copy</span>
+            </button>
+          </div>
+          <pre><code>curl -s "https://app.otp.vtech.biz.id/api/v1/catalog/products?country_id=6&platform_id=1&sort=quality" \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+        </div>
+
+        <p><b data-i18n="common.example_response">Example Response (200 OK):</b></p>
+        <div class="code-box">
+          <pre><code>{
+  "status": true,
+  "data": [
+    {
+      "catalog_product_id": 1045,
+      "country_id": 6,
+      "country_name": "Indonesia",
+      "platform_id": 1,
+      "platform_name": "WhatsApp",
+      "operator_id": 22,
+      "operator_name": "Telkomsel",
+      "price": 2750,
+      "stock": 482,
+      "quality_score": 98.4
+    }
+  ]
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: CREATE ORDER ── -->
+      <section id="post-orders-create" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-post">POST</span>
+          <span class="endpoint-path">/orders/create</span>
+        </div>
+        <p data-i18n="orders_create.desc">Allocates a virtual phone number. Balance is temporarily deducted. If no SMS arrives, 100% of the funds are refunded automatically.</p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="code-tabs">
+              <button class="code-tab-btn active" onclick="switchSnippet(this, 'ord-curl')">cURL</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'ord-node')">Node.js</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'ord-py')">Python</button>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-i18n="btn.copy">Copy</span>
+            </button>
+          </div>
+          <div id="ord-curl" class="snippet-content">
+            <pre><code>curl -s -X POST https://app.otp.vtech.biz.id/api/v1/orders/create \
+  -H "Authorization: Bearer vtk_your_api_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{"country_id": 6, "platform_id": 1}'</code></pre>
+          </div>
+          <div id="ord-node" class="snippet-content" style="display:none;">
+            <pre><code>const axios = require('axios');
+
+async function createOrder() {
+  const { data } = await axios.post('https://app.otp.vtech.biz.id/api/v1/orders/create', {
+    country_id: 6,
+    platform_id: 1
+  }, {
+    headers: { Authorization: 'Bearer vtk_your_api_token_here' }
+  });
+  console.log('Allocated Number:', data.data.phone_number);
+}
+createOrder();</code></pre>
+          </div>
+          <div id="ord-py" class="snippet-content" style="display:none;">
+            <pre><code>import requests
+
+payload = {"country_id": 6, "platform_id": 1}
+headers = {"Authorization": "Bearer vtk_your_api_token_here"}
+res = requests.post("https://app.otp.vtech.biz.id/api/v1/orders/create", json=payload, headers=headers)
+print(res.json())</code></pre>
+          </div>
+        </div>
+
+        <p><b data-i18n="common.example_response">Example Response (200 OK):</b></p>
+        <div class="code-box">
+          <pre><code>{
+  "status": true,
+  "data": {
+    "order_id": 89201,
+    "phone_number": "+6281234567890",
+    "country_id": 6,
+    "country_name": "Indonesia",
+    "platform_id": 1,
+    "platform_name": "WhatsApp",
+    "operator_name": "Telkomsel",
+    "price": 2750,
+    "status": "active",
+    "sms_code": null,
+    "expires_at": "2026-10-22T22:15:00.000Z",
+    "seconds_remaining": 1180
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: GET ORDER DETAIL (POLL OTP) ── -->
+      <section id="get-order-detail" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-get">GET</span>
+          <span class="endpoint-path">/orders/{id}</span>
+        </div>
+        <p data-i18n="order_detail.desc">Poll this endpoint every 3–5 seconds if not using webhooks. Returns the incoming SMS verification code once delivered.</p>
+
+        <div class="code-box">
+          <pre><code>curl -s https://app.otp.vtech.biz.id/api/v1/orders/89201 \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+        </div>
+
+        <p><b data-i18n="common.example_response">Example Response with SMS Received:</b></p>
+        <div class="code-box">
+          <pre><code>{
+  "status": true,
+  "data": {
+    "order_id": 89201,
+    "phone_number": "+6281234567890",
+    "status": "received",
+    "sms_code": "482910",
+    "full_sms": "Your WhatsApp verification code is 482-910. Do not share it.",
+    "seconds_remaining": 1050
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: CANCEL ORDER (REFUND) ── -->
+      <section id="post-orders-cancel" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-post">POST</span>
+          <span class="endpoint-path">/orders/{id}/cancel</span>
+        </div>
+        <p data-i18n="orders_cancel.desc">Cancels an order before SMS is received. 100% of order coins are refunded instantly to your balance.</p>
+
+        <div class="code-box">
+          <pre><code>curl -s -X POST https://app.otp.vtech.biz.id/api/v1/orders/89201/cancel \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: FINISH ORDER ── -->
+      <section id="post-orders-finish" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-post">POST</span>
+          <span class="endpoint-path">/orders/{id}/finish</span>
+        </div>
+        <p data-i18n="orders_finish.desc">Marks order complete after the verification code has been successfully entered.</p>
+
+        <div class="code-box">
+          <pre><code>curl -s -X POST https://app.otp.vtech.biz.id/api/v1/orders/89201/finish \
+  -H "Authorization: Bearer vtk_your_api_token_here"</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: DEPOSITS & PAYMENT GATEWAYS ── -->
+      <section id="get-deposits-channels" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-get">GET</span>
+          <span class="endpoint-path">/deposits/channels</span>
+        </div>
+        <p data-i18n="deposits_channels.desc">Lists active payment methods (QRIS Realtime, Virtual Accounts, Retail stores, and Crypto).</p>
+
+        <div class="code-box">
+          <pre><code>curl -s https://app.otp.vtech.biz.id/api/v1/deposits/channels</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: CREATE DEPOSIT INVOICE ── -->
+      <section id="post-deposits-create" class="doc-section">
+        <div class="endpoint-header">
+          <span class="method-tag tag-post">POST</span>
+          <span class="endpoint-path">/deposits/create</span>
+        </div>
+        <p data-i18n="deposits_create.desc">Creates an automated payment invoice. Returns QRIS string, QR image URL, and payment link.</p>
+
+        <div class="code-box">
+          <pre><code>curl -s -X POST https://app.otp.vtech.biz.id/api/v1/deposits/create \
+  -H "Authorization: Bearer vtk_your_api_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{"channel_code": "11", "amount": 50000}'</code></pre>
+        </div>
+      </section>
+
+      <!-- ── SECTION: WEBHOOK OVERVIEW ── -->
+      <section id="webhooks-overview" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+          <span data-i18n="webhook.title">Real-Time Webhooks</span>
+        </h2>
+        <p data-i18n="webhook.desc">Instead of polling <code>/orders/{id}</code> repeatedly, register a webhook URL to receive instant push events when SMS arrives.</p>
+
+        <div class="callout-box">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <b>Webhook Events Dispatched:</b><br>
+            • <code>order.otp_received</code> — Incoming SMS received<br>
+            • <code>order.completed</code> — Order marked finished<br>
+            • <code>order.canceled</code> — Canceled with refund<br>
+            • <code>order.expired</code> — Timeout reached with 100% auto-refund
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION: WEBHOOK SIGNATURE VERIFICATION ── -->
+      <section id="webhook-verification" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span data-i18n="webhook.sec_title">HMAC-SHA256 Signature Verification</span>
+        </h2>
+        <p data-i18n="webhook.sec_desc">Every webhook POST includes an <code>X-VTech-Signature</code> header. Verify it using your webhook secret:</p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="code-tabs">
+              <button class="code-tab-btn active" onclick="switchSnippet(this, 'sec-node')">Node.js (Express)</button>
+              <button class="code-tab-btn" onclick="switchSnippet(this, 'sec-py')">Python (Flask/FastAPI)</button>
+            </div>
+            <button class="copy-btn" onclick="copyCode(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-i18n="btn.copy">Copy</span>
+            </button>
+          </div>
+          <div id="sec-node" class="snippet-content">
+            <pre><code>const crypto = require('crypto');
+
+function verifyWebhook(rawBody, signatureHeader, secret) {
+  const hash = crypto.createHmac('sha256', secret).update(rawBody).digest('hex');
+  return crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signatureHeader));
+}</code></pre>
+          </div>
+          <div id="sec-py" class="snippet-content" style="display:none;">
+            <pre><code>import hmac
+import hashlib
+
+def verify_webhook(raw_body_bytes, signature_header, secret_key):
+    expected = hmac.new(secret_key.encode('utf-8'), raw_body_bytes, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, signature_header)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION: ERROR CODES ── -->
+      <section id="errors" class="doc-section">
+        <h2 class="section-title">
+          <span class="section-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+          <span data-i18n="errors.title">Error Codes Reference</span>
+        </h2>
+        <p data-i18n="errors.desc">Standardized JSON error responses and recommended developer actions:</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Error Code</th>
+                <th>HTTP Status</th>
+                <th data-i18n="errors.th_cause">Description & Resolution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="param-name">UNAUTHORIZED</td><td>401</td><td data-i18n="err.unauth">Missing Authorization header in request</td></tr>
+              <tr><td class="param-name">INVALID_TOKEN</td><td>401</td><td data-i18n="err.inv_token">Bearer token is invalid or expired</td></tr>
+              <tr><td class="param-name">INSUFFICIENT_BALANCE</td><td>409</td><td data-i18n="err.insuf_bal">Coin balance too low to create order. Top up required.</td></tr>
+              <tr><td class="param-name">MAX_ACTIVE_ORDERS_EXCEEDED</td><td>429</td><td data-i18n="err.max_ord">Maximum concurrent active orders limit reached (default 5). Complete or cancel existing orders.</td></tr>
+              <tr><td class="param-name">NO_OFFER_AVAILABLE</td><td>422</td><td data-i18n="err.no_offer">Stock for requested country & platform currently depleted. Try another operator or country.</td></tr>
+              <tr><td class="param-name">ORDER_NOT_FOUND</td><td>404</td><td data-i18n="err.ord_not_found">Specified order ID does not exist or belongs to another user.</td></tr>
+              <tr><td class="param-name">SERVICE_MAINTENANCE</td><td>503</td><td data-i18n="err.maint">Platform or telecom gateway undergoing scheduled maintenance.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // Embedded Multilingual Dictionary (EN, ID, RU)
+    const I18N_DICT = {
+      en: {
+        'nav.basic': 'Basic Integration',
+        'nav.intro': 'Introduction',
+        'nav.global_buyers': 'Buyers & Multi-Currency',
+        'nav.auth': 'Authentication',
+        'nav.errors': 'Error Codes',
+        'nav.user_balance': 'User & Balance',
+        'nav.catalog': 'Catalog & Products',
+        'nav.orders': 'Orders & SMS OTP',
+        'nav.deposits': 'Deposits & Payments',
+        'nav.webhook': 'Real-time Webhook',
+        'nav.webhook_concept': 'Webhook Concept',
+        'nav.signature': 'Signature Verification',
+        'kit.title': 'Developer Starter Kit & Specs',
+        'kit.desc': 'Includes OpenAPI 3.0 spec, Postman Collection, Telegram/WhatsApp bot template, and Reseller Wiki.',
+        'intro.title_pre': 'VTechOTP Developer API',
+        'intro.sub': 'Programmatic access for virtual phone numbers, automated SMS OTP reception, balance management, and real-time webhook push events across 200+ countries and 500+ digital applications.',
+        'tester.title': 'Interactive Live API Sandbox',
+        'tester.btn': 'Test Request',
+        'intro.auto_refund_title': '100% Auto-Refund Guarantee:',
+        'intro.auto_refund_desc': ' If an SMS verification code is not received within the rental timeout (15–20 minutes), all deducted coins are immediately and automatically refunded to your balance. Zero financial risk.',
+        'global.title': 'Global Buyers, Crypto & Multi-Currency',
+        'global.desc': 'VTechOTP welcomes international developers and resellers. Our internal ledger operates on Coins (1 Coin = 1 IDR). Here is the international exchange standard:',
+        'global.th_coin': 'Coin Balance',
+        'global.th_usd': 'Approx. USD ($)',
+        'global.th_crypto': 'Crypto Equivalent',
+        'global.th_capacity': 'Capacity / Virtual Numbers',
+        'global.cap_1': '~3 to 10 SMS Verifications',
+        'global.cap_2': '~20 to 50 SMS Verifications',
+        'global.cap_3': '~40 to 100 SMS Verifications',
+        'global.cap_4': '~250 to 500 SMS Verifications (Reseller Tier)',
+        'global.crypto_title': 'Crypto Payment Gateways for Global Buyers:',
+        'global.crypto_desc': ' International buyers can top up balances using USDT (TRC-20, BEP-20), Litecoin (LTC), TON, or Bitcoin. Contact support or choose Crypto on your account top-up menu.',
+        'auth.title': 'Authentication',
+        'auth.desc': 'All API requests must include your developer API Bearer token in the Authorization HTTP header:',
+        'base_url.desc': 'Direct all REST API requests to either the official production endpoint or web portal gateway:',
+        'balance.desc': 'Fetches your current coin balance, number of currently active orders, and maximum concurrent order slots.',
+        'products.desc': 'Returns real-time prices, stock availability, operator carrier IDs, and product tokens. Always use sort=quality for highest OTP delivery success rate.',
+        'products.health_title': 'Smart Line Health Routing:',
+        'products.health_desc': ' Passing ?sort=quality automatically prioritizes carriers with verified live SMS throughput and filters out telecom lines experiencing temporary carrier blocks.',
+        'orders_create.desc': 'Allocates a virtual phone number. Balance is temporarily deducted. If no SMS arrives, 100% of the funds are refunded automatically.',
+        'order_detail.desc': 'Poll this endpoint every 3–5 seconds if not using webhooks. Returns the incoming SMS verification code once delivered.',
+        'orders_cancel.desc': 'Cancels an order before SMS is received. 100% of order coins are refunded instantly to your balance.',
+        'orders_finish.desc': 'Marks order complete after the verification code has been successfully entered.',
+        'deposits_channels.desc': 'Lists active payment methods (QRIS Realtime, Virtual Accounts, Retail stores, and Crypto).',
+        'deposits_create.desc': 'Creates an automated payment invoice. Returns QRIS string, QR image URL, and payment link.',
+        'webhook.title': 'Real-Time Webhooks',
+        'webhook.desc': 'Instead of polling /orders/{id} repeatedly, register a webhook URL to receive instant push events when SMS arrives.',
+        'webhook.sec_title': 'HMAC-SHA256 Signature Verification',
+        'webhook.sec_desc': 'Every webhook POST includes an X-VTech-Signature header. Verify it using your webhook secret:',
+        'errors.title': 'Error Codes Reference',
+        'errors.desc': 'Standardized JSON error responses and recommended developer actions:',
+        'errors.th_cause': 'Description & Resolution',
+        'err.unauth': 'Missing Authorization header in request',
+        'err.inv_token': 'Bearer token is invalid or expired',
+        'err.insuf_bal': 'Coin balance too low to create order. Top up required.',
+        'err.max_ord': 'Maximum concurrent active orders limit reached (default 5). Complete or cancel existing orders.',
+        'err.no_offer': 'Stock for requested country & platform currently depleted. Try another operator or country.',
+        'err.ord_not_found': 'Specified order ID does not exist or belongs to another user.',
+        'err.maint': 'Platform or telecom gateway undergoing scheduled maintenance.',
+        'btn.copy': 'Copy',
+        'common.example_response': 'Example Response:'
+      },
+      id: {
+        'nav.basic': 'Integrasi Dasar',
+        'nav.intro': 'Pengenalan',
+        'nav.global_buyers': 'Buyer Luar Negeri & Multi-Mata Uang',
+        'nav.auth': 'Autentikasi (Token)',
+        'nav.errors': 'Daftar Error Code',
+        'nav.user_balance': 'User & Saldo',
+        'nav.catalog': 'Katalog & Produk',
+        'nav.orders': 'Manajemen Order',
+        'nav.deposits': 'Deposit & Pembayaran',
+        'nav.webhook': 'Webhook Real-time',
+        'nav.webhook_concept': 'Konsep Webhook',
+        'nav.signature': 'Verifikasi Signature',
+        'kit.title': 'Developer Starter Kit & Spesifikasi',
+        'kit.desc': 'Mencakup spesifikasi OpenAPI 3.0, Koleksi Postman, template bot Telegram/WhatsApp, dan Wiki Reseller.',
+        'intro.title_pre': 'Dokumentasi Developer API',
+        'intro.sub': 'Akses terprogram untuk sewa nomor virtual, otomatisasi penerimaan SMS OTP, pengecekan saldo, dan notifikasi webhook real-time untuk 200+ negara dan 500+ platform.',
+        'tester.title': 'Sandbox & Tester API Interaktif',
+        'tester.btn': 'Kirim Test',
+        'intro.auto_refund_title': 'Garansi Auto-Refund 100%:',
+        'intro.auto_refund_desc': ' Jika kode verifikasi SMS tidak masuk dalam batas waktu sewa (15–20 menit), koin yang dipotong otomatis dikembalikan 100% ke saldo Anda.',
+        'global.title': 'Buyer Luar Negeri, Kripto & Multi-Mata Uang',
+        'global.desc': 'VTechOTP melayani pengembang dan reseller internasional. Satuan internal menggunakan Koin (1 Koin = Rp 1 IDR). Berikut patokan konversi mata uang global:',
+        'global.th_coin': 'Saldo Koin',
+        'global.th_usd': 'Estimasi USD ($)',
+        'global.th_crypto': 'Nilai Kripto',
+        'global.th_capacity': 'Kapasitas Nomor Virtual',
+        'global.cap_1': '~3 hingga 10 Verifikasi SMS',
+        'global.cap_2': '~20 hingga 50 Verifikasi SMS',
+        'global.cap_3': '~40 hingga 100 Verifikasi SMS',
+        'global.cap_4': '~250 hingga 500 Verifikasi SMS (Paket Reseller)',
+        'global.crypto_title': 'Saluran Pembayaran Kripto untuk Buyer Global:',
+        'global.crypto_desc': ' Pembeli internasional dapat mengisi saldo menggunakan USDT (TRC-20, BEP-20), Litecoin (LTC), TON, atau Bitcoin. Hubungi CS atau pilih menu Kripto.',
+        'auth.title': 'Autentikasi',
+        'auth.desc': 'Setiap request ke API harus menyertakan API Token Bearer pada header HTTP Authorization:',
+        'base_url.desc': 'Arahkan request API ke endpoint resmi server produksi atau gateway portal web:',
+        'balance.desc': 'Mengecek saldo koin aktif, jumlah order yang sedang berlangsung, dan kuota slot pesanan aktif.',
+        'products.desc': 'Mendapatkan daftar harga real-time, stok nomor, ID operator, dan token produk. Selalu gunakan sort=quality untuk hasil terbaik.',
+        'products.health_title': 'Evaluasi Kesehatan Jalur Otomatis (Smart Line Health):',
+        'products.health_desc': ' Parameter ?sort=quality secara otomatis memprioritaskan operator dengan rasio OTP tertinggi dan menyaring jalur yang sedang mengalami gangguan.',
+        'orders_create.desc': 'Membuat pesanan sewa nomor virtual baru. Saldo dipotong sementara. Jika SMS tidak masuk, koin di-refund otomatis.',
+        'order_detail.desc': 'Lakukan polling ke endpoint ini setiap 3–5 detik jika tidak menggunakan webhook untuk menerima kode SMS masuk.',
+        'orders_cancel.desc': 'Membatalkan pesanan sebelum SMS diterima. 100% koin dikembalikan seketika ke saldo.',
+        'orders_finish.desc': 'Menyelesaikan pesanan setelah kode verifikasi SMS berhasil digunakan.',
+        'deposits_channels.desc': 'Daftar saluran pembayaran aktif (QRIS Realtime, Virtual Account bank, minimarket, dan Kripto).',
+        'deposits_create.desc': 'Membuat invoice pembayaran baru. Mengembalikan data string QRIS, URL gambar QR, dan tautan invoice.',
+        'webhook.title': 'Webhook Real-Time',
+        'webhook.desc': 'Alih-alih polling berulang kali, daftarkan URL webhook untuk menerima notifikasi push instan begitu SMS OTP tiba.',
+        'webhook.sec_title': 'Verifikasi Signature HMAC-SHA256',
+        'webhook.sec_desc': 'Setiap POST webhook menyertakan header X-VTech-Signature. Validasi keaslian payload menggunakan secret webhook Anda:',
+        'errors.title': 'Referensi Error Code',
+        'errors.desc': 'Format respon error JSON standar beserta panduan solusi:',
+        'errors.th_cause': 'Penyebab & Solusi',
+        'err.unauth': 'Header Authorization tidak disertakan dalam request',
+        'err.inv_token': 'API Token salah, kedaluwarsa, atau tidak terdaftar',
+        'err.insuf_bal': 'Saldo koin tidak mencukupi untuk membuat pesanan. Silakan deposit.',
+        'err.max_ord': 'Batas maksimal pesanan aktif bersamaan tercapai (maks 5). Selesaikan atau batalkan pesanan aktif.',
+        'err.no_offer': 'Stok nomor untuk layanan & negara yang diminta sedang habis. Coba operator atau negara lain.',
+        'err.ord_not_found': 'ID pesanan tidak ditemukan atau milik akun lain.',
+        'err.maint': 'Sistem atau gateway operator telekomunikasi sedang pemeliharaan berkala.',
+        'btn.copy': 'Salin',
+        'common.example_response': 'Contoh Respons:'
+      },
+      ru: {
+        'nav.basic': 'Базовая интеграция',
+        'nav.intro': 'Введение',
+        'nav.global_buyers': 'Международные покупатели',
+        'nav.auth': 'Аутентификация',
+        'nav.errors': 'Коды ошибок',
+        'nav.user_balance': 'Пользователь и баланс',
+        'nav.catalog': 'Каталог и цены',
+        'nav.orders': 'Заказы и СМС OTP',
+        'nav.deposits': 'Пополнение и крипта',
+        'nav.webhook': 'Вебхуки Real-time',
+        'nav.webhook_concept': 'Концепция вебхука',
+        'nav.signature': 'Проверка подписи',
+        'kit.title': 'Developer Starter Kit & Спецификации',
+        'kit.desc': 'Включает спецификацию OpenAPI 3.0, коллекцию Postman, шаблон бота Telegram/WhatsApp и Вики для реселлеров.',
+        'intro.title_pre': 'Документация VTechOTP API',
+        'intro.sub': 'Автоматизированная аренда виртуальных номеров, прием SMS OTP, управление балансом и вебхуки для 200+ стран и 500+ сервисов.',
+        'tester.title': 'Интерактивная песочница API',
+        'tester.btn': 'Тестировать',
+        'intro.auto_refund_title': '100% Автоматический возврат:',
+        'intro.auto_refund_desc': ' Если СМС не пришло в течение времени аренды (15–20 мин), вся сумма моментально возвращается на ваш баланс.',
+        'global.title': 'Международные покупатели, Криптовалюта и Монеты',
+        'global.desc': 'VTechOTP поддерживает реселлеров и разработчиков по всему миру. Внутренний баланс в Монетах (1 Монета = 1 IDR). Курсы обмена:',
+        'global.th_coin': 'Баланс Монет',
+        'global.th_usd': 'Примерно в USD ($)',
+        'global.th_crypto': 'Криптовалюта',
+        'global.th_capacity': 'Количество виртуальных номеров',
+        'global.cap_1': '~3 - 10 СМС активаций',
+        'global.cap_2': '~20 - 50 СМС активаций',
+        'global.cap_3': '~40 - 100 СМС активаций',
+        'global.cap_4': '~250 - 500 СМС активаций (Тариф Реселлера)',
+        'global.crypto_title': 'Пополнение криптовалютой:',
+        'global.crypto_desc': ' Международные клиенты могут пополнять баланс через USDT (TRC-20, BEP-20), Litecoin (LTC), TON или Bitcoin.',
+        'auth.title': 'Аутентификация',
+        'auth.desc': 'В каждый запрос передавайте API Token в заголовке Authorization (Bearer):',
+        'base_url.desc': 'Отправляйте все запросы на официальный сервер:',
+        'balance.desc': 'Возвращает текущий баланс монет и лимиты активных заказов.',
+        'products.desc': 'Возвращает список цен, наличие номеров и операторов. Используйте sort=quality для максимальной доходимости СМС.',
+        'products.health_title': 'Умная маршрутизация Smart Line Health:',
+        'products.health_desc': ' Параметр ?sort=quality автоматически выбирает самые стабильные каналы с высокой конверсией.',
+        'orders_create.desc': 'Арендует виртуальный номер. Если СМС не поступит, баланс возвращается автоматически.',
+        'order_detail.desc': 'Опрашивайте этот эндпоинт каждые 3–5 секунд для получения входящего SMS OTP кода.',
+        'orders_cancel.desc': 'Отменяет заказ до получения СМС со 100% моментальным возвратом монет.',
+        'orders_finish.desc': 'Завершает заказ после успешного ввода SMS кода.',
+        'deposits_channels.desc': 'Список доступных платежных систем (QRIS, карты, Kрипта).',
+        'deposits_create.desc': 'Создание счета на пополнение баланса.',
+        'webhook.title': 'Вебхуки в реальном времени',
+        'webhook.desc': 'Мгновенное получение входящих СМС на ваш сервер без периодического опроса.',
+        'webhook.sec_title': 'Проверка HMAC-SHA256 подписи',
+        'webhook.sec_desc': 'Каждый вебхук содержит заголовок X-VTech-Signature. Проверяйте подлинность тела запроса:',
+        'errors.title': 'Справочник кодов ошибок',
+        'errors.desc': 'Стандартизированные ответы API при ошибках:',
+        'errors.th_cause': 'Причина и решение',
+        'err.unauth': 'Отсутствует заголовок Authorization в запросе',
+        'err.inv_token': 'Неверный или просроченный API Token',
+        'err.insuf_bal': 'Недостаточно монет на балансе. Требуется пополнение.',
+        'err.max_ord': 'Превышен лимит параллельных активных заказов (макс 5).',
+        'err.no_offer': 'Номера для данной страны и сервиса временно закончились.',
+        'err.ord_not_found': 'Заказ не найден.',
+        'err.maint': 'Технические работы на стороне оператора.',
+        'btn.copy': 'Копировать',
+        'common.example_response': 'Пример ответа:'
+      }
+    };
+
+    function setDocLang(lang) {
+      if (!I18N_DICT[lang]) lang = 'en';
+      document.documentElement.setAttribute('lang', lang);
+      localStorage.setItem('vtk_docs_lang', lang);
+
+      // Update switcher active states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Update text nodes
+      const dict = I18N_DICT[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+    }
+
+    function copyCode(btn) {
+      const box = btn.closest('.code-box');
+      let codeEl = null;
+      const visibleSnippet = box.querySelector('.snippet-content:not([style*="display:none"]):not([style*="display: none"]) pre code');
+      if (visibleSnippet) {
+        codeEl = visibleSnippet;
+      } else {
+        codeEl = box.querySelector('pre code');
+      }
+
+      if (codeEl) {
+        navigator.clipboard.writeText(codeEl.textContent);
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="width:12px;height:12px"><polyline points="20 6 9 17 4 12"/></svg> <span style="color:#10b981">Copied!</span>`;
+        setTimeout(() => btn.innerHTML = originalHtml, 2000);
+      }
+    }
+
+    function switchSnippet(tabBtn, snippetId) {
+      const box = tabBtn.closest('.code-box');
+      box.querySelectorAll('.code-tab-btn').forEach(b => b.classList.remove('active'));
+      box.querySelectorAll('.snippet-content').forEach(s => s.style.display = 'none');
+      tabBtn.classList.add('active');
+      const target = box.querySelector('#' + snippetId);
+      if (target) {
+        target.style.display = 'block';
+        initSyntaxHighlighting(target);
+      }
+    }
+
+    function toggleDocTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('vtk_docs_theme', next);
+    }
+
+    function toggleSidebarDrawer(force) {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      const closeBtn = document.getElementById('sidebar-close-btn');
+      const shouldOpen = force !== undefined ? force : !sidebar.classList.contains('open');
+      
+      if (shouldOpen) {
+        sidebar.classList.add('open');
+        backdrop.classList.add('active');
+        if (closeBtn) closeBtn.style.display = 'flex';
+      } else {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('active');
+        if (closeBtn) closeBtn.style.display = 'none';
+      }
+    }
+
+    function handleNavClick() {
+      if (window.innerWidth <= 960) {
+        toggleSidebarDrawer(false);
+      }
+    }
+
+    // ── Syntax Highlighter Engine ──
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlightSnippet(rawCode, langHint) {
+      let unescaped = rawCode
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&');
+
+      let trimmed = unescaped.trim();
+      let lang = langHint || 'auto';
+
+      if (lang === 'auto') {
+        if (trimmed.startsWith('{') || trimmed.startsWith('[')) lang = 'json';
+        else if (trimmed.startsWith('curl') || trimmed.includes('curl -s')) lang = 'bash';
+        else if (trimmed.startsWith('<?php')) lang = 'php';
+        else if (trimmed.includes('http.NewRequest') || trimmed.includes('package ') || trimmed.includes('req, _ :=')) lang = 'go';
+        else if (trimmed.includes('import requests') || trimmed.includes('import hmac') || trimmed.includes('def ')) lang = 'python';
+        else if (trimmed.includes('const ') || trimmed.includes('require(') || trimmed.includes('function ') || trimmed.includes('app.post(')) lang = 'javascript';
+        else if (trimmed.startsWith('Authorization:') || trimmed.includes('Bearer ')) lang = 'http';
+      }
+
+      if (lang === 'json') {
+        const escaped = escapeHtml(unescaped);
+        return escaped.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\\-]?\d+)?)/g, function (match) {
+          if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+              return '<span class="tok-key">' + match.slice(0, -1) + '</span><span class="tok-punct">:</span>';
+            } else {
+              return '<span class="tok-str">' + match + '</span>';
+            }
+          } else if (/true|false/.test(match)) {
+            return '<span class="tok-bool">' + match + '</span>';
+          } else if (/null/.test(match)) {
+            return '<span class="tok-null">' + match + '</span>';
+          }
+          return '<span class="tok-num">' + match + '</span>';
+        });
+      }
+
+      if (lang === 'bash') {
+        let lines = unescaped.split('\n');
+        let outLines = lines.map(line => {
+          let l = escapeHtml(line);
+          l = l.replace(/\b(curl)\b/g, '<span class="tok-cmd">$1</span>');
+          l = l.replace(/(\s|^)(-[sXHd]|--header|--data|--request)\b/g, '$1<span class="tok-flag">$2</span>');
+          l = l.replace(/\b(POST|GET|PATCH|DELETE|PUT)\b/g, '<span class="tok-method">$1</span>');
+          l = l.replace(/(https?:\/\/[^\s"'\\]+)/g, '<span class="tok-url">$1</span>');
+          l = l.replace(/(&quot;Authorization:[^&]*&quot;|"Authorization:[^"]*")/g, '<span class="tok-header">$1</span>');
+          l = l.replace(/(&quot;Content-Type:[^&]*&quot;|"Content-Type:[^"]*")/g, '<span class="tok-header">$1</span>');
+          l = l.replace(/(&quot;Bearer\s+[^&]*&quot;|"Bearer\s+[^"]*")/g, '<span class="tok-str">$1</span>');
+          l = l.replace(/(&#39;[^&#]*&#39;|'[^']*')/g, '<span class="tok-str">$1</span>');
+          return l;
+        });
+        return outLines.join('\n');
+      }
+
+      if (lang === 'http') {
+        let lines = unescaped.split('\n').map(line => {
+          let l = escapeHtml(line);
+          l = l.replace(/^([A-Za-z0-9_-]+):/g, '<span class="tok-header-name">$1</span><span class="tok-punct">:</span>');
+          l = l.replace(/\b(Bearer)\b/g, '<span class="tok-kw">$1</span>');
+          l = l.replace(/\b(vtk_[a-zA-Z0-9_-]+)/g, '<span class="tok-token">$1</span>');
+          return l;
+        });
+        return lines.join('\n');
+      }
+
+      if (lang === 'javascript') {
+        let esc = escapeHtml(unescaped);
+        esc = esc.replace(/(\/\/[^\n]*)/g, '<span class="tok-comment">$1</span>');
+        esc = esc.replace(/('([^'\\]|\\.)*'|"([^"\\]|\\.)*"|`([^`\\]|\\.)*`)/g, '<span class="tok-str">$1</span>');
+        esc = esc.replace(/\b(const|let|var|async|await|function|return|try|catch|new|if|else|typeof)\b/g, '<span class="tok-kw">$1</span>');
+        esc = esc.replace(/\b(require|createHmac|update|digest|timingSafeEqual|stringify|post|get|log)\b/g, '<span class="tok-fn">$1</span>');
+        esc = esc.replace(/\b(true|false|null|undefined)\b/g, '<span class="tok-bool">$1</span>');
+        return esc;
+      }
+
+      if (lang === 'python') {
+        let esc = escapeHtml(unescaped);
+        esc = esc.replace(/(#[^\n]*)/g, '<span class="tok-comment">$1</span>');
+        esc = esc.replace(/('([^'\\]|\\.)*'|"([^"\\]|\\.)*")/g, '<span class="tok-str">$1</span>');
+        esc = esc.replace(/\b(import|from|def|return|if|else|try|except|as)\b/g, '<span class="tok-kw">$1</span>');
+        esc = esc.replace(/\b(True|False|None)\b/g, '<span class="tok-bool">$1</span>');
+        esc = esc.replace(/\b(requests|post|get|json|print|hmac|hashlib|new|hexdigest|compare_digest)\b/g, '<span class="tok-fn">$1</span>');
+        return esc;
+      }
+
+      if (lang === 'php') {
+        let esc = escapeHtml(unescaped);
+        esc = esc.replace(/(&lt;\?php|<\?php)/g, '<span class="tok-tag">&lt;?php</span>');
+        esc = esc.replace(/(\/\/[^\n]*)/g, '<span class="tok-comment">$1</span>');
+        esc = esc.replace(/('([^'\\]|\\.)*'|"([^"\\]|\\.)*")/g, '<span class="tok-str">$1</span>');
+        esc = esc.replace(/(\$[a-zA-Z0-9_]+)/g, '<span class="tok-var">$1</span>');
+        esc = esc.replace(/\b(function|return|if|else|echo)\b/g, '<span class="tok-kw">$1</span>');
+        esc = esc.replace(/\b(curl_init|curl_setopt|curl_exec|curl_close|file_get_contents|hash_hmac|hash_equals|json_decode)\b/g, '<span class="tok-fn">$1</span>');
+        return esc;
+      }
+
+      if (lang === 'go') {
+        let esc = escapeHtml(unescaped);
+        esc = esc.replace(/(\/\/[^\n]*)/g, '<span class="tok-comment">$1</span>');
+        esc = esc.replace(/("([^"\\]|\\.)*")/g, '<span class="tok-str">$1</span>');
+        esc = esc.replace(/\b(package|import|func|var|return|if|err|nil)\b/g, '<span class="tok-kw">$1</span>');
+        esc = esc.replace(/\b(http|NewRequest|DefaultClient|Do|ReadAll|Println)\b/g, '<span class="tok-fn">$1</span>');
+        return esc;
+      }
+
+      return escapeHtml(unescaped);
+    }
+
+    function initSyntaxHighlighting(root = document) {
+      root.querySelectorAll('pre code, #sandbox-output').forEach(codeEl => {
+        if (codeEl.getAttribute('data-highlighted') === 'true') return;
+        const parentSnippet = codeEl.closest('.snippet-content');
+        let hint = 'auto';
+        if (parentSnippet && parentSnippet.id) {
+          const id = parentSnippet.id.toLowerCase();
+          if (id.includes('curl')) hint = 'bash';
+          else if (id.includes('node') || id.includes('js')) hint = 'javascript';
+          else if (id.includes('py')) hint = 'python';
+          else if (id.includes('php')) hint = 'php';
+          else if (id.includes('go')) hint = 'go';
+        }
+        const raw = codeEl.innerHTML;
+        codeEl.innerHTML = highlightSnippet(raw, hint);
+        codeEl.setAttribute('data-highlighted', 'true');
+      });
+    }
+
+    async function executeSandboxTest() {
+      const token = document.getElementById('sandbox-token').value.trim();
+      const endpoint = document.getElementById('sandbox-endpoint').value;
+      const outEl = document.getElementById('sandbox-output');
+      outEl.style.display = 'block';
+      outEl.removeAttribute('data-highlighted');
+      outEl.textContent = 'Executing request to https://app.otp.vtech.biz.id/api/v1' + endpoint + ' ...';
+
+      try {
+        const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+        const res = await fetch('https://app.otp.vtech.biz.id/api/v1' + endpoint, { headers });
+        const json = await res.json();
+        outEl.innerHTML = highlightSnippet(JSON.stringify(json, null, 2), 'json');
+        outEl.setAttribute('data-highlighted', 'true');
+      } catch (err) {
+        // Fallback simulation when token is not provided or CORS restricts local file testing
+        let mockData = {};
+        if (endpoint === '/balance') {
+          mockData = { status: true, simulated: true, data: { balance: 250000, active_orders: 1, max_active_orders: 5, currency: "IDR" } };
+        } else if (endpoint === '/deposits/config') {
+          mockData = { status: true, simulated: true, data: { min_deposit: 10000, max_deposit: 5000000, deposit_fee_flat: 100, currency: "IDR" } };
+        } else if (endpoint === '/catalog/services') {
+          mockData = { status: true, simulated: true, data: [{ platform_id: 1, platform_name: "WhatsApp" }, { platform_id: 2, platform_name: "Telegram" }, { platform_id: 3, platform_name: "Google" }] };
+        } else {
+          mockData = { status: true, simulated: true, data: [{ country_id: 6, country_name: "Indonesia", dial_code: "+62" }, { country_id: 1, country_name: "United States", dial_code: "+1" }] };
+        }
+        outEl.innerHTML = '<span class="tok-comment">// [SIMULATED RESPONSE (Enter valid token for live API)]</span>\n' + highlightSnippet(JSON.stringify(mockData, null, 2), 'json');
+        outEl.setAttribute('data-highlighted', 'true');
+      }
+    }
+
+    // Auto-init on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => initSyntaxHighlighting());
+    } else {
+      initSyntaxHighlighting();
+    }
+
+    // Auto-detect or restore language and theme
+    (function() {
+      const savedTheme = localStorage.getItem('vtk_docs_theme');
+      if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+      let savedLang = localStorage.getItem('vtk_docs_lang');
+      if (!savedLang) {
+        const navLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        if (navLang.startsWith('id')) savedLang = 'id';
+        else if (navLang.startsWith('ru')) savedLang = 'ru';
+        else savedLang = 'en';
+      }
+      setDocLang(savedLang);
+    })();
+  </script>
+</body>
+</html>

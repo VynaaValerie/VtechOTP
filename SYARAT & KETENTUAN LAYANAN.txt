@@ -1,0 +1,143 @@
+VTechOTP
+SYARAT & KETENTUAN LAYANAN
+
+Harap membaca Syarat & Ketentuan berikut dengan seksama sebelum menggunakan aplikasi, website, API, dan layanan VTechOTP.
+
+1. KETENTUAN UMUM
+
+Dengan mengakses, mengunduh, menginstal, membuat akun, melakukan deposit, atau menggunakan layanan VTechOTP, pengguna dianggap telah membaca, memahami, dan menyetujui seluruh Syarat & Ketentuan ini.
+
+Apabila pengguna tidak menyetujui ketentuan yang berlaku, pengguna tidak diperkenankan menggunakan layanan VTechOTP.
+
+VTechOTP berhak memperbarui Syarat & Ketentuan ini dari waktu ke waktu. Perubahan akan diberlakukan setelah dipublikasikan melalui platform resmi VTechOTP.
+
+2. LAYANAN NOMOR VIRTUAL & OTP
+
+VTechOTP menyediakan akses nomor telepon virtual sementara yang dapat digunakan untuk menerima kode verifikasi SMS (OTP) pada berbagai platform yang tersedia di dalam layanan.
+
+Nomor virtual bersifat sementara dan bukan merupakan nomor telepon permanen atau kepemilikan pengguna.
+
+Ketersediaan nomor, negara, operator, platform tujuan, serta kemampuan menerima SMS dapat berbeda-beda berdasarkan ketersediaan layanan dan penyedia infrastruktur yang digunakan.
+
+VTechOTP dapat menggunakan penyedia layanan atau infrastruktur pihak ketiga untuk mendukung penyediaan nomor virtual dan penerimaan SMS.
+
+VTechOTP tidak menjamin bahwa setiap nomor akan selalu dapat digunakan pada seluruh platform atau layanan pihak ketiga.
+
+Setiap transaksi mengikuti ketentuan, durasi, dan mekanisme yang ditampilkan pada sistem VTechOTP saat transaksi dilakukan.
+
+3. GARANSI & AUTO REFUND
+
+VTechOTP menyediakan mekanisme garansi dan pengembalian saldo secara otomatis untuk transaksi yang memenuhi ketentuan garansi.
+
+Apabila OTP tidak diterima dalam batas waktu transaksi dan transaksi memenuhi persyaratan refund, saldo dapat dikembalikan secara otomatis sesuai dengan sistem dan ketentuan VTechOTP.
+
+Refund tidak berlaku untuk transaksi yang telah berhasil menerima OTP atau transaksi yang tidak memenuhi ketentuan garansi.
+
+VTechOTP dapat melakukan pemeriksaan terhadap transaksi yang dianggap tidak wajar atau berpotensi disalahgunakan sebelum memberikan refund.
+
+4. SALDO, DEPOSIT & PEMBAYARAN
+
+Layanan VTechOTP menggunakan sistem saldo internal untuk melakukan transaksi.
+
+Deposit dapat dilakukan melalui metode pembayaran yang tersedia dan ditampilkan secara resmi pada platform VTechOTP, termasuk QRIS, transfer bank, dan e-wallet yang didukung.
+
+Deposit melalui metode pembayaran otomatis dapat diproses secara otomatis sesuai dengan sistem pembayaran yang digunakan.
+
+Saldo yang telah berhasil masuk ke akun pada prinsipnya tidak dapat ditarik atau diuangkan kembali, kecuali apabila diwajibkan oleh peraturan yang berlaku, terjadi kesalahan transaksi, atau berdasarkan kebijakan refund VTechOTP.
+
+Saldo pengguna tidak memiliki tanggal kedaluwarsa selama akun dan layanan VTechOTP masih tersedia, kecuali terdapat ketentuan lain yang diberitahukan kepada pengguna.
+
+Apabila terjadi kegagalan sistem pada saat transaksi dan saldo telah terpotong tanpa layanan berhasil diberikan, sistem dapat mengembalikan saldo sesuai dengan mekanisme yang berlaku.
+
+5. PENGGUNAAN YANG DILARANG
+
+Pengguna dilarang menggunakan VTechOTP untuk kegiatan yang melanggar hukum Republik Indonesia, hukum negara yang berlaku bagi pengguna, maupun ketentuan platform pihak ketiga.
+
+Larangan tersebut termasuk namun tidak terbatas pada:
+
+- Penipuan, scam, phishing, dan social engineering.
+- Pencurian atau penyalahgunaan identitas.
+- Pengambilalihan akun milik pihak lain.
+- Peretasan atau upaya melewati sistem keamanan secara tidak sah.
+- Spam atau penyalahgunaan layanan secara massal.
+- Aktivitas cybercrime.
+- Kejahatan keuangan atau pencucian uang.
+- Pembuatan akun palsu secara massal untuk tujuan penyalahgunaan.
+- Aktivitas yang merugikan pihak lain atau melanggar hukum.
+
+VTechOTP berhak membatasi, membekukan, atau menutup akun pengguna apabila ditemukan aktivitas yang melanggar ketentuan ini atau dianggap berpotensi membahayakan layanan.
+
+Dalam kondisi tertentu, VTechOTP dapat melakukan tindakan tersebut tanpa pemberitahuan terlebih dahulu untuk mencegah penyalahgunaan atau kerugian lebih lanjut.
+
+6. PENGGUNAAN PADA PLATFORM PIHAK KETIGA
+
+VTechOTP bukan pemilik, pengelola, atau perwakilan resmi dari platform pihak ketiga yang dapat digunakan bersama layanan VTechOTP.
+
+Nama, logo, merek, dan layanan pihak ketiga seperti WhatsApp, Telegram, Instagram, Google, Meta, dan platform lainnya merupakan milik masing-masing pemiliknya.
+
+Pengguna bertanggung jawab untuk memastikan bahwa penggunaan nomor virtual sesuai dengan ketentuan platform yang digunakan.
+
+VTechOTP tidak menjamin bahwa nomor virtual akan diterima, dipertahankan, atau dapat digunakan pada platform tertentu.
+
+Pemblokiran akun, penolakan nomor, perubahan kebijakan, atau tindakan lain yang dilakukan oleh platform pihak ketiga berada di luar kendali VTechOTP.
+
+7. PENYEDIA LAYANAN PIHAK KETIGA
+
+Untuk menyediakan layanan nomor virtual dan penerimaan SMS, VTechOTP dapat menggunakan infrastruktur atau layanan dari penyedia pihak ketiga.
+
+Ketersediaan nomor, penerimaan SMS, kualitas layanan, serta waktu penerimaan OTP dapat dipengaruhi oleh penyedia tersebut, operator telekomunikasi, maupun platform tujuan.
+
+VTechOTP akan berupaya menjaga ketersediaan layanan, namun tidak dapat menjamin layanan akan selalu tersedia tanpa gangguan.
+
+8. KEAMANAN & AKUN PENGGUNA
+
+Pengguna bertanggung jawab menjaga keamanan akun, password, token, API key, dan informasi akses lainnya.
+
+Pengguna dilarang membagikan API key atau kredensial akun kepada pihak yang tidak berwenang.
+
+Apabila pengguna mengetahui adanya akses tidak sah atau aktivitas mencurigakan pada akun, pengguna wajib segera menghubungi VTechOTP melalui saluran customer support resmi.
+
+VTechOTP dapat menerapkan rate limit, pembatasan transaksi, sistem deteksi penyalahgunaan, atau tindakan keamanan lainnya untuk menjaga keamanan layanan.
+
+9. API DEVELOPER
+
+Penggunaan API VTechOTP wajib mengikuti dokumentasi, batas penggunaan, dan ketentuan yang ditetapkan oleh VTechOTP.
+
+Pengguna API dilarang menggunakan API untuk spam, serangan terhadap sistem, penyalahgunaan resource, aktivitas ilegal, atau aktivitas yang dapat mengganggu stabilitas layanan.
+
+VTechOTP berhak membatasi atau menonaktifkan API key yang terindikasi melakukan penyalahgunaan.
+
+10. BATASAN TANGGUNG JAWAB
+
+VTechOTP menyediakan sarana dan infrastruktur untuk membantu pengguna menerima SMS verifikasi melalui nomor virtual.
+
+VTechOTP tidak bertanggung jawab atas keputusan, kebijakan, pemblokiran, pembatasan, atau tindakan yang dilakukan oleh platform pihak ketiga terhadap akun pengguna.
+
+VTechOTP juga tidak bertanggung jawab atas kegagalan layanan yang disebabkan oleh faktor di luar kendali VTechOTP, termasuk gangguan operator, penyedia infrastruktur, platform tujuan, jaringan, atau keadaan lainnya di luar kendali yang wajar.
+
+11. PERUBAHAN LAYANAN
+
+VTechOTP berhak melakukan perubahan, penambahan, pengurangan, penghentian sementara, atau penghentian suatu fitur maupun layanan apabila diperlukan untuk keamanan, pemeliharaan, pengembangan, kepatuhan, atau alasan operasional lainnya.
+
+Perubahan penting akan diinformasikan melalui platform atau saluran resmi VTechOTP apabila diperlukan.
+
+12. PELANGGARAN & PENEGAKAN KETENTUAN
+
+Apabila pengguna melanggar Syarat & Ketentuan ini, VTechOTP dapat mengambil tindakan yang dianggap diperlukan, termasuk memberikan peringatan, membatasi transaksi, membekukan saldo atau akun sesuai ketentuan yang berlaku, menonaktifkan API, atau menutup akun.
+
+Apabila diperlukan berdasarkan hukum yang berlaku, VTechOTP dapat menyimpan dan memberikan informasi yang relevan kepada pihak yang berwenang sesuai prosedur hukum yang berlaku.
+
+13. PRIVASI
+
+Penggunaan data pribadi pengguna diatur lebih lanjut dalam Kebijakan Privasi VTechOTP.
+
+Pengguna disarankan membaca Kebijakan Privasi sebelum menggunakan layanan VTechOTP.
+
+14. HUBUNGI KAMI
+
+Apabila pengguna memiliki pertanyaan, kendala, atau laporan terkait layanan dan Syarat & Ketentuan ini, pengguna dapat menghubungi VTechOTP melalui menu Pusat Bantuan atau saluran customer support resmi yang tersedia pada aplikasi dan website.
+
+Dengan menggunakan layanan VTechOTP, pengguna menyatakan telah membaca dan menyetujui Syarat & Ketentuan ini.
+
+VTechOTP
+© 2026 VTechOTP. All Rights Reserved.

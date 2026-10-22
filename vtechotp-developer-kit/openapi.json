@@ -1,0 +1,421 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "VTechOTP Developer API",
+    "description": "Official RESTful API documentation for VTechOTP — Real-time virtual phone numbers and instant SMS OTP verification service covering 200+ countries and 500+ digital platforms (WhatsApp, Telegram, OpenAI/ChatGPT, Google, TikTok, Discord, etc.). Auto-refund guarantee if SMS is not received. 1 Coin = 1 IDR (~$1 USD ≈ 16,000 Coins).",
+    "version": "1.0.0",
+    "contact": {
+      "name": "VTechOTP Developer Support",
+      "url": "https://vtechotp.web.id",
+      "email": "support@vtech.biz.id"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://app.otp.vtech.biz.id/api/v1",
+      "description": "Official Production API Server"
+    },
+    {
+      "url": "https://vtechotp.web.id/api/v1",
+      "description": "Web Portal API Gateway"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "API Token (vtk_...)",
+        "description": "Enter your VTechOTP developer API token starting with `vtk_`"
+      }
+    },
+    "schemas": {
+      "StandardResponse": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "boolean", "example": true },
+          "message": { "type": "string", "example": "Success" },
+          "data": { "type": "object" }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "boolean", "example": false },
+          "error": { "type": "string", "example": "INSUFFICIENT_BALANCE" },
+          "message": { "type": "string", "example": "Saldo koin tidak mencukupi untuk melakukan order" }
+        }
+      },
+      "BalanceData": {
+        "type": "object",
+        "properties": {
+          "balance": { "type": "integer", "example": 150000, "description": "Account coin balance (1 Coin = 1 IDR)" },
+          "active_orders": { "type": "integer", "example": 2, "description": "Count of ongoing active orders" },
+          "max_active_orders": { "type": "integer", "example": 5, "description": "Maximum concurrent orders allowed" },
+          "currency": { "type": "string", "example": "IDR" }
+        }
+      },
+      "OrderCreateRequest": {
+        "type": "object",
+        "required": ["country_id", "platform_id"],
+        "properties": {
+          "country_id": { "type": "integer", "example": 6, "description": "Country ID (e.g. 6 for Indonesia, 1 for USA)" },
+          "platform_id": { "type": "integer", "example": 1, "description": "Service ID (e.g. 1 for WhatsApp, 2 for Telegram)" },
+          "operator_id": { "type": "integer", "example": 22, "description": "Optional specific operator ID" },
+          "catalog_product_id": { "type": "integer", "example": 1045, "description": "Optional catalog product ID from /catalog/products" },
+          "max_price": { "type": "integer", "example": 5000, "description": "Optional price ceiling in coins/IDR" }
+        }
+      },
+      "OrderData": {
+        "type": "object",
+        "properties": {
+          "order_id": { "type": "integer", "example": 89201 },
+          "phone_number": { "type": "string", "example": "+6281234567890" },
+          "country_id": { "type": "integer", "example": 6 },
+          "country_name": { "type": "string", "example": "Indonesia" },
+          "platform_id": { "type": "integer", "example": 1 },
+          "platform_name": { "type": "string", "example": "WhatsApp" },
+          "operator_id": { "type": "integer", "example": 22 },
+          "operator_name": { "type": "string", "example": "Telkomsel" },
+          "price": { "type": "integer", "example": 2750 },
+          "status": { "type": "string", "enum": ["active", "received", "completed", "canceled", "expired"], "example": "active" },
+          "sms_code": { "type": "string", "nullable": true, "example": "482910" },
+          "full_sms": { "type": "string", "nullable": true, "example": "Your WhatsApp code is 482-910" },
+          "expires_at": { "type": "string", "format": "date-time", "example": "2026-10-22T22:15:00.000Z" },
+          "seconds_remaining": { "type": "integer", "example": 1180 }
+        }
+      },
+      "DepositCreateRequest": {
+        "type": "object",
+        "required": ["channel_code", "amount"],
+        "properties": {
+          "channel_code": { "type": "string", "example": "11", "description": "Payment channel code (11 for QRIS Realtime)" },
+          "amount": { "type": "integer", "example": 50000, "description": "Deposit nominal in IDR/Coins (min 10,000)" }
+        }
+      },
+      "WebhookUpdateRequest": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": { "type": "string", "format": "uri", "example": "https://yourdomain.com/webhook/vtechotp" },
+          "secret": { "type": "string", "example": "sec_your_custom_secret_here" }
+        }
+      }
+    }
+  },
+  "security": [
+    { "BearerAuth": [] }
+  ],
+  "paths": {
+    "/balance": {
+      "get": {
+        "summary": "Get Account Balance & Order Limits",
+        "description": "Returns current coin balance, number of currently active orders, and maximum active order limits.",
+        "tags": ["User & Balance"],
+        "responses": {
+          "200": {
+            "description": "Balance retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/BalanceData" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "summary": "Get Developer Profile",
+        "description": "Returns user profile details, email/phone verification status, and API access privileges.",
+        "tags": ["User & Balance"],
+        "responses": {
+          "200": { "description": "Profile data retrieved" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/catalog/countries": {
+      "get": {
+        "summary": "List Available Countries",
+        "description": "Returns full list of 200+ countries with country code, ISO code, dial code, and live availability.",
+        "tags": ["Catalog & Products"],
+        "responses": {
+          "200": { "description": "List of countries" }
+        }
+      }
+    },
+    "/catalog/services": {
+      "get": {
+        "summary": "List Supported Services & Platforms",
+        "description": "Returns all supported platforms (WhatsApp, Telegram, Google, OpenAI, TikTok, Instagram, etc.).",
+        "tags": ["Catalog & Products"],
+        "parameters": [
+          { "name": "country_id", "in": "query", "schema": { "type": "integer" }, "description": "Filter by country ID" }
+        ],
+        "responses": {
+          "200": { "description": "List of services" }
+        }
+      }
+    },
+    "/catalog/operators": {
+      "get": {
+        "summary": "List Operators",
+        "description": "Returns mobile network operators available for a specific country and service.",
+        "tags": ["Catalog & Products"],
+        "parameters": [
+          { "name": "country_id", "in": "query", "schema": { "type": "integer" } },
+          { "name": "platform_id", "in": "query", "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "List of operators" }
+        }
+      }
+    },
+    "/catalog/products": {
+      "get": {
+        "summary": "Get Live Pricing & Stock (Smart Line Health)",
+        "description": "Fetches real-time price list, stock availability, operator health status, and sorting options.",
+        "tags": ["Catalog & Products"],
+        "parameters": [
+          { "name": "country_id", "in": "query", "schema": { "type": "integer" } },
+          { "name": "platform_id", "in": "query", "schema": { "type": "integer" } },
+          { "name": "operator_id", "in": "query", "schema": { "type": "integer" } },
+          { "name": "sort", "in": "query", "schema": { "type": "string", "enum": ["quality", "cheapest"], "default": "quality" }, "description": "Quality sorting filters out blocked lines and prioritizes fastest OTP delivery." }
+        ],
+        "responses": {
+          "200": { "description": "Product catalog with pricing and stock" }
+        }
+      }
+    },
+    "/orders/create": {
+      "post": {
+        "summary": "Order Virtual Number for OTP",
+        "description": "Allocates a new virtual phone number. Balance is deducted temporarily. If no SMS arrives within the timeout, 100% of the funds are refunded automatically.",
+        "tags": ["Orders & OTP"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderCreateRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/OrderData" }
+                  }
+                }
+              }
+            }
+          },
+          "409": { "description": "Insufficient balance" },
+          "422": { "description": "Stock unavailable" },
+          "429": { "description": "Maximum concurrent orders reached" }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "summary": "Get Order History",
+        "description": "Returns paginated list of past and active orders.",
+        "tags": ["Orders & OTP"],
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 } },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 10 } },
+          { "name": "status", "in": "query", "schema": { "type": "string", "enum": ["active", "completed", "canceled", "expired"] } }
+        ],
+        "responses": {
+          "200": { "description": "Order list" }
+        }
+      }
+    },
+    "/orders/active": {
+      "get": {
+        "summary": "Get All Active Orders",
+        "description": "Returns list of orders currently waiting for SMS OTP.",
+        "tags": ["Orders & OTP"],
+        "responses": {
+          "200": { "description": "Active orders" }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "summary": "Get Order Detail & OTP Status",
+        "description": "Poll this endpoint if not using webhooks. Returns incoming SMS code when received.",
+        "tags": ["Orders & OTP"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" }, "description": "Order ID" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order details with SMS code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/OrderData" }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "Order not found" }
+        }
+      }
+    },
+    "/orders/{id}/cancel": {
+      "post": {
+        "summary": "Cancel Order & Auto-Refund",
+        "description": "Cancels an active order before SMS is received. 100% of order cost is refunded instantly to user coin balance.",
+        "tags": ["Orders & OTP"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Order canceled and refunded" }
+        }
+      }
+    },
+    "/orders/{id}/finish": {
+      "post": {
+        "summary": "Finish Order",
+        "description": "Marks an order as completed once the SMS verification code has been utilized.",
+        "tags": ["Orders & OTP"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Order completed" }
+        }
+      }
+    },
+    "/orders/{id}/resend": {
+      "post": {
+        "summary": "Request SMS Resend (Secondary SMS)",
+        "description": "Requests an additional SMS verification code on the same virtual number if supported by the provider.",
+        "tags": ["Orders & OTP"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Resend requested" }
+        }
+      }
+    },
+    "/deposits/channels": {
+      "get": {
+        "summary": "List Payment & Deposit Channels",
+        "description": "Returns active payment methods including QRIS Realtime, Virtual Account, Retail, and International Crypto Gateway status.",
+        "tags": ["Deposits & Payments"],
+        "responses": {
+          "200": { "description": "Payment channels list" }
+        }
+      }
+    },
+    "/deposits/create": {
+      "post": {
+        "summary": "Create Deposit Invoice (QRIS / VA / Crypto)",
+        "description": "Generates a payment invoice and QR code image URL for automatic coin balance top-up.",
+        "tags": ["Deposits & Payments"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DepositCreateRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Invoice created" }
+        }
+      }
+    },
+    "/deposits/{id}": {
+      "get": {
+        "summary": "Get Deposit Invoice Status",
+        "description": "Checks payment status (`pending`, `credited`, `expired`).",
+        "tags": ["Deposits & Payments"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Deposit Reference ID (e.g. VTO1740645600000A1B)" }
+        ],
+        "responses": {
+          "200": { "description": "Deposit status retrieved" }
+        }
+      }
+    },
+    "/deposits/config": {
+      "get": {
+        "summary": "Get Deposit Limits & Admin Fees",
+        "description": "Returns minimum/maximum deposit limits and fee structure (min 10,000 IDR, flat fee 100 IDR).",
+        "tags": ["Deposits & Payments"],
+        "responses": {
+          "200": { "description": "Deposit configuration" }
+        }
+      }
+    },
+    "/webhook": {
+      "get": {
+        "summary": "Get Webhook Configuration",
+        "description": "Returns currently registered webhook URL and enabled push event settings.",
+        "tags": ["Webhook Real-Time"],
+        "responses": {
+          "200": { "description": "Webhook configuration" }
+        }
+      },
+      "patch": {
+        "summary": "Update Webhook Endpoint & Secret",
+        "description": "Configures HTTP endpoint where incoming OTP SMS events will be pushed instantly via POST.",
+        "tags": ["Webhook Real-Time"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/WebhookUpdateRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Webhook updated" }
+        }
+      }
+    },
+    "/webhook/test": {
+      "post": {
+        "summary": "Send Webhook Test Event",
+        "description": "Dispatches a simulated `order.otp_received` event to test your server's endpoint and HMAC signature verification.",
+        "tags": ["Webhook Real-Time"],
+        "responses": {
+          "200": { "description": "Test event dispatched" }
+        }
+      }
+    }
+  },
+  "responses": {
+    "Unauthorized": {
+      "description": "Missing or invalid Bearer API token",
+      "content": {
+        "application/json": {
+          "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+        }
+      }
+    }
+  }
+}

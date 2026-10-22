@@ -1,0 +1,23 @@
+{
+  "name": "vtechotp-bot-example",
+  "version": "1.0.0",
+  "description": "Contoh integrasi Bot VTechOTP Developer API v1 untuk Telegram, WhatsApp, Discord",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "keywords": [
+    "vtechotp",
+    "otp-bot",
+    "virtual-number",
+    "telegram-bot",
+    "whatsapp-bot"
+  ],
+  "author": "VTechOTP Developer",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

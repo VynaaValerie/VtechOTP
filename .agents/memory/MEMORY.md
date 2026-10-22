@@ -1,0 +1,1 @@
+- [Node dependency setup](node-dependency-setup.md) — when tool-mediated install fails with an Arborist `edgesOut` error, `npm ci` worked with this project's lockfile.

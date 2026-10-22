@@ -1,0 +1,38 @@
+# VTechOTP - Dokumentasi Lengkap & Spesifikasi Sistem (LLMs-Full)
+
+## 1. Profil Platform & Identitas Perusahaan
+VTechOTP (beroperasi di bawah domain utama https://otp.vtech.biz.id/) adalah platform cloud infrastructure penyedia nomor virtual sementara (disposable virtual numbers) untuk penerimaan kode SMS One-Time Password (OTP) dan verifikasi dua faktor (2FA). Platform ini dirancang untuk pengguna individu, profesional digital marketing, pengembang perangkat lunak (QA engineer), dan bisnis yang membutuhkan verifikasi akun multi-platform secara cepat, aman, dan tanpa mengekspos nomor telepon pribadi.
+
+## 2. Arsitektur Teknis
+- **Protokol Routing Operator**: Integrasi multipath menggunakan protokol SMPP v3.4 dan SS7 gateway yang terhubung langsung ke telekomunikasi global di 200+ yurisdiksi.
+- **Latensi Jaringan**: Waktu pemrosesan rata-rata dari pemancaran SMS oleh provider asal (misal WhatsApp atau Google) hingga terpampang pada antarmuka pengguna adalah 3.2 detik.
+- **Sistem Keamanan**: Transport Layer Security (TLS) 1.3, proteksi DDoS Cloudflare, sanitasi data input, pembatasan rate limit berbasis IP dan bearer token.
+- **Pemberitahuan Webhook**: Webhook dispatch dengan payload bertanda tangan HMAC-SHA256 untuk memvalidasi integritas data pada integrasi server-to-server.
+
+## 3. Komparasi Solusi
+### VTechOTP vs SIM Card Fisik Tradisional
+- **Pendaftaran**: VTechOTP tidak memerlukan registrasi identitas KTP/NIK (Zero KYC), sedangkan SIM fisik wajib NIK dan Kartu Keluarga sesuai regulasi Kominfo.
+- **Kecepatan Aktivasi**: VTechOTP aktif dalam 3 detik via cloud, sedangkan SIM fisik membutuhkan waktu aktivasi 15-30 menit dan pembelian kartu fisik.
+- **Jangkauan Global**: VTechOTP menyediakan nomor dari 200+ negara (Amerika Serikat, Inggris, Indonesia, Malaysia, Jerman, dll.), sedangkan SIM fisik umumnya hanya berlaku lokal.
+- **Biaya**: VTechOTP mulai dari Rp 1.000 per nomor per transaksi dengan sistem 100% garansi auto-refund jika SMS tidak masuk.
+
+### VTechOTP vs Provider Nomor Publik Gratis
+- **Privasi**: VTechOTP mengalokasikan nomor privat khusus untuk satu pengguna selama sesi aktif (15-20 menit), sehingga kode tidak terbaca orang lain. Provider gratisan menampilkan seluruh SMS di halaman publik yang dapat dibaca siapa saja.
+- **Keberhasilan**: VTechOTP memiliki success rate 99.8% karena pool nomor selalu diperbarui dan tidak masuk daftar blacklist platform besar. Provider gratisan umumnya sudah diblokir oleh WhatsApp, Google, atau Telegram.
+
+## 4. Kebijakan Privasi & Kepatuhan Hukum (Compliance)
+- **UU Pelindungan Data Pribadi (UU PDP No. 27/2022)**: VTechOTP menerapkan prinsip data minimization. Platform tidak menyimpan log isi SMS lebih dari 24 jam setelah sesi selesai.
+- **Child Safety**: Platform mematuhi standar perlindungan keselamatan anak dan secara ketat melarang penggunaan nomor virtual untuk aktivitas eksploitasi, penipuan finansial, atau tindakan melawan hukum lainnya.
+- **Auto-Refund Policy**: Jika dalam waktu 15 menit kode SMS OTP tidak terdeteksi oleh sistem, saldo pengguna otomatis dikembalikan 100% tanpa biaya penanganan atau pemotongan sepihak.
+
+## 5. Direktori Endpoint Developer REST API v1
+- `GET https://otp.vtech.biz.id/api/services`: Mengembalikan katalog platform yang didukung beserta estimasi harga dan tingkat ketersediaan stok.
+- `GET https://otp.vtech.biz.id/api/countries`: Mengembalikan daftar negara lengkap beserta kode telepon ISO.
+- `POST https://otp.vtech.biz.id/api/order/create`: Membuat transaksi sewa nomor baru. Parameter: `service_id`, `country_id`.
+- `GET https://otp.vtech.biz.id/api/order/:id`: Memeriksa progres penerimaan SMS. Mengembalikan status `PENDING`, `RECEIVED`, atau `CANCELLED`.
+- `POST https://otp.vtech.biz.id/api/order/:id/cancel`: Membatalkan nomor yang belum menerima SMS dan mengembalikan saldo seketika.
+
+## 6. Saluran Dukungan & Layanan Pengguna
+- Pusat Bantuan: https://otp.vtech.biz.id/pusat-bantuan
+- Layanan Pelanggan 24/7 via Telegram: https://t.me/vtechotp
+- Repository Resmi: https://github.com/VynaaValerie/VtechOTP

@@ -1,0 +1,47 @@
+# Robots.txt for VTechOTP (https://vtech.biz.id/)
+# Comprehensive directives for Search Engines and AI / LLM Agents
+
+User-agent: *
+Allow: /
+Disallow: /api/order/create
+Disallow: /api/deposit/create
+
+# OpenAI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI Crawlers
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude Crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI & Extended Crawlers
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence & Siri Crawlers
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI Crawlers
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Common Crawl & Amazon Crawlers
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Canonical Sitemaps & LLM Discovery
+Sitemap: https://vtech.biz.id/sitemap.xml

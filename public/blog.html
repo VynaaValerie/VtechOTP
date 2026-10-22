@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog &amp; Panduan Nomor Virtual OTP Cloud - VTechOTP</title>
+  <meta name="description" content="Artikel, tutorial, dan panduan lengkap penggunaan nomor virtual OTP, verifikasi SMS cloud instant, dan tips keamanan privasi akun di VTechOTP." />
+  <meta name="keywords" content="blog otp, panduan nomor virtual, nomor virtual otp, verifikasi whatsapp, verifikasi telegram, receive sms online, vtechotp tutorial" />
+  <meta name="author" content="VTechOTP" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog &amp; Panduan Nomor Virtual OTP Cloud - VTechOTP" />
+  <meta property="og:description" content="Panduan terlengkap seputar nomor virtual SMS OTP internasional, verifikasi akun instan, dan tips keamanan privasi digital." />
+  <meta property="og:image" content="/assets/logo.png" />
+  <link rel="canonical" href="https://vtech.biz.id/blog" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome 6 CDN (NO EMOJIS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css?v=2.0.0" />
+  <style>
+    .pagination {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      margin-top: 48px !important;
+      margin-bottom: 24px !important;
+      flex-wrap: wrap !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .page-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-width: 44px !important;
+      min-height: 44px !important;
+      padding: 0 14px !important;
+      border-radius: 12px !important;
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.85) !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+      color: #1E293B !important;
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+      cursor: pointer !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      outline: none !important;
+      margin: 0 !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .page-btn:hover {
+      background: #FFFFFF !important;
+      border-color: rgba(147, 197, 253, 0.9) !important;
+      color: #2563EB !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18) !important;
+    }
+    .page-btn.active {
+      background: #2563EB !important;
+      color: #FFFFFF !important;
+      border-color: #2563EB !important;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4) !important;
+    }
+    .page-btn:active {
+      transform: scale(0.95) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <img src="/assets/logo.png" alt="VTechOTP Logo" class="nav-logo" />
+        <span class="nav-name">VTechOTP</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"><i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Beranda</span></a></li>
+        <li><a href="/docs"><i class="fa-solid fa-code"></i> <span data-i18n="nav.api_docs">API Docs</span></a></li>
+        <li><a href="/blog" class="active"><i class="fa-solid fa-newspaper"></i> <span data-i18n="nav.blog">Blog</span></a></li>
+        <li><a href="/pusat-bantuan"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.help">Bantuan</span></a></li>
+        <li><a href="/syarat-ketentuan"><i class="fa-solid fa-file-contract"></i> <span data-i18n="nav.terms">S&amp;K</span></a></li>
+        <li><a href="/kebijakan-privasi"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="nav.privacy">Privasi</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <!-- Language Switcher Dropdown (Desktop) -->
+        <div class="lang-switcher-dropdown" id="langDropdownDesk">
+          <button type="button" class="lang-switcher-btn" aria-label="Select Language" aria-expanded="false" onclick="VTechI18n.toggleDropdown('desk')">
+            <i class="fa-solid fa-globe"></i>
+            <span class="current-lang-code" id="currentLangCodeDesk">ID</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 0.65rem; opacity: 0.7;"></i>
+          </button>
+          <div class="lang-dropdown-menu" id="langMenuDesk">
+            <button type="button" class="lang-option active" data-lang="id" onclick="VTechI18n.setLanguage('id')">
+              <span class="lang-flag">🇮🇩</span>
+              <span class="lang-name">Bahasa Indonesia</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="en" onclick="VTechI18n.setLanguage('en')">
+              <span class="lang-flag">🇺🇸</span>
+              <span class="lang-name">English</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="ru" onclick="VTechI18n.setLanguage('ru')">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+          </div>
+        </div>
+        <a href="/playstore" class="nav-cta" title="Download Android APK"><i class="fa-brands fa-google-play"></i> Android</a>
+        <a href="/appstore" class="nav-cta" style="background:#000;border-color:#333;" title="Download iOS IPA"><i class="fa-brands fa-apple"></i> iOS</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu">
+      <!-- Language Switcher (Mobile) -->
+      <div class="mob-lang-switcher">
+        <span class="mob-lang-label" data-i18n="common.language">Bahasa</span>
+        <div class="mob-lang-buttons">
+          <button type="button" class="mob-lang-btn active" data-lang="id" onclick="VTechI18n.setLanguage('id')">ID</button>
+          <button type="button" class="mob-lang-btn" data-lang="en" onclick="VTechI18n.setLanguage('en')">EN</button>
+          <button type="button" class="mob-lang-btn" data-lang="ru" onclick="VTechI18n.setLanguage('ru')">RU</button>
+        </div>
+      </div>
+      <a href="/" class="mob-link"><i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Beranda</span></a>
+      <a href="/docs" class="mob-link" style="color: var(--blue-600); font-weight: 700;"><i class="fa-solid fa-code"></i> <span data-i18n="nav.api_docs">Developer API Docs</span></a>
+      <a href="/blog" class="mob-link"><i class="fa-solid fa-newspaper"></i> <span data-i18n="nav.blog">Blog</span></a>
+      <a href="/pusat-bantuan" class="mob-link"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.help">Bantuan</span></a>
+      <a href="/syarat-ketentuan" class="mob-link"><i class="fa-solid fa-file-contract"></i> <span data-i18n="nav.terms">S&amp;K</span></a>
+      <a href="/kebijakan-privasi" class="mob-link"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="nav.privacy">Kebijakan Privasi</span></a>
+      <a href="/playstore" class="mob-link mob-cta"><i class="fa-brands fa-google-play"></i> Play Store (Android)</a>
+      <a href="/appstore" class="mob-link mob-cta" style="background:#000;margin-top:6px;"><i class="fa-brands fa-apple"></i> App Store (iOS)</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="page-header-container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/"><i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Beranda</span></a>
+        <i class="fa-solid fa-chevron-right sep"></i>
+        <span data-i18n="nav.blog">Blog &amp; Panduan</span>
+      </nav>
+      <h1 class="page-title" data-i18n="blog.title">Blog &amp; Panduan Nomor Virtual OTP</h1>
+      <p class="page-subtitle" data-i18n="blog.subtitle">
+        Pusat informasi lengkap seputar penggunaan Nomor Virtual SMS OTP, integrasi API gateway, strategi verifikasi testing akun, dan panduan keamanan privasi digital.
+      </p>
+    </div>
+  </header>
+
+  <!-- Blog List Section -->
+  <section class="blog-section">
+    <div class="section-container">
+      
+      <!-- Filter Bar -->
+      <div class="blog-filter-bar">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; width: 100%;">
+          <div class="search-box" style="flex: 1; min-width: 260px;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Cari artikel (WhatsApp, Binance, Virtual Number)..." data-i18n-placeholder="blog.search_placeholder" />
+          </div>
+          <div class="ios-lang-toggle" id="blogLangToggle" aria-label="Pilih Bahasa / Choose Language">
+            <button type="button" class="ios-lang-btn active" data-lang="id" title="Bahasa Indonesia"><i class="fa-solid fa-earth-asia"></i> ID</button>
+            <button type="button" class="ios-lang-btn" data-lang="en" title="English"><i class="fa-solid fa-earth-americas"></i> EN</button>
+            <button type="button" class="ios-lang-btn" data-lang="ru" title="Русский"><i class="fa-solid fa-earth-europe"></i> RU</button>
+          </div>
+        </div>
+        <div class="tags-scroll" id="tagsContainer">
+          <button class="tag-btn active" data-tag="" id="tagBtnAll">Semua Tag</button>
+          <button class="tag-btn" data-tag="virtual-number">Virtual Number</button>
+          <button class="tag-btn" data-tag="verification" id="tagBtnVerif">Verifikasi</button>
+          <button class="tag-btn" data-tag="guide" id="tagBtnGuide">Panduan</button>
+          <button class="tag-btn" data-tag="crypto">Crypto</button>
+          <button class="tag-btn" data-tag="api">API</button>
+        </div>
+      </div>
+
+      <!-- Blog Grid Container -->
+      <div class="blog-grid" id="blogGrid">
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--gray-500);">
+          <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color: var(--blue-600); margin-bottom: 12px;"></i>
+          <p>Memuat artikel blog VTechOTP...</p>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination"></div>
+
+      <!-- SEO Keywords Bar -->
+      <div class="seo-tags-cloud">
+        <span class="seo-tag"><i class="fa-solid fa-tag"></i> Nomor Virtual OTP</span>
+        <span class="seo-tag"><i class="fa-solid fa-tag"></i> Verifikasi SMS Cloud</span>
+        <span class="seo-tag"><i class="fa-solid fa-tag"></i> Beli Nomor Virtual SMS</span>
+        <span class="seo-tag"><i class="fa-solid fa-tag"></i> Verifikasi OTP Otomatis</span>
+        <span class="seo-tag"><i class="fa-solid fa-tag"></i> Virtual Number Telegram</span>
+        <span class="seo-tag"><i class="fa-solid fa-tag"></i> VTechOTP App</span>
+        <span class="seo-tag"><i class="fa-solid fa-tag"></i> Receive SMS Online Instant</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <img src="/assets/logo.png" alt="VTechOTP Logo" class="footer-logo" />
+          <span class="footer-name">VTechOTP</span>
+        </div>
+        <p class="footer-desc">
+          Penyedia layanan gateway nomor virtual OTP internasional terpercaya #1 di Indonesia. Aman, instan, dan terintegrasi API cloud.
+        </p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>Menu Utama</h4>
+          <ul>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/docs"><i class="fa-solid fa-code"></i> API Developer</a></li>
+            <li><a href="/blog">Blog &amp; Panduan</a></li>
+            <li><a href="/pusat-bantuan">Pusat Bantuan</a></li>
+            <li><a href="/playstore">Google Play (Android)</a></li>
+            <li><a href="/appstore">App Store (iOS)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal &amp; Keamanan</h4>
+          <ul>
+            <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+            <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+            <li><a href="/pusat-bantuan#faq">FAQ Verifikasi</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VTechOTP. All Rights Reserved. Platform Nomor Virtual OTP Terpercaya.</p>
+    </div>
+  </footer>
+
+  <script src="/js/i18n.js"></script>
+  <script>
+    let currentPage = 1;
+    let currentTag = '';
+    let searchQuery = '';
+    let currentLang = (typeof VTechI18n !== 'undefined' ? VTechI18n.getLanguage() : (localStorage.getItem('vtech_lang') || 'en'));
+
+    const i18n = {
+      id: {
+        searchPlaceholder: "Cari artikel (WhatsApp, Binance, Virtual Number)...",
+        allTag: "Semua Tag",
+        verifTag: "Verifikasi",
+        guideTag: "Panduan",
+        loading: "Memuat artikel blog VTechOTP...",
+        emptyTitle: "Tidak ada artikel ditemukan",
+        emptyDesc: "Coba kata kunci atau kriteria pencarian lain.",
+        errorTitle: "Gagal memuat artikel",
+        errorDesc: "Terjadi kesalahan saat mengambil data dari server.",
+        readTime: "menit baca",
+        by: "Tim VTechOTP"
+      },
+      en: {
+        searchPlaceholder: "Search articles (WhatsApp, Binance, Virtual Number)...",
+        allTag: "All Tags",
+        verifTag: "Verification",
+        guideTag: "Guides",
+        loading: "Loading VTechOTP blog articles...",
+        emptyTitle: "No articles found",
+        emptyDesc: "Try a different search query or tag filter.",
+        errorTitle: "Failed to load articles",
+        errorDesc: "An error occurred while fetching data from server.",
+        readTime: "min read",
+        by: "VTechOTP Team"
+      },
+      ru: {
+        searchPlaceholder: "Поиск статей (WhatsApp, Binance, виртуальные номера)...",
+        allTag: "Все теги",
+        verifTag: "Верификация",
+        guideTag: "Руководства",
+        loading: "Загрузка статей блога VTechOTP...",
+        emptyTitle: "Статьи не найдены",
+        emptyDesc: "Попробуйте изменить поисковый запрос или фильтр тегов.",
+        errorTitle: "Не удалось загрузить статьи",
+        errorDesc: "Произошла ошибка при получении данных с сервера.",
+        readTime: "мин чтения",
+        by: "Команда VTechOTP"
+      }
+    };
+
+    function applyLangUI() {
+      const texts = i18n[currentLang] || i18n.en;
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) searchInput.placeholder = texts.searchPlaceholder;
+      const allTagBtn = document.getElementById('tagBtnAll');
+      if (allTagBtn) allTagBtn.textContent = texts.allTag;
+      const verifBtn = document.getElementById('tagBtnVerif');
+      if (verifBtn) verifBtn.textContent = texts.verifTag;
+      const guideBtn = document.getElementById('tagBtnGuide');
+      if (guideBtn) guideBtn.textContent = texts.guideTag;
+
+      const langToggle = document.getElementById('blogLangToggle');
+      if (langToggle) {
+        langToggle.querySelectorAll('.ios-lang-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === currentLang);
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile nav setup
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+        });
+      }
+
+      applyLangUI();
+
+      // Language Switcher Handler
+      const langToggle = document.getElementById('blogLangToggle');
+      if (langToggle) {
+        langToggle.addEventListener('click', (e) => {
+          const btn = e.target.closest('.ios-lang-btn');
+          if (!btn || btn.dataset.lang === currentLang) return;
+          if (typeof VTechI18n !== 'undefined') {
+            VTechI18n.setLanguage(btn.dataset.lang);
+          } else {
+            currentLang = btn.dataset.lang;
+            applyLangUI();
+            currentPage = 1;
+            fetchPosts();
+          }
+        });
+      }
+
+      window.addEventListener('vtech:langchange', (e) => {
+        currentLang = e.detail.lang;
+        applyLangUI();
+        currentPage = 1;
+        fetchPosts();
+      });
+
+      fetchPosts();
+
+      // Search Handler
+      let searchTimeout;
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          searchQuery = e.target.value.trim();
+          currentPage = 1;
+          fetchPosts();
+        }, 400);
+      });
+
+      // Tags Handler
+      document.getElementById('tagsContainer').addEventListener('click', (e) => {
+        const btn = e.target.closest('.tag-btn');
+        if (!btn) return;
+        document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTag = btn.dataset.tag || '';
+        currentPage = 1;
+        fetchPosts();
+      });
+    });
+
+    async function fetchPosts() {
+      const grid = document.getElementById('blogGrid');
+      const texts = i18n[currentLang] || i18n.id;
+      grid.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--gray-500);">
+          <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color: var(--blue-600); margin-bottom: 12px;"></i>
+          <p>${texts.loading}</p>
+        </div>
+      `;
+
+      try {
+        let url = `/api/blog-proxy?page=${currentPage}&limit=9&lang=${currentLang}`;
+        if (currentTag) url += `&tag=${encodeURIComponent(currentTag)}`;
+        if (searchQuery) url += `&q=${encodeURIComponent(searchQuery)}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.posts || data.posts.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--gray-500);">
+              <i class="fa-solid fa-folder-open fa-3x" style="margin-bottom: 16px; opacity: 0.5;"></i>
+              <h3>${texts.emptyTitle}</h3>
+              <p>${texts.emptyDesc}</p>
+            </div>
+          `;
+          document.getElementById('pagination').innerHTML = '';
+          return;
+        }
+
+        renderGrid(data.posts);
+        renderPagination(data.meta);
+      } catch (err) {
+        console.error('Fetch error:', err);
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: #EF4444;">
+            <i class="fa-solid fa-circle-exclamation fa-3x" style="margin-bottom: 16px;"></i>
+            <h3>${texts.errorTitle}</h3>
+            <p>${texts.errorDesc}</p>
+          </div>
+        `;
+      }
+    }
+
+    function renderGrid(posts) {
+      const grid = document.getElementById('blogGrid');
+      const texts = i18n[currentLang] || i18n.id;
+      grid.innerHTML = posts.map(post => {
+        const tagsHtml = (post.tags || []).slice(0, 3).map(t => `<span class="tag-badge"><i class="fa-solid fa-hashtag"></i> ${t}</span>`).join('');
+
+        return `
+          <article class="blog-card">
+            <div class="blog-card-img-wrap">
+              <div class="brand-cover-card">
+                <div class="brand-cover-glow"></div>
+                <img src="/assets/logo.png" alt="VTechOTP Logo" class="brand-cover-logo" />
+                <span class="brand-cover-badge"><i class="fa-solid fa-shield-halved"></i> VTechOTP Guide</span>
+              </div>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-tags">${tagsHtml}</div>
+              <h2 class="blog-card-title">
+                <a href="/blog/${post.slug}">${post.title}</a>
+              </h2>
+              <p class="blog-card-desc">${post.description}</p>
+              <div class="blog-card-footer">
+                <div class="blog-card-author">
+                  <i class="fa-solid fa-shield-halved" style="color: var(--blue-600);"></i>
+                  <span>${post.author || texts.by}</span>
+                </div>
+                <div>
+                  <i class="fa-regular fa-clock"></i> ${post.readTime || ('10 ' + texts.readTime)}
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderPagination(meta) {
+      const pEl = document.getElementById('pagination');
+      if (!meta || meta.totalPages <= 1) {
+        pEl.innerHTML = '';
+        return;
+      }
+
+      const total = meta.totalPages;
+      const current = meta.page;
+      const maxVisible = 5;
+
+      let start = Math.max(1, current - Math.floor(maxVisible / 2));
+      let end = Math.min(total, start + maxVisible - 1);
+
+      if (end - start + 1 < maxVisible) {
+        start = Math.max(1, end - maxVisible + 1);
+      }
+
+      let html = '';
+      if (current > 1) {
+        html += `<button type="button" class="page-btn" onclick="changePage(${current - 1})" aria-label="Halaman Sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>`;
+      }
+
+      for (let i = start; i <= end; i++) {
+        html += `<button type="button" class="page-btn ${i === current ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+      }
+
+      if (current < total) {
+        html += `<button type="button" class="page-btn" onclick="changePage(${current + 1})" aria-label="Halaman Selanjutnya"><i class="fa-solid fa-chevron-right"></i></button>`;
+      }
+      pEl.innerHTML = html;
+    }
+
+    function changePage(page) {
+      currentPage = page;
+      fetchPosts();
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
