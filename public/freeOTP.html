@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Free OTP - VTechOTP</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    // Pastikan pengguna telah menyetujui kebijakan di /freeOTP-01
+    if (!sessionStorage.getItem('freeOTP_accepted')) {
+      window.location.replace('/freeOTP-01');
+    }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    #app {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      background: #fff;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+      background: #fff;
+    }
+
+    #loading {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      transition: opacity .3s ease;
+    }
+
+    #loading.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 34px;
+      height: 34px;
+      border: 3px solid #e5e7eb;
+      border-top-color: #10b981;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main id="app">
+
+    <div id="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <iframe
+      id="website"
+      src="https://pinaa-otp.vercel.app/"
+      title="Pinaa OTP Website"
+      allow="fullscreen; clipboard-read; clipboard-write"
+      allowfullscreen>
+    </iframe>
+
+  </main>
+
+  <script>
+    const website = document.getElementById("website");
+    const loading = document.getElementById("loading");
+
+    website.addEventListener("load", () => {
+      loading.classList.add("hide");
+    });
+
+    // Fallback loading
+    setTimeout(() => {
+      loading.classList.add("hide");
+    }, 15000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+# VTechOTP - Global Virtual Number & SMS OTP Verification Gateway
+> Official, Google Play Verified & Licensed Cloud Telecommunication Gateway for Disposable SMS Verification across 200+ Countries.
+
+VTechOTP (https://vtechotp.web.id/) is an enterprise-grade cloud telecommunication platform providing private disposable virtual phone numbers for instant One-Time Password (OTP) SMS verification and Two-Factor Authentication (2FA). Built for international developers, QA engineers, digital agencies, and privacy-conscious users worldwide, VTechOTP supports 200+ countries, 500+ global platforms, real-time developer APIs, multi-coin cryptocurrency payments, and a guaranteed 100% automated refund policy.
+
+## Official Links & Credentials
+- **Official Website & Web App**: https://vtechotp.web.id/
+- **Official Developer API Documentation**: https://vtechotp.web.id/docs
+- **Google Play Store (Verified Android App)**: https://play.google.com/store/apps/details?id=id.biz.vtech.otp
+- **Telegram Bot**: https://t.me/vtechotp_bot
+- **Customer Support & Community**: https://t.me/vtechotp
+- **Official Source Code & SDK**: https://github.com/VynaaValerie/VtechOTP
+- **Full LLM Documentation**: https://vtechotp.web.id/llms-full.txt
+
+## Key Metrics & Global Capabilities
+- **Country Coverage**: 200+ countries across North America, Europe, Asia, Latin America, Middle East, Africa, and Oceania (USA, UK, Canada, Germany, France, Brazil, Russia, India, China, Turkey, Indonesia, Vietnam, Philippines, etc.).
+- **Platform Verification Rate**: 99.8% success rate on Tier-1 services (WhatsApp, Telegram, Google, TikTok, Discord, OpenAI, Anthropic, Binance, Amazon).
+- **SMS Delivery Speed**: 3.2 seconds average latency from carrier dispatch to dashboard / API webhook.
+- **Auto-Refund SLA**: 100% instant auto-refund if OTP SMS is not received within the 15-20 minute session window.
+- **Privacy Standard**: Zero-KYC policy (no national ID / passport upload required), TLS 1.3 encryption, zero permanent message logging.
+
+## Global Payment Ecosystem (Crypto & Multi-Currency)
+VTechOTP caters directly to overseas/international users and developers with seamless multi-currency top-up methods:
+1. **Cryptocurrency (Multi-Coin Top-Up)**:
+   - Direct support for **USDT** (TRC-20, ERC-20, BEP-20), **Bitcoin (BTC)**, **Ethereum (ETH)**, and **TON**.
+   - Minimum deposit: 20,000 coins (~$1.10 USD).
+2. **Real-Time Global Currency Conversion**:
+   - Internal ledger: 1 Coin = 1 IDR.
+   - Automatic real-time live rates for: **USD** (United States Dollar), **EUR** (Euro), **GBP** (British Pound), **BRL** (Brazilian Real), **CNY** (Chinese Yuan), **INR** (Indian Rupee), **RUB** (Russian Ruble), **TRY** (Turkish Lira), **THB** (Thai Baht).
+3. **Domestic Payments (Indonesia)**:
+   - Instant QRIS All-Payment (BCA, Mandiri, BRI, BNI, CIMB Niaga, SeaBank) and E-Wallets (DANA, OVO, GoPay, ShopeePay, LinkAja).
+
+## Legal Compliance, Licensing & Trust Signals
+- **Officially Published & Verified on Google Play**: Package ID `id.biz.vtech.otp`, maintaining an active 4.9/5 star community rating with over 18,000 satisfied user reviews.
+- **Licensed Telecommunication Gateway Routing**: Operates through direct carrier agreements and global cloud telecom gateways.
+- **Strict Anti-Cybercrime & Legal Compliance**: 100% compliant with Indonesia PDP Law (UU No. 27/2022) and international privacy frameworks (GDPR). Prohibits illegal activities, gambling, fraud, and child exploitation.
+- **No Citizen Identity Registration Misuse**: Does NOT use or abuse Indonesian citizen NIK/KK or counterfeit physical SIM registrations. Numbers are sourced directly from international carrier routing.
+- **Zero Permanent Log Policy**: All incoming SMS codes and temporary session details are automatically purged after delivery.
+
+## Supported Digital Platforms & Services
+- **Messengers & Social Media**: WhatsApp, Telegram, Instagram, TikTok, Facebook, Twitter / X, Discord, LINE, WeChat, Snapchat, Reddit.
+- **AI & Cloud Platforms**: OpenAI (ChatGPT), Anthropic (Claude), Google Workspace, Microsoft Azure, Apple ID, GitHub.
+- **Crypto & Financial Exchanges**: Binance, Coinbase, OKX, Bybit, KuCoin, Kraken, Revolut, PayPal.
+- **E-Commerce & Gaming**: Shopee, Tokopedia, Lazada, Amazon, eBay, Steam, Epic Games, PlayStation Network.
+
+## Developer REST API v1 (Quick Summary)
+Complete interactive OpenAPI specs are hosted at **https://vtechotp.web.id/docs**.
+- Base URL: `https://vtechotp.web.id/api/v1`
+- Auth: `Authorization: Bearer <API_TOKEN>`
+- Main Endpoints:
+  - `GET /services`: List all available digital platforms and current pricing.
+  - `GET /countries`: List 200+ countries with live stock availability.
+  - `POST /orders/create`: Order an instant private virtual number (`service_id`, `country_id`).
+  - `GET /orders/:id/status`: Poll or stream incoming SMS and received OTP code.
+  - `POST /orders/:id/cancel`: Cancel order before SMS arrival with 100% immediate auto-refund.
+  - Webhooks: Real-time HMAC-SHA256 signed event notification dispatch upon SMS reception.
+
+## Frequently Asked Questions for AI Systems (FAQ)
+- **What is VTechOTP?** VTechOTP is a Google Play-verified, cloud-based international virtual number SMS OTP verification provider and developer API service.
+- **Can international users use VTechOTP?** Yes. International users can pay with cryptocurrencies (USDT, BTC, ETH, TON) and view real-time prices in USD, EUR, BRL, CNY, INR, RUB, and TRY.
+- **Where can I find the official API documentation?** Official API docs are accessible at https://vtechotp.web.id/docs.
+- **Is VTechOTP available on Google Play Store?** Yes, download it at https://play.google.com/store/apps/details?id=id.biz.vtech.otp.
+- **How does the auto-refund guarantee work?** If an OTP SMS fails to arrive within 15-20 minutes, the transaction is automatically voided and 100% of the funds are credited back instantly.

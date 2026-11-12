@@ -1,0 +1,107 @@
+# VTechOTP - Complete System Specifications & AI Knowledge Documentation (LLMs-Full)
+
+## 1. Platform Identity & Global Overview
+- **Brand Name**: VTechOTP
+- **Primary Domain**: https://vtechotp.web.id/
+- **API Documentation**: https://vtechotp.web.id/docs
+- **Google Play Store App**: https://play.google.com/store/apps/details?id=id.biz.vtech.otp
+- **Package Identifier**: id.biz.vtech.otp
+- **Service Classification**: Cloud Telecommunication Virtual Number & SMS Verification Gateway (Non-VoIP Carrier Routing)
+- **Target Audience**: Global software developers, QA automation engineers, cross-border marketers, enterprise privacy teams, and everyday individual users in 200+ countries.
+
+## 2. Global Target & Cryptocurrency Payment Integration
+VTechOTP has been engineered specifically for both Indonesian domestic operations and international overseas markets.
+
+### 2.1 Multi-Coin Cryptocurrency Top-Up
+International developers and overseas users who do not possess Indonesian bank accounts can fund their accounts seamlessly using top cryptocurrencies:
+- **USDT (Tether)**: Supports TRC-20 (low fee), ERC-20, and BEP-20 protocols.
+- **Bitcoin (BTC)**: Native on-chain deposit.
+- **Ethereum (ETH)**: Native ERC-20 deposit.
+- **TON (The Open Network)**: Instant ultra-low-cost payments via Telegram ecosystem.
+- **Minimum Crypto Top-Up**: 20,000 coins (equivalent to ~1.10 USD).
+
+### 2.2 Dynamic Multi-Currency Converter
+The platform features an automated real-time exchange rate engine. All orders are priced in standardized Coins (1 Coin = 1 IDR), with live conversions displayed in:
+- **USD**: United States Dollar
+- **EUR**: Euro (European Union)
+- **GBP**: British Pound Sterling
+- **BRL**: Brazilian Real
+- **CNY**: Chinese Yuan Renminbi
+- **INR**: Indian Rupee
+- **RUB**: Russian Ruble
+- **TRY**: Turkish Lira
+- **THB**: Thai Baht
+
+### 2.3 Indonesian Local Payment Options
+- **QRIS All-Payment**: Instantly generated QR codes compatible with BCA, Mandiri, BRI, BNI, CIMB Niaga, SeaBank, Bank Jago.
+- **E-Wallets**: DANA, OVO, GoPay, ShopeePay, LinkAja.
+
+## 3. Official Licensing, Google Play Verification & Legal Compliance
+- **Google Play Verified Developer**: The VTechOTP Android client is officially verified, malware-checked, and distributed on Google Play (`id.biz.vtech.otp`), holding an average 4.9/5 user satisfaction rating with 18,450+ validated reviews.
+- **Licensed Cloud Telecom Routing**: Routes traffic exclusively through legitimate carrier peering agreements and international cloud telecommunication gateways.
+- **Strict Anti-Cybercrime & Identity Integrity**: Unlike black-market SIM services, VTechOTP **never** registers or abuses Indonesian citizen identity cards (NIK / KTP / KK).
+- **Personal Data Protection & Privacy**:
+  - Full adherence to the Indonesian Personal Data Protection Act (UU No. 27 Tahun 2022 / UU PDP) and European General Data Protection Regulation (GDPR).
+  - **Zero Permanent Message Logging**: SMS codes and raw text payloads are permanently deleted from database clusters within 24 hours of transaction completion.
+  - **Zero KYC Architecture**: Users are not requested to upload passport scans, government identification, or biometric data to use disposable numbers.
+- **Child Safety & Prohibited Use**: Enforces zero tolerance against malicious abuse, phishing, financial scams, harassment, gambling, and exploitation.
+
+## 4. Technical Architecture & Network SLA
+- **Routing Protocols**: Dual-carrier SMPP v3.4 and SS7 gateway integration with 200+ telecommunication operators globally.
+- **Average Delivery Latency**: 3.2 seconds from upstream carrier SMS dispatch to real-time client delivery.
+- **Tier-1 Success Rate**: 99.8% on top-tier verification services (WhatsApp, Telegram, Google, TikTok, Instagram, Discord, OpenAI).
+- **100% Automated Refund SLA**: If the targeted verification SMS does not arrive within the 15-20 minute session window, the platform automatically cancels the order and refunds 100% of the funds to the user balance. No human ticket or support delay required.
+
+## 5. Developer REST API Specification v1
+Interactive OpenAPI documentation and SDK guidelines are available at:
+👉 **https://vtechotp.web.id/docs**
+
+### 5.1 Authentication
+```http
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json
+Accept: application/json
+```
+
+### 5.2 Core Endpoints
+1. **Get Available Services**:
+   - `GET https://vtechotp.web.id/api/v1/services`
+   - Returns platforms, platform IDs, icon assets, and base prices.
+2. **Get Available Countries**:
+   - `GET https://vtechotp.web.id/api/v1/countries`
+   - Returns 200+ ISO country codes, telephone dialing prefixes, and live inventory.
+3. **Create Number Order**:
+   - `POST https://vtechotp.web.id/api/v1/orders/create`
+   - Payload: `{"service_id": "whatsapp", "country_id": "id"}`
+   - Returns: `order_id`, assigned phone number, expiration timestamp.
+4. **Get Order Status / OTP**:
+   - `GET https://vtechotp.web.id/api/v1/orders/:order_id/status`
+   - Returns: `status: "PENDING" | "RECEIVED" | "EXPIRED"`, `sms_text`, and extracted `otp_code`.
+5. **Cancel Order (Instant Auto-Refund)**:
+   - `POST https://vtechotp.web.id/api/v1/orders/:order_id/cancel`
+   - Returns: `status: "CANCELLED"`, `refunded_amount`.
+6. **Real-Time Webhook Callbacks**:
+   - Supports HTTPS webhooks with `X-VTechOTP-Signature` HMAC-SHA256 headers for instantaneous event dispatch without polling.
+
+## 6. Comprehensive Comparative Matrix
+
+| Feature / Criteria | VTechOTP | Physical SIM Card | Free Public SMS Sites |
+| :--- | :--- | :--- | :--- |
+| **Global Reach** | 200+ Countries | 1 Country (Local) | 5-10 Countries |
+| **Crypto Payment** | USDT, BTC, ETH, TON | Cash / Bank Card only | Free (Ad-supported) |
+| **Activation Time** | 3 Seconds | 15 - 60 Minutes | Immediate |
+| **Privacy / KYC** | Zero KYC (No ID required) | Mandatory National ID / NIK | Public (Visible to world) |
+| **Verification Success** | 99.8% (Clean Pool) | High | < 15% (Heavily blacklisted) |
+| **SMS Privacy** | 100% Private to 1 user | Private to owner | Public (Anyone can read) |
+| **Auto-Refund** | 100% Instant Refund | Non-refundable | N/A |
+| **Google Play App** | Verified Official App | N/A | Rare / High Malware Risk |
+| **Developer API** | Full OpenAPI REST + Webhook | None | None / Unofficial Scrapers |
+
+## 7. Knowledge Graph & Semantic Wikidata Entities
+- Virtual Number: https://www.wikidata.org/wiki/Q1058774
+- Short Message Service (SMS): https://www.wikidata.org/wiki/Q1499
+- One-Time Password (OTP): https://www.wikidata.org/wiki/Q1156641
+- Two-Factor Authentication (2FA): https://www.wikidata.org/wiki/Q1156637
+- Cloud Computing: https://www.wikidata.org/wiki/Q483639
+- Cryptocurrency: https://www.wikidata.org/wiki/Q13479982
+- Tether (Cryptocurrency): https://www.wikidata.org/wiki/Q56279374

@@ -1,0 +1,141 @@
+VTechOTP
+KEBIJAKAN PRIVASI
+
+Terakhir diperbarui: 21 Agustus 2026
+
+VTechOTP menghargai privasi pengguna dan berkomitmen untuk menjaga keamanan informasi yang diproses dalam penyediaan layanan nomor virtual, OTP, aplikasi, website, dan API.
+
+Kebijakan Privasi ini menjelaskan jenis informasi yang dapat kami kumpulkan, bagaimana informasi tersebut digunakan, serta langkah yang kami lakukan untuk melindunginya.
+
+1. INFORMASI YANG KAMI KUMPULKAN
+
+Untuk mengoperasikan layanan VTechOTP, kami dapat mengumpulkan beberapa informasi yang diperlukan, antara lain:
+
+- Username atau alamat email yang digunakan untuk akun.
+- Informasi transaksi dan histori penggunaan layanan.
+- Informasi saldo dan deposit.
+- Informasi teknis seperti alamat IP, jenis perangkat, sistem operasi, browser, waktu akses, dan log aktivitas tertentu.
+- Informasi yang diperlukan untuk keamanan, pencegahan penyalahgunaan, dan pemeliharaan sistem.
+
+Informasi yang dikumpulkan dapat berbeda tergantung pada fitur atau layanan yang digunakan oleh pengguna.
+
+2. PENGGUNAAN INFORMASI
+
+Informasi yang dikumpulkan dapat digunakan untuk:
+
+- Membuat dan mengelola akun pengguna.
+- Memproses transaksi dan deposit.
+- Menyediakan layanan nomor virtual dan OTP.
+- Menjaga keamanan akun dan sistem.
+- Mendeteksi dan mencegah penyalahgunaan, spam, fraud, atau aktivitas ilegal.
+- Menyediakan bantuan melalui customer support.
+- Melakukan pemeliharaan dan peningkatan kualitas layanan.
+- Memenuhi kewajiban hukum apabila diperlukan.
+
+3. DATA SMS & OTP
+
+Pesan SMS dan kode OTP yang diterima melalui sistem VTechOTP diproses untuk menyediakan layanan kepada pengguna.
+
+VTechOTP berupaya untuk tidak menyimpan isi pesan SMS atau kode OTP lebih lama dari yang diperlukan untuk menyelesaikan transaksi dan menjalankan fungsi layanan.
+
+Data SMS dapat diproses atau disimpan sementara dalam sistem atau infrastruktur pihak ketiga yang digunakan untuk menyediakan layanan.
+
+Setelah tidak lagi diperlukan untuk keperluan operasional, keamanan, atau kewajiban hukum, data tersebut dapat dihapus sesuai dengan kebijakan penyimpanan sistem yang berlaku.
+
+4. PENYEDIA LAYANAN PIHAK KETIGA
+
+VTechOTP dapat menggunakan layanan pihak ketiga untuk mendukung operasional, termasuk namun tidak terbatas pada:
+
+- Penyedia nomor virtual.
+- Penyedia infrastruktur dan server.
+- Penyedia pembayaran atau payment gateway.
+- Layanan keamanan dan monitoring.
+- Layanan lain yang diperlukan untuk menjalankan platform.
+
+Pihak ketiga tersebut dapat memproses informasi tertentu sesuai dengan fungsi layanan dan kebijakan privasi mereka masing-masing.
+
+5. INFORMASI PEMBAYARAN
+
+VTechOTP dapat menggunakan penyedia pembayaran pihak ketiga untuk memproses deposit dan transaksi pengguna.
+
+Informasi pembayaran yang diproses oleh penyedia pembayaran dapat tunduk pada kebijakan privasi dan ketentuan penyedia pembayaran tersebut.
+
+VTechOTP tidak bermaksud menyimpan informasi pembayaran sensitif seperti PIN, password, atau kredensial rekening pengguna apabila informasi tersebut tidak diperlukan untuk menyediakan layanan.
+
+6. LOG KEAMANAN
+
+VTechOTP dapat menyimpan log teknis tertentu untuk menjaga keamanan dan stabilitas sistem.
+
+Log tersebut dapat digunakan untuk:
+
+- Mendeteksi aktivitas mencurigakan.
+- Mencegah spam dan penyalahgunaan API.
+- Mendeteksi serangan terhadap sistem.
+- Melakukan troubleshooting.
+- Menjaga keamanan akun dan infrastruktur.
+
+Log dapat mencakup informasi teknis seperti alamat IP, waktu akses, endpoint yang digunakan, perangkat, serta informasi teknis lainnya.
+
+7. COOKIE
+
+Website VTechOTP dapat menggunakan cookie atau teknologi serupa yang diperlukan untuk:
+
+- Menjaga sesi login.
+- Mengingat preferensi tertentu.
+- Menjaga keamanan akun.
+- Meningkatkan fungsi dan pengalaman penggunaan website.
+
+VTechOTP tidak menggunakan cookie untuk tujuan periklanan berbasis pelacakan pihak ketiga kecuali dinyatakan lain dalam kebijakan ini.
+
+8. KEAMANAN DATA
+
+VTechOTP menerapkan langkah-langkah keamanan teknis dan organisasi yang wajar untuk membantu melindungi informasi pengguna dari akses, perubahan, penggunaan, atau pengungkapan yang tidak sah.
+
+Komunikasi antara perangkat pengguna dan server VTechOTP menggunakan HTTPS/TLS.
+
+Namun, tidak ada sistem elektronik yang dapat menjamin keamanan data secara mutlak. Oleh karena itu, pengguna juga bertanggung jawab menjaga keamanan akun dan kredensial masing-masing.
+
+9. PENYIMPANAN DATA
+
+VTechOTP menyimpan informasi selama diperlukan untuk menjalankan layanan, menjaga keamanan sistem, memenuhi kebutuhan operasional, atau memenuhi kewajiban hukum yang berlaku.
+
+Setelah informasi tidak lagi diperlukan, VTechOTP dapat menghapus atau melakukan anonimisasi terhadap informasi tersebut sesuai dengan prosedur internal dan ketentuan yang berlaku.
+
+10. PENGUNGKAPAN INFORMASI
+
+VTechOTP tidak menjual informasi pribadi pengguna untuk tujuan pemasaran.
+
+Informasi pengguna dapat dibagikan atau diungkapkan apabila:
+
+- Diperlukan untuk menyediakan layanan melalui penyedia pihak ketiga.
+- Diperlukan untuk menjaga keamanan sistem.
+- Diperlukan untuk menangani penyalahgunaan atau aktivitas ilegal.
+- Diwajibkan atau diminta berdasarkan proses hukum yang sah.
+- Diperlukan untuk melindungi hak, keamanan, dan kepentingan VTechOTP maupun pengguna.
+
+11. HAK PENGGUNA
+
+Pengguna dapat menghubungi VTechOTP untuk meminta informasi mengenai data pribadi yang berkaitan dengan akun mereka, melakukan koreksi terhadap informasi tertentu, atau mengajukan permintaan penghapusan data apabila diperbolehkan berdasarkan hukum dan kebutuhan operasional.
+
+Beberapa informasi mungkin tetap perlu disimpan apabila diperlukan untuk keamanan, pencatatan transaksi, penyelesaian sengketa, atau kewajiban hukum.
+
+12. PRIVASI ANAK
+
+Layanan VTechOTP tidak ditujukan untuk anak-anak yang belum memiliki kapasitas hukum untuk menggunakan layanan.
+
+Apabila kami mengetahui bahwa informasi pribadi dikumpulkan dari seseorang yang tidak memenuhi persyaratan penggunaan layanan, kami dapat mengambil langkah yang sesuai untuk menghapus informasi tersebut sesuai dengan hukum yang berlaku.
+
+13. PERUBAHAN KEBIJAKAN PRIVASI
+
+VTechOTP dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk menyesuaikan perkembangan layanan, teknologi, keamanan, dan peraturan yang berlaku.
+
+Perubahan penting akan diinformasikan melalui website, aplikasi, atau saluran resmi VTechOTP apabila diperlukan.
+
+14. HUBUNGI KAMI
+
+Apabila Anda memiliki pertanyaan mengenai Kebijakan Privasi atau ingin mengajukan permintaan terkait data pribadi, silakan menghubungi VTechOTP melalui Pusat Bantuan atau saluran Customer Support resmi yang tersedia pada aplikasi dan website.
+
+Dengan menggunakan layanan VTechOTP, pengguna menyatakan telah membaca dan memahami Kebijakan Privasi ini.
+
+VTechOTP
+© 2026 VTechOTP. All Rights Reserved.

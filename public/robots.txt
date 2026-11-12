@@ -1,0 +1,65 @@
+# Robots.txt for VTechOTP (https://vtechotp.web.id/)
+# Comprehensive directives for Global Search Engines and AI / LLM Agents
+
+User-agent: *
+Allow: /
+Disallow: /api/order/create
+Disallow: /api/deposit/create
+
+# OpenAI Crawlers (SearchGPT, ChatGPT, O-series)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI Crawlers
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude Crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI & Extended Crawlers (Gemini, Google AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Apple Intelligence & Siri Crawlers
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI Crawlers
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Microsoft Bing & Copilot
+User-agent: Bingbot
+Allow: /
+
+# Additional AI, Search & Common Crawl Agents
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Canonical Sitemaps & LLM Discovery Files
+Sitemap: https://vtechotp.web.id/sitemap.xml
+# LLM Knowledge Standard: https://vtechotp.web.id/llms.txt
+# Full LLM Specifications: https://vtechotp.web.id/llms-full.txt
